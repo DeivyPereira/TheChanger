@@ -1,0 +1,69 @@
+.main-login{
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 100vh;
+    grid-template-areas: "intro form";
+}
+
+.intro{
+    grid-area: intro;
+    background-image: url('../img/back-login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.form{
+    grid-area: form;
+    position: relative;
+}
+
+.medio{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+}
+
+.header-login{
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.header-login h2{
+    margin:0;
+    padding:0;
+}
+
+.footer-login{
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.display-none{
+    display:none;
+}
+
+@media (max-width: 600px){
+    .main-login{
+        display: grid;
+        height: 100vh;
+        grid-template-rows: 1fr;
+        grid-template-rows: 100vh;
+        grid-template-areas: "form";
+    }
+
+    .hide-small{
+        display: none;
+    }
+
+    .medio{
+        position: initial;
+        margin: 0 auto;
+        transform: none;
+        width: 80%;
+    }
+
+}

@@ -1,0 +1,375 @@
+.display-none{
+    display: none;
+}
+
+.custom-input{
+    display: block; 
+    width: 100%; 
+    padding: 3px; 
+    margin: 0; 
+    border: solid 1px rgb(210,210,210);
+    transition: ease 0.4s;
+    border-radius: 2px;
+    color: #666;
+    background-color: rgb(250,250,250);
+}
+
+.custom-input:focus{
+    border: solid 1px rgb(180,180,180);
+    background-color: rgb(255,255,255);
+}
+
+.btn-icon-circle{
+    border-radius: 50px; 
+    padding: 5px 8px;
+}
+
+.jumbo{
+    font-size: 45px;
+    display: inline-block;
+}
+
+.pt-0{
+    padding-top: 0!important;
+}
+
+.py-5{
+    padding-top: 45px!important;
+    padding-bottom: 45px!important;
+}
+
+.py-6{
+    padding-top: 60px!important;
+    padding-bottom: 60px!important;
+}
+
+.pt-5{
+    padding-top: 45px!important;
+}
+
+.my-5{
+    margin: 50px 0!important;
+}
+
+.after-label{
+    display: block; 
+    margin-top: -7px;
+}
+
+.my-4{
+    margin: 42px 0!important;
+}
+
+.my-2{
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+}
+
+.my-0{
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+
+.my-2{
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+}
+
+.mt-2{
+    margin-top: 10px!important;
+}
+
+.mb-4{
+    margin-bottom:40px!important;
+}
+
+.mb-0{
+    margin-bottom: 0!important;
+}
+
+.my-1{
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+}
+
+.p-3{
+    padding: 15px;
+}
+
+.cuenta-numero{
+    position: absolute; 
+    right: -5%; 
+    top: 50%; 
+    transform: translate(0,-50%);
+    background: #FFF; 
+    border-radius: 50px; 
+    padding: 15px 25px; 
+    font-size: 25px; 
+    box-shadow: 3px 0 5px lightgrey; 
+}
+
+.cuenta-numero-var{
+    display: inline; 
+    background: #FFF; 
+    border-radius: 50px; 
+    font-size: 25px; 
+    padding: 2.5px 10px; 
+    box-shadow: 0 -3px 5px lightgrey;
+}
+
+.py-05{
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
+}
+
+.py-1{
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+}
+
+.py-5{
+    padding: 40px 0;
+}
+
+.border-top{
+    border-top: solid 1px lightgrey;
+}
+
+.border-bottom{
+    border-bottom: solid 1px lightgrey;
+}
+
+.blue-cexpress{
+    background: #0f1348!important;
+}
+
+.button-close-modal{
+    margin:0; 
+    padding: 20px 25px; 
+    border: 0; 
+    color: #EEE; 
+    border-bottom-left-radius: 50px; 
+    border-top-right-radius: 5px;
+}
+
+.button-close-modal:hover{
+    background: #564c8c!important
+}
+
+.purple-cexpress{
+    background: #39306b!important;
+}
+
+.px-4{
+    padding-left: 40px!important;
+    padding-right: 40px!important;
+}
+
+.text-purple{
+    color: #39306b!important;
+}
+
+.bg-lighter{
+    background-color: rgb(255, 255, 246)!important;
+}
+
+.position-absolute{
+    position: absolute;
+}
+
+.position-relative{
+    position: relative;
+}
+
+.middle{
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.red-light{
+    background: #d55418!important;
+}
+
+.card-custom .row div:nth-child(1){
+    padding: 10px 0;
+}
+
+.card-custom .row div:nth-child(2){
+    padding: 27.5px 0;
+}
+
+.card-custom{
+    margin: 10px;
+}
+
+.shadow-custom{
+    box-shadow: 2px 5px 5px lightgrey;
+}
+
+.modal-custom{
+    width:70%; 
+    z-index: 10000000; 
+    position: fixed; 
+    top: 50%; 
+    left: 80%; 
+    transform: translate(-80%,-50%);
+}
+
+.rounded-top{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.hoverable:hover{
+    margin-top: -3.5px!important;
+}
+
+.hoverable{
+    transition: ease 0.2s;
+}
+
+.card-custom p{
+    margin: 0;
+}
+
+.card-custom i{
+    font-size: 40px;
+}
+
+.text-clear{
+    color: #eee!important;
+}
+
+.text-dark{
+    color: #333!important;
+}
+
+.blue-dark{
+    background: rgb(33, 81, 92)!important;
+}
+
+.blue-light{
+    background: rgb(49, 113, 128)!important;
+}
+
+.yellow-dark{
+    background: #d5ce09!important;
+}
+
+.yellow-light{
+    background: #d1e423!important;
+}
+
+.green-dark{
+    background: #0a6a22!important;
+}
+
+.green-light{
+    background: #0d8d2d!important;
+}
+
+.notificacion{
+    position:absolute; 
+    top: 15%; 
+    right: 40%; 
+    background: #427C89; 
+    color: #EEE; 
+    font-weight: bolder;
+    border-radius: 50px; 
+    padding: 0 4px; 
+    font-size: 10px;
+}
+
+.plus{
+    font-size: 45px;
+    border-radius: 50px;
+}
+
+.plus-small{
+    padding: 5px 8px;
+}
+
+.big-circle{
+    padding: 15px 28px;
+    border-radius: 50px;
+    display: inline-block;
+    background: #FFF;
+    margin-top: -100px;
+    box-shadow: 0 -4px 5px lightgrey;
+}
+
+.loader{
+    position: absolute; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height: 100%; 
+    background: rgba(255,255,255,0.6); 
+    z-index:100000000;
+}
+
+.loader-img{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index:1000000;
+}
+
+.file-input {
+    visibility: hidden;
+    width: 0;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+  .file-input::before {
+    content: 'Adjuntar Comprobante de Pago';
+    display: inline-block;
+    background: #427C89;
+    color: #EEE;
+    width: 100%;
+    text-align: center;
+    border: 0;
+    border-radius: 50px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 14px;
+    visibility: visible;
+    position: absolute;
+  }
+  .file-input:hover::before {
+    border-color: red;
+  }
+  .file-input:active::before {
+    background: #7A9E9F;
+  }
+
+  .font-lighter{
+      font-weight: lighter;
+  }
+
+  .active-custom{
+    background-color: #427C89!important;
+    color: #EEE;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  @media (max-width: 600px)
+  {
+      button{
+          display: inline!important;
+      }
+
+      .modal-custom{
+          display: none;
+      }
+
+      .hide-small{
+          display: none!important;
+      }
+  }
