@@ -522,8 +522,6 @@ $(document).ready(function(){
             $('#modalWindow').fadeOut('fast');
         });
 
-    });
-
     $('#actualizarTasas').on('click', function(){
         $('[id="actualizarTasasForm"]').each(function(){
             var data = $(this).serialize();
@@ -737,4 +735,6 @@ $(document).ready(function(){
         } else {
             $('#motivo').addClass('display-none');
         }
+    });
+
     });
