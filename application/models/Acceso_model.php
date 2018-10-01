@@ -32,7 +32,8 @@ class Acceso_model extends CI_Model
                     'tipo_documento' => $tipo_doc,
                     'dni'            => $doc_nmro,
                     'usuario'        => $usuario,
-                    'role'           => 4
+                    'role'           => 4,
+                    'status'         => 1
         );
         $consulta = $this->db->insert('usuario', $data);
         return $consulta;

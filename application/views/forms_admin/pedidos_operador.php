@@ -1,8 +1,5 @@
 <div class="content animated fadeIn">
     <div class="container-fluid">
-        <div class="text-right my-2">
-            <a href="<?= base_url() . 'archivo_pedidos'; ?>" class="btn btn-sm btn-primary">Ir al archivo</a>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -11,20 +8,6 @@
                         <small>Verifica los pedidos pendientes e informales a tus clientes si ya fueron procesados.</small>
                     </div>
                     <div class="content">
-                        <form action="<?= base_url() . 'buscar_pedido'; ?>" method="get">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-input" placeholder="Buscar..." name="buscar">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block"><i class="ti-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        </form>
                         <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
@@ -35,7 +18,6 @@
                                         <th class="text-center">Banco Receptor</th>
                                         <th class="text-center">Monto Pagado</th>
                                         <th class="text-center">Monto Beneficiario</th>
-                                        <th></th>
                                         <th></th>
                                     </thead>
                                     <tbody>
@@ -61,15 +43,15 @@
                                                         <i class="ti-check"></i>
                                                         Aceptado
                                                     </span>
-                                                <?php elseif( $pedido['status'] == 4 ): ?>
-                                                    <span class="text-sucess">
-                                                        <i class="ti-check"></i>
-                                                        Terminado
-                                                    </span>
                                                 <?php elseif( $pedido['status'] == 2 ): ?>
                                                     <span class="text-danger">
                                                         <i class="ti-info-check"></i>
                                                         Rechazado
+                                                    </span>
+                                                <?php elseif( $pedido['status'] == 4 ): ?>
+                                                    <span class="text-danger">
+                                                        <i class="ti-info-check"></i>
+                                                        Terminado
                                                     </span>
                                                 <?php endif; ?>
                                             </td>
@@ -101,17 +83,6 @@
                                                 <a href="<?= base_url() . 'ver_pedido?i=' . $pedido['id']; ?>" class="btn btn-sm btn-primary">
                                                     <i class="ti-eye"></i>
                                                 </a>
-                                            </td>
-                                            <td>
-                                                <?php if( $pedido['archivo'] == 0 ): ?>
-                                                    <a href="<?= base_url() . 'archivar_pedido?i=' . $pedido['id']; ?>" class="btn btn-sm btn-primary">
-                                                        Archivar
-                                                    </a>
-                                                <?php elseif( $pedido['archivo'] == 1 ): ?>
-                                                    <a href="<?= base_url() . 'archivar_pedido?i=' . $pedido['id']; ?>" class="btn btn-sm btn-primary">
-                                                        Archivado
-                                                    </a>
-                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>

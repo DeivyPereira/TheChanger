@@ -25,6 +25,7 @@
                                 <th class="text-center"><small>Status</small></th>
                                 <th class="text-center"><small>Cambiar Rol</small></th>
                                 <th class="text-center"><small>Cambiar Status</small></th>
+                                <th></th>
                             </thead>
                             <tbody>
                                 <?php if( $buscar != false ): ?>
@@ -92,7 +93,10 @@
                                         <?php elseif( $usuario['status'] == 1 ): ?>
                                             <a href="<?= base_url() . 'update_user_status_s?id=' . $usuario['id'] . '&status=' . $usuario['status'] . '&buscar=' . $_GET['buscar']; ?>" class="btn btn-sm btn-success btn-icon btn-fill" style="padding: 5px;">Activo</a><br>
                                         <?php endif; ?>
-                                        
+                                    </td>
+
+                                    <td>
+                                        <a href="<?= base_url() . 'eliminar_usuario_s?i=' . $usuario['id'] . '&key=' . $_GET['buscar']; ?>" class="btn btn-sm btn-danger btn-icon btn-fill"><i class="ti-trash"></i></a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

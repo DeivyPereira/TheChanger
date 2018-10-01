@@ -60,6 +60,14 @@
 
     <?php endif; ?>
 
+    <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 || $_SESSION['role_cexpress'] == 3 ): ?>
+        <script type="text/javascript">
+            function actualizar(){location.reload(true);}
+            //Función para actualizar cada 4 segundos(4000 milisegundos)
+            setInterval("actualizar()",300000);
+        </script>
+    <?php endif; ?>
+
 </html>
 
 <?php if( isset($_GET['q']) && $_GET['q'] == "1" ): ?>
@@ -80,3 +88,4 @@
 	</script>
 
 <?php endif; ?>
+

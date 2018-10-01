@@ -13,6 +13,7 @@ class Crud_controller extends CI_Controller
 
     public function delete_pais()
     {
+
         $id = $this->input->get('id');
         $consulta = $this->admin_crud->delete_pais( $id );
 
@@ -58,17 +59,26 @@ class Crud_controller extends CI_Controller
 
     public function update_role()
     {
-        $id = $this->input->post('id');
+        $id   = $this->input->post('id');
         $role = $this->input->post('role');
-
+        $page = $this->input->post('page');
+        
         if( $role != "false" ):
         
             $consulta = $this->admin_crud->update_role($id, $role);
 
             if ( $consulta ):
-                redirect('control_usuarios?msg=1');
+                if( $page != null ):
+                    redirect('control_usuarios/' . $page . '?msg=1');
+                else:
+                    redirect('control_usuarios?msg=1');
+                endif;
             else:
-                redirect('control_usuarios?msg=2');
+                if( $page != null ):
+                    redirect('control_usuarios/' . $page . '?msg=2');
+                else:
+                    redirect('control_usuarios?msg=2');
+                endif;
             endif;
 
         else:
@@ -76,7 +86,20 @@ class Crud_controller extends CI_Controller
             redirect('control_usuarios');
 
         endif;
-        
+    }
+
+    public function eliminar_usuario_s()
+    {
+        $id = $this->input->get('i');
+        $key = $this->input->get('key');
+
+        $consulta = $this->admin_crud->eliminar_usuario( $id );
+
+        if( $consulta ):
+            redirect('buscar_usuario?buscar=' . $key . '&msg=1');
+        else:
+            redirect('buscar_usuario?buscar=' . $key . '&msg=2');
+        endif;
     }
 
     public function update_role_search()
@@ -153,9 +176,9 @@ class Crud_controller extends CI_Controller
     {
 
         $id = $this->input->get('id');
-        $status = $this->input->get('status');
+        $page = $this->input->get('p');
 
-        $consulta = $this->admin_crud->update_user_status($id, $status);
+        $consulta = $this->admin_crud->update_user_status( $id );
 
         if ( $consulta ):
 
@@ -329,9 +352,9 @@ class Crud_controller extends CI_Controller
                         
             @mail( $to, $subject, $message, $headers );
 
-            redirect('control_usuarios?msg=1');
+            redirect('control_usuarios/' . $page . '?msg=1');
         else:
-            redirect('control_usuarios?msg=2');
+            redirect('control_usuarios/' . $page . '?msg=2');
         endif;
 
     }
@@ -966,6 +989,20 @@ class Crud_controller extends CI_Controller
 
     }
 
+    public function eliminar_usuario()
+    {
+        $id = $this->input->get('i');
+        $page = $this->input->get('p');
+
+        $consulta = $this->admin_crud->eliminar_usuario( $id );
+
+        if( $consulta ):
+            redirect('control_usuarios/' . $page . '?msg=1');
+        else:
+            redirect('control_usuarios/' . $page . '?msg=2');
+        endif;
+    }
+
     public function actualizar_tasa()
     {
         $tasa = $this->input->post('tasa');
@@ -974,9 +1011,9 @@ class Crud_controller extends CI_Controller
         $consulta = $this->admin_crud->actualizar_tasa( $pais, $tasa );
 
         if( $consulta ):
-            echo "true";
+            redirect('control_tasas?msg=1');
         else:
-            echo "false";
+            redirect('control_tasas?msg=2');
         endif;
     }
 
@@ -1041,7 +1078,11 @@ class Crud_controller extends CI_Controller
         $dni      = $this->input->post('tipo_documento') . $this->input->post('dni');
         $telefono = $this->input->post('telefono');
         $email    = $this->input->post('email');
-        $banco    = $this->input->post('banco');
+        if( $this->input->post('banco') == "Otros" ):
+            $banco = $this->input->post('banco_alt');
+        elseif( $this->input->post('banco') != "Otros" ):
+            $banco = $this->input->post('banco');
+        endif;
         $pais     = $this->input->post('pais');
 
         $consulta = $this->admin_crud->registrar_cuenta( $id, $alias, $cuenta, $titular, $tipo, $dni, $telefono, $email, $banco, $pais );
@@ -1218,8 +1259,8 @@ class Crud_controller extends CI_Controller
 
             $data['usuario'] = $this->admin_crud->get_usuario_by_id( $id_cliente );
 
-            if( $status == 1 ):
-                $sta = "Aceptado";
+            if( $status == 4 ):
+                $sta = "Concluido";
             elseif( $status == 2 ):
                 $sta = 'Rechazado';
             endif;
@@ -1495,9 +1536,9 @@ class Crud_controller extends CI_Controller
 
                 endforeach;
                 
-            redirect('ver_pedido?msg=1&i=' . $id );
+            redirect('control_pedidos_op?msg=1&i=' . $id );
         else:
-            redirect('ver_pedido?msg=2&i=' . $id );
+            redirect('control_pedidos_op?msg=2&i=' . $id );
         endif;
     }
 
@@ -1565,6 +1606,395 @@ class Crud_controller extends CI_Controller
             $this->load->view( 'templates/tax_dashboard', $data );
         else:
             echo "false";
+        endif;
+    }
+
+    public function verificar()
+    {
+        $config['upload_path']          = './uploads/verificacion/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 500;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('verificar'))
+        {
+
+                // Notificaciones Admin
+                $data['admin_noti'] = $this->admin_crud->get_noti_num_rows();
+                $data['pedidos_noti'] = $this->admin_crud->get_pedidos_nuevos();
+                $data['usuario_noti'] = $this->admin_crud->get_usuarios();
+
+                $data['usuarios_nuevo_rows'] = $this->admin_crud->get_usuarios_nuevos_rows();
+                $data['usuarios_nuevos'] = $this->admin_crud->get_usuarios_nuevos();
+
+                // Notificaciones Usuario
+                $data['usuario_noti_usuario'] = $this->admin_crud->get_noti_num_rows_usuario( $_SESSION['id_cexpress'] );
+                $data['pedidos_noti_usuario'] = $this->admin_crud->get_pedidos_noti_usuario( $_SESSION['id_cexpress'] );
+
+                $data['error'] = $this->upload->display_errors('<small class="text-danger">', '</small>');
+                $id = $_SESSION['id_cexpress'];
+                $data['msg'] = '';
+                $data['usuarios'] = $this->admin_crud->get_usuario($id, FALSE);
+                $data['titulo'] = "Perfil del Usuario";
+                $data['paises'] = $this->admin_crud->get_paises();
+                $this->load->view('header', $data);
+                $this->load->view('show/show_usuario', $data);
+                $this->load->view('footer');
+        }
+        else
+        {
+            $documento = $this->upload->data('file_name');
+            $this->admin_crud->verificar( $_SESSION['id_cexpress'], $documento );
+            redirect('perfil?msg=1');
+        }
+    }
+
+    public function verificacion()
+    {
+        $id = $this->input->get('i');
+        $verificacion = $this->input->get('v');
+
+        $consulta = $this->admin_crud->verificacion( $id, $verificacion );
+        
+        if( $consulta ):
+            $this->session->set_userdata( array( 'verificacion_cexpress' => 2 ) );
+            $usuario = $this->admin_crud->get_usuario( $id, FALSE );
+            $to = $usuario->email;
+            $subject = 'Cexpress - Tu usuario ha sido verificado';
+            $message = '
+                 <!doctype html>
+                 <html lang="en">
+                 <head>
+                     <!-- Required meta tags -->
+                     <meta charset="utf-8">
+                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                     <style>
+                         .container{
+                         max-width: 600px;
+                         background-color: #FFF;
+                         margin: 50px auto;
+                         border-radius: 5px;
+                         padding: 15px;
+                         box-shadow: 3px 5px 10px #1c1738;
+                         }
+                 
+                         html, body{
+                         font-family: sans-serif;
+                         }
+                 
+                         .bg-dark{
+                         background: #39306b;
+                         }
+                 
+                         .text-center{
+                         text-align: center;
+                         }
+                 
+                         .text-muted{
+                         color: #666;
+                         }
+                 
+                         .d-block{
+                         display: block;
+                         }
+ 
+                         .text-right{
+                         text-align: right;
+                         }
+                     </style>
+                 
+                     <title></title>
+                 </head>
+                 <body class="bg-dark">
+                     <div class="container">
+                         <div class="text-center py-4">
+                             <img src="' . base_url() . 'assets/img/Logo_dark_2.png" alt="">
+                         </div>
+                         <hr>
+                         <p>Hola, ' . $usuario->nombre . ' ' . $usuario->apellido . '</p>
+                         <p>
+                             <strong>Tu usuario ha verificado exitosamente,</strong><br><br>
+                             <p>Ahora podrás realizar tus pedidos en nuestro sistema</p>
+ 
+                             <div class="text-right">
+                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
+                                 <strong>CEO Maybet Ordonez</strong>
+                             </div>
+                         </p>
+                         <hr>
+                         <div class="text-center">
+                             <small>
+                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
+                             </small>
+                         </div>
+                     </div>
+                 
+                 </body>
+                 </html>
+                 '; 
+ 
+            $headers =  'From: Cexpress' . "\r\n" .
+                         'MIME-Version: 1.0' . "\r\n" .
+                         'Content-type: text/html; charset=UTF-8' . "\r\n" .
+                         'Reply-To: notReply' . "\r\n" .
+                         'X-Mailer: PHP/'. "\r\n";
+                         
+            @mail( $to, $subject, $message, $headers );
+
+            redirect('usuario?id=' . $usuario->id . '&msg=1');
+
+        endif;
+    }
+
+    public function rechazar_verificacion()
+    {
+        $id = $this->input->post('id');
+        $motivo = $this->input->post('motivo');
+
+        $consulta = $this->admin_crud->verificacion( $id, 0 );
+        
+        if( $consulta ):
+            $this->session->set_userdata( array( 'verificacion_cexpress' => 0 ) );
+            $usuario = $this->admin_crud->get_usuario( $id, FALSE );
+            $to = $usuario->email;
+            $subject = 'Cexpress - Verificación rechazada';
+            $message = '
+                 <!doctype html>
+                 <html lang="en">
+                 <head>
+                     <!-- Required meta tags -->
+                     <meta charset="utf-8">
+                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                     <style>
+                         .container{
+                         max-width: 600px;
+                         background-color: #FFF;
+                         margin: 50px auto;
+                         border-radius: 5px;
+                         padding: 15px;
+                         box-shadow: 3px 5px 10px #1c1738;
+                         }
+                 
+                         html, body{
+                         font-family: sans-serif;
+                         }
+                 
+                         .bg-dark{
+                         background: #39306b;
+                         }
+                 
+                         .text-center{
+                         text-align: center;
+                         }
+                 
+                         .text-muted{
+                         color: #666;
+                         }
+                 
+                         .d-block{
+                         display: block;
+                         }
+ 
+                         .text-right{
+                         text-align: right;
+                         }
+                     </style>
+                 
+                     <title></title>
+                 </head>
+                 <body class="bg-dark">
+                     <div class="container">
+                         <div class="text-center py-4">
+                             <img src="' . base_url() . 'assets/img/Logo_dark_2.png" alt="">
+                         </div>
+                         <hr>
+                         <p>Hola, ' . $usuario->nombre . ' ' . $usuario->apellido . '</p>
+                         <p>
+                             <strong>Se ha rechazado tu verificación,</strong><br><br>
+                             <p>' . $motivo . '</p>
+ 
+                             <div class="text-right">
+                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
+                                 <strong>CEO Maybet Ordonez</strong>
+                             </div>
+                         </p>
+                         <hr>
+                         <div class="text-center">
+                             <small>
+                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
+                             </small>
+                         </div>
+                     </div>
+                 
+                 </body>
+                 </html>
+                 '; 
+ 
+            $headers =  'From: Cexpress' . "\r\n" .
+                         'MIME-Version: 1.0' . "\r\n" .
+                         'Content-type: text/html; charset=UTF-8' . "\r\n" .
+                         'Reply-To: notReply' . "\r\n" .
+                         'X-Mailer: PHP/'. "\r\n";
+                         
+            @mail( $to, $subject, $message, $headers );
+
+            redirect('usuario?id=' . $usuario->id . '&msg=1');
+        endif;
+
+    }
+
+    public function addBanco()
+    {
+        $id = $this->input->post('id');
+        $alias = $this->input->post('alias');
+        $cuenta = $this->input->post('cuenta');
+        $titular = $this->input->post('titular');
+        $tipo = $this->input->post('tipo');
+            $tipo_documento = $this->input->post('tipo_documento');
+            $documento = $this->input->post('dni');
+        $dni = $tipo_documento . " " . $documento;
+        $telefono = $this->input->post('telefono');
+        $email = $this->input->post('email');
+        $pais = $this->input->post('pais');
+        if( $this->input->post('banco') == "Otros" ):
+            $banco = $this->input->post('banco_alt');
+        elseif( $this->input->post('banco') != "Otros" ):
+            $banco = $this->input->post('banco');
+        endif;
+
+        $consulta = $this->admin_crud->registrar_cuenta( $id, $alias, $cuenta, $titular, $tipo, $dni, $telefono, $email, $banco, $pais );
+
+        if( $consulta ):
+            $recupera = $this->admin_crud->ultima_cuenta_usuario( $_SESSION['id_cexpress']);
+            $result = array( 
+                        'status'    => "OK", 
+                        'id_cuenta' => $recupera->id,
+                        'alias'     => $recupera->alias
+                    );
+            print_r(json_encode($result));
+        else:
+
+            echo "false";
+        endif;
+
+    }
+
+    public function get_usuarios_cuenta()
+    {
+        $consulta = $this->admin_crud->get_cuentas( $_SESSION['id_cexpress'] );
+
+        if( $consulta ):
+            print_r(json_encode($consulta));
+        endif;
+    }
+
+    public function informa_operador()
+    {
+        $status = $this->input->post('status');
+        $id = $this->input->post('id');
+        $id_cliente = $this->input->post('id_cliente');
+        if( $status == 2 ):
+            // Recupera datos del cliente
+            $data['usuario'] = $this->admin_crud->get_usuario( $id_cliente, FALSE );
+            // Informa al Cliente sobre el rechazo
+            $mensaje = $this->input->post('mensaje');
+            $to = $data['usuario']->email;
+            $subject = 'Cexpress - Su pedido ha sido rechazado';
+            $message = '
+                 <!doctype html>
+                 <html lang="en">
+                 <head>
+                     <!-- Required meta tags -->
+                     <meta charset="utf-8">
+                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                     <style>
+                         .container{
+                         max-width: 600px;
+                         background-color: #FFF;
+                         margin: 50px auto;
+                         border-radius: 5px;
+                         padding: 15px;
+                         box-shadow: 3px 5px 10px #1c1738;
+                         }
+                 
+                         html, body{
+                         font-family: sans-serif;
+                         }
+                 
+                         .bg-dark{
+                         background: #39306b;
+                         }
+                 
+                         .text-center{
+                         text-align: center;
+                         }
+                 
+                         .text-muted{
+                         color: #666;
+                         }
+                 
+                         .d-block{
+                         display: block;
+                         }
+ 
+                         .text-right{
+                         text-align: right;
+                         }
+                     </style>
+                 
+                     <title></title>
+                 </head>
+                 <body class="bg-dark">
+                     <div class="container">
+                         <div class="text-center py-4">
+                             <img src="' . base_url() . 'assets/img/Logo_dark_2.png" alt="">
+                         </div>
+                         <hr>
+                         <p>Hola, ' . $usuario->nombre . ' ' . $usuario->apellido . '</p>
+                         <p>
+                             <strong>Tu pedido ha sido rechazado,</strong><br><br>
+                             <p>' . $mensaje . '</p>
+ 
+                             <div class="text-right">
+                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
+                                 <strong>CEO Maybet Ordonez</strong>
+                             </div>
+                         </p>
+                         <hr>
+                         <div class="text-center">
+                             <small>
+                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
+                             </small>
+                         </div>
+                     </div>
+                 
+                 </body>
+                 </html>
+                 '; 
+            $headers =  'From: Cexpress' . "\r\n" .
+            'MIME-Version: 1.0' . "\r\n" .
+            'Content-type: text/html; charset=UTF-8' . "\r\n" .
+            'Reply-To: notReply' . "\r\n" .
+            'X-Mailer: PHP/'. "\r\n";
+            @mail( $to, $subject, $message, $headers );
+
+        else:
+            $mensaje = "";
+        endif;
+
+        $consulta = $this->admin_crud->informa_operador( $id, $status, $mensaje );
+
+        if( $consulta ):
+            redirect('control_pedidos_admin?msg=1');
+        else:
+            redirect('control_pedidos_admin?msg=2');
         endif;
     }
 

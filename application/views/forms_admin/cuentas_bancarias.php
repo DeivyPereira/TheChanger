@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="">
+                                    <label>
                                         <small>Tipo de cuenta</small>
                                     </label>
                                     <input type="text" class="custom-input" value="<?= $cuenta['tipo']; ?>" name="tipo">
@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="">
+                                    <label>
                                         <small>C.I.</small>
                                     </label>
                                     <input type="text" class="custom-input" value="<?= $cuenta['documento']; ?>" name="dni">
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="">
+                                    <label>
                                         <small>Teléfono</small>
                                     </label>
                                     <input type="text" class="custom-input" value="<?= $cuenta['telefono']; ?>" name="telefono">
@@ -106,6 +106,7 @@
                     </div>
                     <form action="<?= base_url() . 'registrar_cuenta'; ?>" id="agregarCuentaNueva" method="post">
                         <input type="hidden" name="id" value="<?= $_SESSION['id_cexpress']; ?>">
+                        <input type="hidden" name="pais" value="Venezuela">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -123,7 +124,7 @@
                                     <label for="">
                                         <small>Cuenta</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="cuenta" data-validation="number" data-validation-error-msg="Solo números" data-validation-error-msg-container="#cuenta">
+                                    <input type="text" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#cuenta">
                                     <small class="text-danger" id="cuenta"></small>
                                 </div>
                             </div>
@@ -132,7 +133,7 @@
                                     <label for="">
                                         <small>Titular</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#titular">
+                                    <input type="text" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#titular">
                                     <small class="text-danger" id="titular"></small>
                                 </div>
                             </div>
@@ -143,7 +144,7 @@
                                     <label for="">
                                         <small>Tipo de cuenta</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#tipo">
+                                    <input type="text" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#tipo">
                                     <small class="text-danger" id="tipo"></small>
                                 </div>
                             </div>
@@ -159,7 +160,7 @@
                                         <option value="G-">G</option>
                                         <option value="J-">J</option>
                                     <select>
-                                    <input type="text" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#dni" style="width: 70%; float: left">
+                                    <input type="text" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#dni" style="width: 70%; float: left">
                                     <small class="text-danger" id="dni"></small>
                                 </div>
                             </div>
@@ -168,7 +169,7 @@
                                     <label for="">
                                         <small>Teléfono</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#telefono">
+                                    <input type="text" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#telefono">
                                     <small class="text-danger" id="telefono"></small>
                                 </div>
                             </div>
@@ -179,32 +180,34 @@
                                     <label for="">
                                         <small>Email</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="email" data-validation="required" data-validation-error-msg="Formato de Correo Inválido" data-validation-error-msg-container="#email">
+                                    <input type="text" class="custom-input" name="email" data-validation="email" data-validation-error-msg="Formato de Correo Inválido" data-validation-error-msg-container="#email">
                                     <small class="text-danger" id="email"></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">
-                                        <small>País</small>
+                                        <small>Selecciona un Banco</small>
                                     </label>
-                                    <select class="custom-input" id="paisBancoSeleccion" name="pais">
-                                        <option value="false">Selecciona un país</option>
-                                        <option value="Venezuela">Venezuela</option>
+                                    <select name="banco" id="bancoSeleccion" class="custom-input">
+                                        <option value="false"></option>
+                                        <?php foreach( $cuentas_lista as $cuentas ): ?>
+                                            <option value="<?= $cuentas['id']; ?>"><?= $cuentas['banco']; ?></option>
+                                        <?php endforeach; ?>
+                                        <option value="Otros">Otro Banco</option>
                                     </select>
+                                    <small class="text-danger" id="bancoErr"></small>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 display-none" id="bancoAlt">
                                 <div class="form-group">
-                                    <label for="">
-                                        <small>Banco</small>
+                                    <label>
+                                        <small>Otro Banco</small>
                                     </label>
-                                    <select name="banco" id="bancoSeleccionCrear" class="custom-input">
-                                        <option value="false">Selecciona un banco</option>
-                                    </select>
-                                    <small class="text-danger" id="bancoErr"></small>
+                                    <input type="text" class="custom-input" name="banco_alt" id="banco_alt">
+                                    <small class="text-danger" id="banco_altErr"></small>
                                 </div>
                             </div>
                         </div>

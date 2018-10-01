@@ -6,50 +6,58 @@
                     <div class="header">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="title" style="display: inline">Selecciona un país y ajusta su tasa actual</h4>
+                                <h4 class="title" style="display: inline">Ajusta las tasas del día</h4>
                             </div>
                             <div class="col-md-6 text-right">
                                 <img src="<?= base_url() . 'assets/img/loader.gif'; ?>" width="20" alt="Cargado..." class="display-none" id="loader">
                             </div>
                         </div>
                     </div>
-                    <form action="" method="post" id="actualizarTasas">
-                        <div class="content">
-                            <div class="row">
-                                <div class="col-md-5 col-xs-12">
-                                <div class="form-group">
-                                    <label>País</label>
-                                        <select name="pais" class="form-control border-input" id="selectPais">
-                                            <option value="false">Seleccione un pais</option>
-                                            <?php foreach($paises as $pais): ?>
-                                                <option value="<?= $pais['pais']; ?>"><?= $pais['pais']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-xs-6">
-                                    <div class="form-group">
-                                        <label for="">Tasa del día</label>
-                                        <input type="text" class="form-control border-input" name="tasa" id="Tasa">
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-xs-6">
-                                    <label>&nbsp;</label>
-                                    <?php foreach( $paises as $pais ):  ?>
-                                    <?php if( $pais['pais'] == "Venezuela" ): ?>
-                                        <input type="text" disabled value="<?= $pais['diminutivo']; ?>" class="form-control border-input">
-                                    <?php endif; ?>
-                                    <?php endforeach; ?>
-                                </div>
-                                <div class="col-md-2 col-xs-12">
-                                    <div class="form-group">
-                                    <label for="">&nbsp;</label>
-                                        <button class="btn btn-primary btn-icon  btn-block">Actualizar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th><small>País</small></th>
+                                <th><small>Moneda</small></th>
+                                <th><small>Tasa del día <small class="text-danger">Decimales separados con "."</small></small></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach( $paises as $pais ): ?>
+                                <?php if( $pais['pais'] != "Venezuela" ): ?>
+                                    <tr>
+                                        <td><?= $pais['pais']; ?></td>
+                                        <td>1 <?= $pais['diminutivo']; ?> = </td>
+                                        <form id="actualizarTasasForm">
+                                        <td>
+                                            <input type="hidden" value="<?= $pais['pais']; ?>" name="pais">
+                                            <div class="row">
+                                                <div class="col-sm-9">
+                                                    <?php foreach( $tasas as $tasa ): ?>
+                                                        <?php if( $pais['pais'] == $tasa['pais'] ): ?>
+                                                            <input type="text" value="<?= $tasa['tasa']; ?>" class="form-control border-input" name="tasa">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <?php foreach( $tasas as $tasa ): ?>
+                                                        <?php if( $tasa['pais'] == "Venezuela" ): ?>
+                                                            <input type="text" class="form-control border-input" disabled value="<?= $tasa['moneda']; ?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        </form>
+                                    </tr>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="content text-right">
+                        <button type="button" class="btn btn-primary btn-icon" id="actualizarTasas">Actualizar Tasas</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

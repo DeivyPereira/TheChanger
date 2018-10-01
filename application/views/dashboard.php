@@ -155,30 +155,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card shadow-custom">
-                            <div class="header">
-                                <h4 class="title">Consulte nuestras tasas hoy</h4>
-                            </div>
-                            <hr class="my-2">
-                            <div class="header">
-                                <select id="selectPaisTax" class="custom-input">
-                                    <option value="false">Seleccione un país</option>
-                                    <?php foreach( $paises as $pais ): ?>
-                                        <?php if( $pais['pais'] != "Venezuela" ): ?>
-                                            <option value="<?= $pais['pais']; ?>"><?= $pais['pais']; ?></option>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="content" id="tasaPaisConsulta">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card shadow-custom">
                             <div class="content">
                                 <table class="table table-striped">
                                     <tr>
@@ -380,7 +356,7 @@
                                         <th class="text-center">ID</th>
                                     	<th class="text-center">Nombre</th>
                                         <th class="text-center">Fecha</th>
-                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Pago</th>
                                         <th class="text-center">Banco Receptor</th>
                                         <th class="text-center">Monto Pagado</th>
                                         <th class="text-center">Monto Beneficiario</th>
@@ -466,3 +442,30 @@
         <?php endif; ?>
     </div>
 </div>
+
+<?php if( $usuario->verificado == 0 && $_SESSION['role_cexpress'] == 4 ): ?>
+    <div class="modal-custom" id="modalWindow" style="width: 30%; left: 60%; top: 50%; transform: translate(-60%,-50%);">
+        <div class="card shadow-custom" style="background-image: url('<?= base_url() . 'assets/img/back.png'; ?>'); background-repeat: no-repeat; background-position: 0px 70px;">
+            <div class="row">
+                <div class="col-sm-6 px-4">
+                    <h3 class="text-purple">Atención</h3>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <button class="purple-cexpress button-close-modal" id="closeModalBtn">
+                        <i class="ti-close"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <i class="ti-info-alt text-purple" style="font-size: 50px;"></i>
+                        <h4 class="title">Importante</h4>
+                        <p>Para poder realizar tus pedidos debes verificar tu usuario primero, te invitamos a completar el proceso desde tu perfil.</p>
+                        <a href="<?= base_url() . 'perfil'; ?>" class="btn btn-sm btn-fill btn-primary"><i class="ti-user"></i>&nbsp;Perfil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -77,9 +77,12 @@
                         </div>
                     </div>
                     <?php endif; ?>
-                    <hr class="<?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): echo "mb-0"; else: echo "my-0"; endif; ?>">
+                    <hr class="<?php if( $_SESSION['role_cexpress'] == 3 ): echo "mb-0"; else: echo "my-0"; endif; ?>">
+                    <?php if( $_SESSION['role_cexpress'] == 3 || $_SESSION['role_cexpress'] == 1 ): ?>
                     <div class="header text-center">
-                        <h4 class="title">Cambiar Status del pedido</h4>
+                        <h4 class="title">
+                            Procesar Pago e informar al cliente
+                        </h4>
                     </div>
                     <hr class="mb-0">
                     <div class="content">
@@ -94,21 +97,26 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>
-                                        <small>Status</small>
+                                        <small>Cambiar Estado</small>
                                     </label>
                                     <select name="status" class="custom-input">
                                         <?php if( $pedido->status == 0 ): ?>
                                             <option value="0">Pendiente</option>
-                                            <option value="1">Aceptado</option>
+                                            <option value="4">Terminado</option>
+                                            <option value="2">Rechazado</option>
+                                        <?php elseif( $pedido->status == 4 ): ?>
+                                            <option value="4">Terminado</option>
+                                            <option value="0">Pendiente</option>
                                             <option value="2">Rechazado</option>
                                         <?php elseif( $pedido->status == 1 ): ?>
-                                            <option value="1">Aceptado</option>
+                                            <option value="false"></option>
+                                            <option value="4">Terminado</option>
                                             <option value="0">Pendiente</option>
                                             <option value="2">Rechazado</option>
                                         <?php elseif( $pedido->status == 2 ): ?>
                                             <option value="2">Rechazado</option>
                                             <option value="0">Pendiente</option>
-                                            <option value="1">Aceptado</option>
+                                            <option value="4">Terminado</option>
                                         <?php endif; ?>
                                     </select>
                                 </div>
@@ -118,7 +126,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>
-                                        <small>¿Désde qué Banco de Venezuela realizó el(los) pago(s)?</small>
+                                        <small>¿Désde qué Cuenta de Cexpress en Venezuela realizaste los pagos?</small>
                                     </label>
                                     <select name="banco_venezuela" class="custom-input">
                                         <option value="false"></option>
@@ -134,7 +142,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>
-                                        <small>Mensaje Personalizado</small>
+                                        <small>Informa al cliente</small>
                                     </label>
                                     <textarea name="mensaje" class="custom-input" rows="7"><?= $pedido->mensaje; ?></textarea>
                                 </div>
@@ -149,11 +157,78 @@
                         </div>
                         </form>
                     </div>
+                    <?php endif; ?>
+
+                    <?php if( $_SESSION['role_cexpress'] == 2 || $_SESSION['role_cexpress'] == 1 ): ?>
+                    <div class="header text-center">
+                        <h4 class="title">
+                            Aprobar o rechazar pago del cliente
+                        </h4>
+                    </div>
+                    <hr class="mb-0">
+                    <div class="content">
+                        <form action="<?= base_url() . 'informa_operador'; ?>" method="post">
+                        <input type="hidden" name="id" value="<?= $pedido->id; ?>">
+                        <input type="hidden" name="id_cliente" value="<?= $pedido->id_cliente; ?>">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>
+                                        <small>Cambiar Estado</small>
+                                    </label>
+                                    <select name="status" id="status" class="custom-input">
+                                        <?php if( $pedido->status == 0 ): ?>
+                                            <option value="0">Pendiente</option>
+                                            <option value="1">Aceptado</option>
+                                            <option value="2">Rechazado</option>
+                                        <?php elseif( $pedido->status == 1 ): ?>
+                                            <option value="1">Aceptado</option>
+                                            <option value="0">Pendiente</option>
+                                            <option value="2">Rechazado</option>
+                                        <?php elseif( $pedido->status == 4 ): ?>
+                                            <option value="false"></option>
+                                            <option value="2">Rechazado</option>
+                                            <option value="0">Pendiente</option>
+                                            <option value="1">Aceptado</option>
+                                        <?php elseif( $pedido->status == 2 ): ?>
+                                            <option value="2">Rechazado</option>
+                                            <option value="0">Pendiente</option>
+                                            <option value="1">Aceptado</option>
+                                        <?php endif; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row display-none" id="motivo">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>
+                                        <small>Motivo del rechazo</small>
+                                    </label>
+                                    <textarea name="mensaje" class="custom-input" rows="7"><?= $pedido->mensaje; ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-info">Informar</button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="card">
+                <div class="header border-bottom">
+                    <p>
+                        <strong>Solicitud N°:&nbsp;</strong><?= $pedido->id; ?>
+                    </p>
+                </div>
+                    <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                     <div class="header border-bottom py-1">
                         <h4 class="title">Información del pago</h4>
                     </div>
@@ -190,6 +265,9 @@
                                 <a href="<?= base_url() . 'uploads/comprobantes/' . $pedido->comprobante; ?>" target="_blank">Ver Comprobante anexado por el cliente</a>
                             </div>
                         </div>
+                    </div>
+                    <?php endif; ?>
+                    <div class="content">
                         <div class="row border-top border-bottom">
                             <div class="col-md-6 py-1">
                                 <h5 class="title">Cuenta(s) ha beneficiar</h5>

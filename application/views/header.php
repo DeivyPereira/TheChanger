@@ -28,8 +28,6 @@
 
     <link rel="stylesheet" href="<?= base_url() . 'assets/css/main.css'; ?>">
 
-    <link rel="stylesheet" href="<?= base_url() . 'assets/css/theme-default.css'; ?>">
-
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -59,7 +57,7 @@
                 <li class="<?php if( $titulo == 'Registrar País'): echo 'active'; endif;?>">
                     <a href="<?= base_url() . 'registrar_pais'; ?>">
                         <i class="ti-map-alt"></i>
-                        <p>Paises</p>
+                        <p>Paises - Bancos</p>
                     </a>
                 </li>
                 <?php endif; ?>
@@ -108,9 +106,18 @@
                     </a>
                 </li>
                 <?php endif; ?>
-                <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 || $_SESSION['role_cexpress'] == 3 ): ?>
+                <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == "Control de Pedidos"): echo "active"; endif;?>">
                     <a href="<?= base_url() . 'control_pedidos_admin'; ?>">
+                        <i class="ti-check-box"></i>
+                        <p>Gestionar Pedidos</p>
+                    </a>
+                </li>
+                <?php endif; ?>
+
+                <?php if( $_SESSION['role_cexpress'] == 3 ): ?>
+                <li class="<?php if( $titulo == "Control de Pedidos"): echo "active"; endif;?>">
+                    <a href="<?= base_url() . 'control_pedidos_op'; ?>">
                         <i class="ti-check-box"></i>
                         <p>Gestionar Pedidos</p>
                     </a>
@@ -172,8 +179,19 @@
                                             <small>
                                                 <?php foreach( $usuario_noti as $usuario ): ?>
                                                     <?php if( $pedido['id_cliente'] == $usuario['id'] ): ?>
-                                                    <i class="ti-info-alt"></i>&nbsp;<?= $usuario['nombre'] . " " . $usuario['apellido']; ?><br>
-                                                    Ha realizado un nuevo pedido
+                                                    <?php if( $pedido['status'] == 0 ): ?>
+                                                        <i class="ti-info-alt"></i>&nbsp;<?= $usuario['nombre'] . " " . $usuario['apellido']; ?> - Pedido N° <?= $pedido['id']; ?><br>
+                                                        Ha realizado un nuevo pedido
+                                                    <?php elseif( $pedido['status'] == 1 ): ?>
+                                                        <i class="ti-info-alt"></i>&nbsp;<?= $usuario['nombre'] . " " . $usuario['apellido']; ?> - Pedido N° <?= $pedido['id']; ?><br>
+                                                        Pago de pedido aceptado
+                                                    <?php elseif( $pedido['status'] == 2 ): ?>
+                                                        <i class="ti-info-alt"></i>&nbsp;<?= $usuario['nombre'] . " " . $usuario['apellido']; ?> - Pedido N° <?= $pedido['id']; ?><br>
+                                                        Pago pedido ha sido rechazado
+                                                    <?php elseif( $pedido['status'] == 4 ): ?>
+                                                        <i class="ti-info-alt"></i>&nbsp;<?= $usuario['nombre'] . " " . $usuario['apellido']; ?> - Pedido N° <?= $pedido['id']; ?><br>
+                                                        Pedido ha sido concluido
+                                                    <?php endif; ?>
                                                 <?php endif; ?>
                                                 <?php endforeach; ?>
                                             </small>
@@ -217,7 +235,7 @@
                                                 <?php foreach( $usuario_noti as $usuario ): ?>
                                                     <?php if( $pedido['id_cliente'] == $usuario['id'] ): ?>
                                                     <i class="ti-info-alt"></i>&nbsp;<?= $usuario['nombre'] . " " . $usuario['apellido']; ?><br>
-                                                    Ha realizado un nuevo pedido
+                                                    Un nuevo pedido ha sido aprobado
                                                 <?php endif; ?>
                                                 <?php endforeach; ?>
                                             </small>

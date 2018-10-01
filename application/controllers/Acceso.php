@@ -84,11 +84,12 @@ class Acceso extends CI_Controller
 
                     // Establece la sesión
                     $data = array(
-                        'usuario_cexpress'     => $query['usuario']->usuario,
-                        'id_cexpress'          => $query['usuario']->id,
-                        'role_cexpress'        => $query['usuario']->role,
-                        'pais_cexpress'        => $query['usuario']->pais,
-                        'logged_in_cexpress'   => TRUE
+                        'usuario_cexpress'      => $query['usuario']->usuario,
+                        'id_cexpress'           => $query['usuario']->id,
+                        'role_cexpress'         => $query['usuario']->role,
+                        'pais_cexpress'         => $query['usuario']->pais,
+                        'verificacion_cexpress' => $query['usuario']->verificado,
+                        'logged_in_cexpress'    => TRUE
                     );
                     $this->session->set_userdata($data);
                     

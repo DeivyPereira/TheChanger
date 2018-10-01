@@ -22,18 +22,26 @@
                                 <th class="text-center"><small>Usuario</small></th>
                                 <th class="text-center"><small>Nacionalidad</small></th>
                                 <th class="text-center"><small>Identificación</small></th>
+                                <th class="text-center"><small>Verificación</small></th>
                                 <th class="text-center"><small>Status</small></th>
-                                <th class="text-center"><small>Cambiar Rol</small></th>
                                 <th class="text-center"><small>Cambiar Status</small></th>
+                                <th></th>
                             </thead>
                             <tbody>
                                 <?php foreach( $usuarios as $usuario ): ?>
                                 <tr class="text-center">
                                     <td class="text-center">
-                                    <?php if( $usuario['id'] == $_SESSION['id_cexpress']): ?>
+                                        <?php if( $usuario['id'] == $_SESSION['id_cexpress']): ?>
                                             <a href="<?= base_url() . 'perfil'; ?>"><?= $usuario['nombre'] . " " . $usuario['apellido']; ?></a>
                                         <?php else: ?>
-                                            <a href="<?= base_url() . 'usuario?id=' . $usuario['id']; ?>"><?= $usuario['nombre'] . " " . $usuario['apellido']; ?></a>
+                                            <a href="<?= base_url() . 'usuario?id=' . $usuario['id']; ?>"><?= $usuario['nombre'] . " " . $usuario['apellido']; ?></a><br>
+                                            <?php if( $usuario['role'] == 4 ): ?>
+                                                <small>Cliente</small>
+                                            <?php elseif( $usuario['role'] == 3 ): ?>
+                                                <small>Operador</small>
+                                            <?php elseif( $usuario['role'] == 2 ): ?>
+                                                <small>Manager</small>
+                                            <?php endif; ?>
                                         <?php endif; ?>
                                     </td>
                                     <td>
@@ -49,6 +57,24 @@
                                         <?= $usuario['tipo_documento'] . " " . $usuario['dni']; ?>
                                     </td>
 
+                                    <?php if( $usuario['role'] == 4 ): ?>
+                                    <td>
+                                        <?php if( $usuario['verificado'] == 0 ): ?>
+                                            Pendiente Documento
+                                        <?php elseif( $usuario['verificado'] == 1 ): ?>
+                                            Documentos enviados <br>
+                                            <small class="text-warning">Esperando Verificación</small> <br>
+                                            <a href="<?= base_url() . 'usuario?id=' . $usuario['id']; ?>" class="btn btn-sm btn-info btn-fill"><i class="ti-eye"></i></a>
+                                        <?php elseif( $usuario['verificado'] == 2 ): ?>
+                                            <i class="ti-check text-success"></i>
+                                        <?php endif; ?>
+                                    </td>
+                                    <?php else: ?>
+                                    <td>
+                                        N/A
+                                    </td>
+                                    <?php endif; ?>
+
                                     <td>
                                         <?php if( $usuario['status'] == 1 ): ?>
                                         <i class="ti-check text-success"></i>
@@ -58,38 +84,17 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <form action="<?= base_url() . 'update_role'; ?>" method="post">
-                                            <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
-                                            <select name="role" id="roleChange" class="custom-input">
-                                                <option value="false">
-                                                    <?php
-                                                        if( $usuario['role'] == 1 ): echo "Administrador"; elseif( $usuario['role'] == 2 ): echo "Manager"; elseif( $usuario['role'] == 3 ): echo "Operador"; elseif( $usuario['role'] == 4 ): echo "Cliente"; endif; 
-                                                    ?>
-                                                </option>
-                                                <?php if( $usuario['role'] != 1 ): ?>
-                                                    <option value="1">Administrador</option>
-                                                <?php endif; ?>
-                                                <?php if( $usuario['role'] != 2 ): ?>
-                                                    <option value="2">Manager</option>
-                                                <?php endif; ?>
-                                                <?php if( $usuario['role'] != 3 ): ?>
-                                                    <option value="3">Operador</option>
-                                                <?php endif; ?>
-                                                <?php if( $usuario['role'] != 4 ): ?>
-                                                    <option value="4">Cliente</option>
-                                                <?php endif; ?>
-                                            </select>
-                                            <button type="submit" class="btn btn-sm btn-primary btn-icon btn-block" style="margin-top: 5px; padding: 5px;">Cambiar Rol</button>
-                                        </form>
-                                    </td>
-                                    <td class="text-center">
                                         <?php if( $usuario['status'] == 0 ): ?>
-                                            <a href="<?= base_url() . 'update_user_status?id=' . $usuario['id'] . '&status=' . $usuario['status']; ?>" class="btn btn-sm btn-danger btn-icon btn-fill" style="padding: 5px;">Inactivo</a><br>
+                                            <a href="<?= base_url() . 'update_user_status?id=' . $usuario['id'] . '&p=' . $this->uri->segment(2); ?>" class="btn btn-sm btn-danger btn-icon btn-fill" style="padding: 5px;">Inactivo</a><br>
                                         <?php elseif( $usuario['status'] == 1 ): ?>
-                                            <a href="<?= base_url() . 'update_user_status?id=' . $usuario['id'] . '&status=' . $usuario['status']; ?>" class="btn btn-sm btn-success btn-icon btn-fill" style="padding: 5px;">Activo</a><br>
+                                            <a href="<?= base_url() . 'update_user_status?id=' . $usuario['id'] . '&p=' . $this->uri->segment(2); ?>" class="btn btn-sm btn-success btn-icon btn-fill" style="padding: 5px;">Activo</a><br>
                                         <?php endif; ?>
                                     </td>
                                     </form>
+
+                                    <td>
+                                        <a href="<?= base_url() . 'eliminar_usuario?i=' . $usuario['id'] . '&p=' . $this->uri->segment(2); ?>" class="btn btn-sm btn-danger btn-icon btn-fill"><i class="ti-trash"></i></a>
+                                    </td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>

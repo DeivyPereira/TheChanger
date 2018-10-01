@@ -104,6 +104,12 @@ $route['buscar_banco_admin_pais'] = 'crud_controller/buscar_banco_admin_pais';
 $route['buscar_banco_cliente'] = 'crud_controller/buscar_banco_cliente';
 $route['delete_banco'] = 'crud_controller/delete_banco';
 $route['archivar_pedido'] = 'crud_controller/archivar_pedido';
+$route['verificar'] = 'crud_controller/verificar';
+$route['verificacion'] = 'crud_controller/verificacion';
+$route['rechazar_verificacion'] = 'crud_controller/rechazar_verificacion';
+
+$route['addBanco'] = 'crud_controller/addBanco';
+$route['get_usuarios_cuenta'] = 'crud_controller/get_usuarios_cuenta';
 
 $route['actualizar_pedido'] = 'crud_controller/actualizar_pedido';
 
@@ -124,6 +130,8 @@ $route['registrar_cuenta'] = 'crud_controller/registrar_cuenta';
 $route['actualizar_cuenta'] = 'crud_controller/actualizar_cuenta';
 $route['status_cuenta'] = 'crud_controller/status_cuenta';
 
+$route['eliminar_usuario'] = 'crud_controller/eliminar_usuario';
+$route['eliminar_usuario_s'] = 'crud_controller/eliminar_usuario_s';
 
 $route['update_user_status'] = 'crud_controller/update_user_status'; // Actualizar Estatus
 $route['update_user_status_s'] = 'crud_controller/update_user_status_search'; // Actualizar estatus de usuario redirect search
@@ -141,6 +149,10 @@ $route['cambiar_password'] = 'crud_controller/cambiar_password'; // Cambiar Pass
 $route['get_tax_pais'] = 'crud_controller/get_tax_pais'; // Recupera las tasas para el select del dashboard
 
 $route['get_tax_dash'] = 'crud_controller/get_tax_dash';
+
+$route['control_pedidos_op'] = 'admin/control_pedidos_operador';
+
+$route['informa_operador'] = 'crud_controller/informa_operador';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

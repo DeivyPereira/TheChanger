@@ -24,7 +24,7 @@
                                     <div class="col-xs-6 text-center">
                                         <small class="text-dark"><strong>Última conexión</strong></small><br>
                                         <?php if( empty($usuarios->ultima_conexion) ): ?>
-                                            <small>Esperando Activación</small>
+                                            <small>N/A</small>
                                         <?php else: ?>
                                             <small><?= $usuarios->ultima_conexion; ?></small>
                                         <?php endif; ?>
@@ -96,6 +96,34 @@
                                 </ul>
                             </div>
                         </div>
+                        <?php if( $titulo != "Perfil del Usuario"): ?>
+                        <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
+                            <div class="card">
+                                <div class="content">
+                                    <?php if( $usuarios->verificado == 0 ): ?>
+                                        <div class="alert alert-warning text-center">
+                                            <p>
+                                                <i class="ti-info-alt"></i><br>
+                                                Documento de Verificación pendiente
+                                            </p>
+                                        </div>
+                                    <?php elseif( $usuarios->verificado == 1 ): ?>
+                                        <h4 class="title" style="margin-bottom: 20px;">Verificación</h4>
+                                        <a href="<?= base_url() . 'uploads/verificacion/' . $usuarios->confirma_img; ?>" target="_blank"><img src="<?= base_url() . 'uploads/verificacion/' . $usuarios->confirma_img; ?>"  width="100%" alt=""></a>
+                                        <div class="text-center" style="margin-top: 10px">
+                                            <a href="<?= base_url() . 'verificacion?i=' . $usuarios->id . '&v=1'; ?>" class="btn btn-success btn-fill">Verificar</a>
+                                            <button id="rechazarBtn" class="btn btn-danger btn-fill">Rechazar</button>
+                                        </div>
+                                    <?php elseif( $usuarios->verificado == 2 ): ?>
+                                        <div class="text-center alert alert-success">
+                                            <i class="ti-check"></i><br>
+                                            <p>Usuario verificado</p>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php endif; ?>
                     </div>
 
                     <div class="col-lg-8 col-md-7">
@@ -107,7 +135,32 @@
                             <hr>
                             </div>
                             <?php endif; ?>
-
+                        </div>
+                        <?php if( $usuarios->verificado == 0 && $_SESSION['role_cexpress'] == 4 ): ?>
+                        <?= form_open_multipart( 'verificar' ); ?>
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"><i class="ti-info-alt text-warning"></i> Verifica tu usuario</h4>
+                                <small>Para poder realizar operaciones con nosotros deberás verificar tu usuario, solo debes enviarnos una muestra digital de tu cédula de identidad o pasaporte.</small>
+                                <input type="file" name="verificar" style="margin-top: 10px; display: block"><br>
+                                <?= $error; ?>
+                                <div class="text-right" style="padding: 0 0 15px 0">
+                                    <button class="btn btn-primary">Verificar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <?= form_close(); ?>
+                        <?php endif; ?>
+                        <?php if( $usuarios->verificado == 1 && $_SESSION['role_cexpress'] == 4 ): ?>
+                        <div class="card">
+                            <div class="content">
+                                <div class="alert alert-warning" style="margin-bottom: 10px">
+                                    <p>Su solicitud de verificación ha sido enviada exitosamente, se le informará cuando sea aprobada a través de su correo electrónico.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <div class="card">
                             <div class="content">
                                 <div id="Perfil">
                                 <h4 class="title">Editar Perfil</h4>
@@ -238,3 +291,35 @@
                 </div>
             </div>
         </div>
+
+    <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
+    <div class="verificacion-modal display-none" id="rechazarContent">
+        <div class="card shadow-custom" style="background-image: url('<?= base_url() . 'assets/img/back.png'; ?>'); background-repeat: no-repeat; background-position: 0px 70px;">
+        <div style="padding: 5px 0;">
+            <h4 class="text-purple" style="float-right; display:inline; padding-left: 5px">Rechazar</h4>
+            <button class="purple-cexpress button-close-modal" style="float:right;" id="closeVerificacionBtn">
+                <i class="ti-close"></i>
+            </button>
+        </div>
+                    <div class="content">
+                        <div class="row">
+                            <form action="<?= base_url() . 'rechazar_verificacion'; ?>" method="post">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">
+                                            Motivo del rechazo
+                                        </label>
+                                        <input type="hidden" name="id" value="<?= $usuarios->id; ?>">
+                                        <textarea name="motivo" class="form-control border-input" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-primary btn-fill">Notificar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+<?php endif; ?>

@@ -42,15 +42,20 @@ class Admin_crud extends CI_Model
             $tax = $this->db->insert( 'tax', $data );
 
             if( $tax ):
-                $banco = explode( ",", $bancos );
-                foreach( $banco as $str ):
-                    $data = array(
-                            'banco'  => $str,
-                            'pais'   => $nombre,
-                            'status' => 1
-                    );
-                    $this->db->insert( 'banco_pais', $data);
-                endforeach;
+
+                if( FALSE != $bancos ):
+                    $banco = explode( ",", $bancos );
+                    foreach( $banco as $str ):
+                        $data = array(
+                                'banco'  => $str,
+                                'pais'   => $nombre,
+                                'status' => 1
+                        );
+                        $this->db->insert( 'banco_pais', $data);
+                    endforeach;
+                    return TRUE;
+                endif;
+
                 return TRUE;
             else:
                 return FALSE;
@@ -103,8 +108,18 @@ class Admin_crud extends CI_Model
 
     public function delete_pais( $id )
     {
-        $this->db->where( 'id', $id );
-        return $this->db->delete('pais');
+        $pais = $this->db->get_where( 'pais', array( 'id' => $id ) )->row();
+
+        if( $this->db->where( 'pais', $pais->pais )->delete('tax') ):
+            return $this->db->where( 'id', $id )->delete('pais');
+        else:
+            return FALSE;
+        endif;
+    }
+
+    public function eliminar_usuario( $id )
+    {
+        return $this->db->where( 'id', $id )->delete('usuario');
     }
 
     public function get_pais($id)
@@ -118,12 +133,14 @@ class Admin_crud extends CI_Model
     public function get_usuarios( $per_page = FALSE, $segment= FALSE )
     {
         if( $per_page == FALSE && $segment == FALSE):
-            $this->db->where( 'role', 3 );
+            $this->db->where( 'role', 2 );
+            $this->db->or_where( 'role', 3 );
             $this->db->or_where( 'role', 4 );
             $consulta = $this->db->get('usuario');
             return $consulta->result_array();
         else:
-            $this->db->where( 'role', 3 );
+            $this->db->where( 'role', 2 );
+            $this->db->or_where( 'role', 3 );
             $this->db->or_where( 'role', 4 );
             $consulta = $this->db->get('usuario', $per_page, $segment);
             return $consulta->result_array();
@@ -132,11 +149,12 @@ class Admin_crud extends CI_Model
 
     public function update_user_status($id, $status)
     {
+        $status = $this->db->get_where('usuario', array( 'id' => $id ) )->row();
         $this->db->where( 'id', $id );
-        if( $status == 0 ):   
+        if( $status->status == 0 ):   
             $consulta = $this->db->update('usuario', array( 'status' => 1 ));
             return $consulta;
-        elseif( $status == 1 ):
+        elseif( $status->status == 1 ):
             $consulta = $this->db->update('usuario', array( 'status' => 0 ));
             return $consulta;
         endif;
@@ -222,7 +240,10 @@ class Admin_crud extends CI_Model
     public function usuario_row( $buscar = FALSE )
     {
         if ( $buscar == FALSE ):
-            $consulta = $this->db->get('usuario');
+            $this->db->where( 'role', 2 );
+            $this->db->or_where( 'role', 3 );
+            $this->db->or_where( 'role', 4 );
+            $consulta = $this->db->get_where('usuario');
             return $consulta->num_rows();
         endif;
     }
@@ -315,6 +336,11 @@ class Admin_crud extends CI_Model
         );
 
         return $this->db->insert( 'usuario_banco', $data );
+    }
+
+    public function ultima_cuenta_usuario( $id )
+    {
+        return $this->db->order_by( 'id', 'DESC' )->get_where( 'usuario_banco', array( 'id_usuario' => $id ) )->row();
     }
 
     public function actualizar_cuenta( $id, $cuenta, $titular, $tipo, $dni, $telefono, $email )
@@ -502,10 +528,15 @@ class Admin_crud extends CI_Model
         endif;
     }
 
+    public function get_pedidos_operador()
+    {
+        return $this->db->get_where('pedidos', array('status' => 1 ))->result_array();
+    }
+
     public function get_last_pedidos()
     {
         $this->db->order_by( 'id', 'DESC' );
-        return $this->db->get_where( 'pedidos', array( 'archivo' => 0 ), 5 )->result_array();
+        return $this->db->get_where( 'pedidos', array( 'archivo' => 0, 'status' => 1 ), 5 )->result_array();
     }
 
     public function get_pedido_id( $id_usuario )
@@ -535,6 +566,11 @@ class Admin_crud extends CI_Model
         endif;
     }
 
+    public function get_cuentas_venezuela()
+    {
+        return $this->db->get_where('banco_pais', array( 'pais' => 'Venezuela') )->result_array();
+    }
+
     public function get_pedido_cliente( $id )
     {   
         return $this->db->get_where( 'pedidos', array( 'id_cliente' => $id ) )->result_array();
@@ -542,8 +578,14 @@ class Admin_crud extends CI_Model
 
     public function archivar_pedido( $id )
     {
-        $this->db->where( 'id', $id );
-        return $this->db->update( 'pedidos', array( 'archivo' => 1 ));
+        $pedido = $this->db->get_where('pedidos', array( 'id' => $id ))->row();
+        if( $pedido->archivo == 0 ):
+            $this->db->where( 'id', $id );
+            return $this->db->update( 'pedidos', array( 'archivo' => 1 ));
+        else:
+            $this->db->where( 'id', $id );
+            return $this->db->update( 'pedidos', array( 'archivo' => 0 ));
+        endif;
     }
 
     public function get_pedidos_search( $buscar )
@@ -642,7 +684,7 @@ class Admin_crud extends CI_Model
 
     public function get_pedidos_nuevos()
     {
-        return $this->db->get_where( 'pedidos', array( 'notificacion' => 1 ))->result_array();
+        return $this->db->get_where( 'pedidos', array( 'notificacion' => 1, 'status' => 1 ))->result_array();
     }
 
     public function remove_notification( $id )
@@ -709,4 +751,26 @@ class Admin_crud extends CI_Model
         return $this->db->delete('admin_banco');
     }
 
+    public function verificar( $id, $documento )
+    {
+        return $this->db->where('id', $id)->update('usuario', array( 'verificado' => 1, 'confirma_img' => $documento ) );
+    }
+
+    public function verificacion( $id, $verificacion )
+    {
+        if( $verificacion == 0 ):
+            return $this->db->where('id', $id)->update('usuario', array( 'verificado' => 0 ));
+        elseif( $verificacion == 1 ):        
+            return $this->db->where('id', $id)->update('usuario', array( 'verificado' => 2, 'confirma_img' => "" ));
+        endif;
+    }
+
+    public function informa_operador( $id, $status, $mensaje )
+    {
+        $data = array(
+            'status'       => $status,
+            'mensaje'      => $mensaje
+        );
+        return $this->db->where( 'id', $id )->update( 'pedidos', $data );
+    }
 }

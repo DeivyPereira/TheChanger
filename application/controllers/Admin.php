@@ -32,6 +32,8 @@ class Admin extends CI_Controller
             $data['usuario_noti_usuario'] = $this->admin_crud->get_noti_num_rows_usuario( $_SESSION['id_cexpress'] );
             $data['pedidos_noti_usuario'] = $this->admin_crud->get_pedidos_noti_usuario( $_SESSION['id_cexpress'] );
 
+            $data['usuario'] = $this->admin_crud->get_usuario( $_SESSION['id_cexpress'], FALSE );
+
             $data['admin_banco'] = $this->admin_crud->get_cuentas_admin_active();
 
             $this->load->view('header', $data);
@@ -39,7 +41,6 @@ class Admin extends CI_Controller
             $data['bancos_usuarios'] = $this->admin_crud->get_banco_beneficiario();
             $data['pedidos'] = $this->admin_crud->get_last_pedidos();
             $data['usuarios'] = $this->admin_crud->get_usuarios();
-            $data['pedidos'] = $this->admin_crud->get_pedidos();
             $data['paises'] = $this->admin_crud->get_paises();
             $this->load->view('dashboard', $data);
             $this->load->view('footer');
@@ -61,9 +62,10 @@ class Admin extends CI_Controller
                         array(
                             'field'  => 'nombre',
                             'label'  => 'Nombre del País',
-                            'rules'  => 'trim|required',
+                            'rules'  => 'trim|required|is_unique[pais.pais]',
                             'errors' => array(
-                                        'required' => 'Campo %s requerido'
+                                        'required'  => 'Campo %s requerido',
+                                        'is_unique' => 'Este país ya se encuentra registrado' 
                             )
                         ),
                         array(
@@ -82,14 +84,6 @@ class Admin extends CI_Controller
                                         'required' => 'Campo %s requerido'
                             )
                         ),
-                        array(
-                            'field'  => 'bancos',
-                            'label'  => 'Bancos',
-                            'rules'  => 'required',
-                            'errors' => array(
-                                        'required' => 'Campo %s requerido'
-                            )
-                        )
                     );
 
             $this->form_validation->set_rules($rules);
@@ -166,6 +160,7 @@ class Admin extends CI_Controller
             $data['titulo'] = "Control de Tasas";
             $data['msg'] = '';
             $data['paises'] = $this->admin_crud->get_paises();
+            $data['tasas'] = $this->admin_crud->get_tax();
             $this->load->view('header', $data);
             $this->load->view('forms_admin/control_tasas', $data);
             $this->load->view('footer');
@@ -182,6 +177,8 @@ class Admin extends CI_Controller
         if( isset( $_SESSION['logged_in_cexpress'] ) ):
 
             if( $_SESSION['role_cexpress'] == 4 ):
+
+                $data['usuario'] = $this->admin_crud->get_usuario( $_SESSION['id_cexpress'], FALSE );
 
             $rules = array(
                         array(
@@ -232,7 +229,7 @@ class Admin extends CI_Controller
                 $data['paises'] = $this->admin_crud->get_paises();
                 $data['img_err'] = '';
                 $data['bancos_admin'] = $this->admin_crud->get_banco_receptor();
-                $data['bancos_usuarios'] = $this->admin_crud->get_banco_beneficiario();
+                $data['bancos_usuarios'] = $this->admin_crud->get_banco_beneficiario( FALSE, $_SESSION['id_cexpress'] );
                 $data['pedidos'] = $this->admin_crud->get_pedido_cliente( $_SESSION['id_cexpress'] );
                 $this->load->view('header', $data);
                 $this->load->view('forms_admin/pedidos', $data);
@@ -553,7 +550,7 @@ class Admin extends CI_Controller
     {
         if( isset( $_SESSION['id_cexpress'] ) ):
 
-            if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 || $_SESSION['role_cexpress'] == 3 ):
+            if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ):
             
                 // Notificaciones Admin
                 $data['admin_noti'] = $this->admin_crud->get_noti_num_rows();
@@ -576,6 +573,45 @@ class Admin extends CI_Controller
                 $data['usuarios'] = $this->admin_crud->get_usuarios();
                 $this->load->view('header', $data);
                 $this->load->view('forms_admin/pedidos_admin', $data);
+                $this->load->view('footer');
+
+            else:
+
+                redirect('login');
+
+            endif;
+        else:
+            redirect('login');
+        endif;
+    }
+
+    public function control_pedidos_operador()
+    {
+        if( isset( $_SESSION['id_cexpress'] ) ):
+
+            if( $_SESSION['role_cexpress'] == 3 ):
+            
+                // Notificaciones Admin
+                $data['admin_noti'] = $this->admin_crud->get_noti_num_rows();
+                $data['pedidos_noti'] = $this->admin_crud->get_pedidos_nuevos();
+                $data['usuario_noti'] = $this->admin_crud->get_usuarios();
+
+                $data['usuarios_nuevo_rows'] = $this->admin_crud->get_usuarios_nuevos_rows();
+                $data['usuarios_nuevos'] = $this->admin_crud->get_usuarios_nuevos();
+
+                // Notificaciones Usuario
+                $data['usuario_noti_usuario'] = $this->admin_crud->get_noti_num_rows_usuario( $_SESSION['id_cexpress'] );
+                $data['pedidos_noti_usuario'] = $this->admin_crud->get_pedidos_noti_usuario( $_SESSION['id_cexpress'] );
+
+                $data['titulo'] = 'Control de Pedidos';
+                $data['msg'] = '';
+                $data['subtitulo'] = '';
+                $data['bancos_admin'] = $this->admin_crud->get_banco_receptor();
+                $data['bancos_usuarios'] = $this->admin_crud->get_banco_beneficiario();
+                $data['pedidos'] = $this->admin_crud->get_pedidos_operador();
+                $data['usuarios'] = $this->admin_crud->get_usuarios();
+                $this->load->view('header', $data);
+                $this->load->view('forms_admin/pedidos_operador', $data);
                 $this->load->view('footer');
 
             else:
@@ -930,6 +966,7 @@ class Admin extends CI_Controller
                 $data['titulo'] = 'Usuario: ' . $data['usuarios']->nombre . ' ' . $data['usuarios']->apellido;
                 $data['msg'] = '';
                 $data['c'] = '';
+                $data['error'] = '';
                 $data['paises'] = $this->admin_crud->get_paises();
                 $this->load->view('header', $data);
                 $this->load->view('show/show_usuario', $data);
@@ -971,6 +1008,7 @@ class Admin extends CI_Controller
                 $data['titulo'] = "Cuentas Bancarias";
                 $data['msg'] = '';
                 $data['cuentas'] = $this->admin_crud->get_cuentas( $_SESSION['id_cexpress'] );
+                $data['cuentas_lista'] = $this->admin_crud->get_cuentas_venezuela();
                 $data['bancos'] = $this->admin_crud->get_banco_pais();
                 $data['paises'] = $this->admin_crud->get_paises();
                 $this->load->view('header', $data);
@@ -1101,6 +1139,8 @@ class Admin extends CI_Controller
             // Notificaciones Usuario
             $data['usuario_noti_usuario'] = $this->admin_crud->get_noti_num_rows_usuario( $_SESSION['id_cexpress'] );
             $data['pedidos_noti_usuario'] = $this->admin_crud->get_pedidos_noti_usuario( $_SESSION['id_cexpress'] );
+
+            $data['error'] = '';
 
             if( is_null( $this->input->get('a') ) ):
                 $id = $_SESSION['id_cexpress'];

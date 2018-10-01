@@ -366,11 +366,27 @@ $(document).ready(function(){
             form: '#agregarCuentaNueva',
             validateOnBlur: false,
             onValidate: function(){
-                var banco = $('#bancoSeleccionCrear').val();
+                var banco = $('#bancoSeleccion').val();
+
                 if( banco == "false" ){
                     event.preventDefault();
                     $('#bancoErr').html('Campo requerido');
+                } else {
+                    $('#bancoErr').html('');
                 }
+                
+                if( banco == "Otros" ){
+                    var bancoAlt = $('#banco_alt').val();
+                    if( bancoAlt.length == 0 ){
+                        event.preventDefault();
+                        $('#banco_altErr').html('Campo requerido');
+                    } else {
+                        $('#banco_altErr').html('');
+                    }
+                }
+            },
+            onError: function(){
+
             },
             onSuccess: function(){
                 $('#loader').fadeIn('fast');
@@ -506,4 +522,219 @@ $(document).ready(function(){
             $('#modalWindow').fadeOut('fast');
         });
 
+    });
+
+    $('#actualizarTasas').on('click', function(){
+        $('[id="actualizarTasasForm"]').each(function(){
+            var data = $(this).serialize();
+            $.ajax({
+                url: base_url + 'actualizar_tasa',
+                data: data,
+                method: 'post',
+                beforeSend: function(){
+                    $('#loader').fadeIn('fast');
+                },
+                success: function(result){
+                    $('#loader').fadeOut('fast');
+                }
+            });
+        });
+    });
+
+    $('#rechazarBtn').click(function(){
+        $('#rechazarContent').removeClass('display-none');
+    });
+
+    $('#closeVerificacionBtn').click(function(){
+        $('#rechazarContent').addClass('display-none');
+    });
+    
+    $('[data-open-new="true"]').each(function(){
+        $(this).click(function(){
+            var data = $(this).val();
+            $('#whichCuenta').val(data);
+            $('#nuevaCuentaPedidos').removeClass('display-none');
+        });
+    });
+
+    $('#closeNuevaCuentaPedidos').click(function(){
+        $('#nuevaCuentaPedidos').addClass('display-none');
+    });
+
+    $('#bancoSeleccionCrear').on('change', function(){
+        var banco = $('#bancoSeleccionCrear').val();
+        if( banco == "Otros" ){
+            $('#bancoAlt').css('display', 'initial');
+        } else {
+            $('#bancoAlt').css('display', 'none');
+        }
+    });
+
+    $('[data-reset-cuenta="true"]').each(function(){
+        $(this).click(function(){
+            var data = $(this).val();
+            if( data == "cuenta1" ){
+                $('#newElement').html('<select name="primera_cuenta" class="custom-input" id="cuentaBeneficiaria"><option value="false"></option></select>');
+                $.getJSON( base_url + 'get_usuarios_cuenta',function(result){
+                    $.each(result, function(id,banco){
+                        if( result.error != "true"){
+                            $("#cuentaBeneficiaria").append('<option update="yes" value="'+banco.id+'">'+banco.banco+'</option>');
+                        } else {
+                            $("#cuentaBeneficiaria").append('<option update="yes" value="false">No hay cuentas registradas</option>');
+                        }
+                        $('#loader').fadeOut('fast');
+                    });
+                });
+            } else if( data == "cuenta2" ) {
+                $('#newElement1').html('<select name="segunda_cuenta" class="custom-input" id="segundaCuentaBen"><option value="false"></option></select>');
+                $.getJSON( base_url + 'get_usuarios_cuenta',function(result){
+                    $.each(result, function(id,banco){
+                        if( result.error != "true"){
+                            $("#segundaCuentaBen").append('<option update="yes" value="'+banco.id+'">'+banco.banco+'</option>');
+                        } else {
+                            $("#segundaCuentaBen").append('<option update="yes" value="false">No hay cuentas registradas</option>');
+                        }
+                        $('#loader').fadeOut('fast');
+                    });
+                });
+            } else if( data == "cuenta3" ) {
+                $('#newElement2').html('<select name="tercera_cuenta" class="custom-input" id="terceraCuentaBen"><option value="false"></option></select>');
+                $.getJSON( base_url + 'get_usuarios_cuenta',function(result){
+                    $.each(result, function(id,banco){
+                        if( result.error != "true"){
+                            $("#terceraCuentaBen").append('<option update="yes" value="'+banco.id+'">'+banco.banco+'</option>');
+                        } else {
+                            $("#terceraCuentaBen").append('<option update="yes" value="false">No hay cuentas registradas</option>');
+                        }
+                        $('#loader').fadeOut('fast');
+                    });
+                });
+            } else if( data == "cuenta4" ) {
+                $('#newElement3').html('<select name="cuarta_cuenta" class="custom-input" id="cuartaCuentaBen"><option value="false"></option></select>');
+                $.getJSON( base_url + 'get_usuarios_cuenta',function(result){
+                    $.each(result, function(id,banco){
+                        if( result.error != "true"){
+                            $("#cuartaCuentaBen").append('<option update="yes" value="'+banco.id+'">'+banco.banco+'</option>');
+                        } else {
+                            $("#cuartaCuentaBen").append('<option update="yes" value="false">No hay cuentas registradas</option>');
+                        }
+                        $('#loader').fadeOut('fast');
+                    });
+                });
+            } else if( data == "cuenta5" ) {
+                $('#newElement4').html('<select name="quinta_cuenta" class="custom-input" id="quintaCuentaBen"><option value="false"></option></select>');
+                $.getJSON( base_url + 'get_usuarios_cuenta',function(result){
+                    $.each(result, function(id,banco){
+                        if( result.error != "true"){
+                            $("#quintaCuentaBen").append('<option update="yes" value="'+banco.id+'">'+banco.banco+'</option>');
+                        } else {
+                            $("#quintaCuentaBen").append('<option update="yes" value="false">No hay cuentas registradas</option>');
+                        }
+                        $('#loader').fadeOut('fast');
+                    });
+                });
+            }
+            $(this).addClass('display-none');
+        });
+    });
+
+    $.validate({
+        form: '#addCuentaSeccionPedidos',
+        validateOnBlur: false,
+        onValidate: function(){
+            $('#loader').fadeIn('fast');
+            var banco = $('#bancoSeleccionCrear').val();
+
+            if( banco == "Otros" ){
+                var banco_alt = $('#banco_alt').val();
+                if( banco_alt.length == 0 ){
+                    event.preventDefault();
+                    $('#bancoalt').html('Campo Requerido');
+                    $('#banco_alt').addClass('border-danger');
+                    $('#loader').fadeOut('fast');        
+                } else {
+                    $('#bancoalt').html('');
+                    $('#banco_alt').removeClass('border-danger');
+                }
+            }
+
+            if( banco == "false" ){
+                event.preventDefault();
+                $('#bancoErr').html('Campo Requerido');
+                $('#bancoSeleccionCrear').addClass('border-danger');
+                $('#loader').fadeOut('fast');
+            } else {
+                $('#bancoErr').html('');
+                $('#bancoSeleccionCrear').removeClass('border-danger');
+            }
+
+        },
+        onError: function(){
+            $('#loader').fadeOut('fast');
+        },
+        onSuccess: function(){
+            event.preventDefault();
+            var confirmation = confirm('¿Los datos ingresados son correctos?');
+            if( confirmation ){
+                var data = $('#addCuentaSeccionPedidos').serialize();
+                $.ajax({
+                    url: base_url + 'addBanco',
+                    data: data,
+                    method: 'post',
+                    success: function(result){
+                        var str = JSON.parse(result);
+                        if( str.status == "OK" ){
+                            $('#nuevaCuentaPedidos').addClass('display-none');
+                            $('[data-cuenta-input="true"]').val('');
+                            var thisCuenta = $('#whichCuenta').val();
+                                if( thisCuenta == "cuenta1" ){
+                                    $('#cuentaBeneficiaria').remove();
+                                    $('#newElement').append('<input type="hidden" name="primera_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
+                                    $('#resetearCuenta').removeClass('display-none');
+                                } else if( thisCuenta == "cuenta2" ) {
+                                    $('#segundaCuentaBen').remove();
+                                    $('#newElement1').append('<input type="hidden" name="segunda_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
+                                    $('#resetearCuenta1').removeClass('display-none');
+                                } else if( thisCuenta == "cuenta3" ){
+                                    $('#terceraCuentaBen').remove();
+                                    $('#newElement2').append('<input type="hidden" name="tercera_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
+                                    $('#resetearCuenta2').removeClass('display-none');
+                                } else if( thisCuenta == "cuenta4" ){
+                                    $('#cuartaCuentaBen').remove();
+                                    $('#newElement3').append('<input type="hidden" name="cuarta_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
+                                    $('#resetearCuenta3').removeClass('display-none');
+                                } else if( thisCuenta == "cuenta5" ){
+                                    $('#quintaCuentaBen').remove();
+                                    $('#newElement4').append('<input type="hidden" name="quinta_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
+                                    $('#resetearCuenta4').removeClass('display-none');
+                                }
+                        }
+                        $('#loader').fadeOut('fast');
+                    }
+                });
+            } else {
+                $('#loader').fadeOut('fast');
+            }
+        }
+    });
+
+    // Cuentas Bancarias
+
+    $('#bancoSeleccion').on('change', function(){
+        if( $(this).val() == "Otros" ){
+            $('#bancoAlt').removeClass('display-none');
+        } else {
+            $('#bancoAlt').removeClass('display-none');
+        }
+    });
+
+    // Pedido Manager
+
+    $('#status').on('change', function(){
+        var status = $('#status').val();
+        if( status == 2 ){
+            $('#motivo').removeClass('display-none');
+        } else {
+            $('#motivo').addClass('display-none');
+        }
     });
