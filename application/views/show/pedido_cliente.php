@@ -37,7 +37,13 @@
                                 <label>
                                     <small>Banco</small>
                                 </label>
-                                <span class="after-label"><?= $banco_receptor->banco; ?></span>
+                                    <?php if( $banco_receptor ): ?>
+                                        <span class="after-label"><?= $banco_receptor->banco; ?></span>
+                                    <?php elseif( $pedido->banco_receptor == "westernUnion"): ?>
+                                        <span class="after-label">Western Union</span>
+                                    <?php elseif( $pedido->banco_receptor == "moneyGram" ): ?>
+                                        <span class="after-label">MoneyGram</span>
+                                    <?php endif; ?>
                             </div>
                             <div class="col-xs-6 my-1">
                                 <label>
@@ -51,7 +57,7 @@
                                 </label>
                                 <strong class="after-label">
                                     <?= number_format( $pedido->monto_pagado, 2 ); ?>
-                                    <?= $banco_receptor->diminutivo; ?>
+                                    <?= $pedido->diminutivo_pagado; ?>
                                 </strong>
                             </div>
                             <div class="col-xs-12 my-1">
@@ -192,6 +198,11 @@
                                     <span class="text-danger after-label">
                                         <i class="ti-info-alt"></i>
                                         Rechazado
+                                    </span>
+                                <?php elseif( $pedido->status == 4 ): ?>
+                                    <span class="text-success after-label">
+                                        <i class="ti-check"></i>
+                                        Terminado
                                     </span>
                                 <?php endif; ?>
                             </div>

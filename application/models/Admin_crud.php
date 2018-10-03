@@ -470,7 +470,7 @@ class Admin_crud extends CI_Model
         endif;
     }
 
-    public function montar_pedido( $id_cliente, $comprobante, $pais_receptor, $banco_receptor, $monto_pagado, $pais_beneficiario, $banco_beneficiario, $monto_beneficiario, $num_operacion, $monto_operacion )
+    public function montar_pedido( $id_cliente, $comprobante, $pais_receptor, $banco_receptor, $monto_pagado, $pais_beneficiario, $banco_beneficiario, $monto_beneficiario, $num_operacion, $monto_operacion, $diminutivo_receptor )
     {
         $data = array(
                 'id_cliente'           => $id_cliente,
@@ -484,6 +484,7 @@ class Admin_crud extends CI_Model
                 'monto_beneficiario'   => $monto_beneficiario,
                 'monto_operacion'      => $monto_operacion,
                 'fecha_pedido'         => date('d/m/Y'),
+                'diminutivo_pagado'    => $diminutivo_receptor,
                 'status'               => 0,
                 'notificacion'         => 1,
                 'notificacion_usuario' => 0
@@ -679,12 +680,22 @@ class Admin_crud extends CI_Model
 
     public function get_noti_num_rows()
     {
-        return $this->db->get_where( 'pedidos', array( 'notificacion' => 1 ))->num_rows();
+        return $this->db->get( 'pedidos', 10 )->num_rows();
     }
 
     public function get_pedidos_nuevos()
     {
-        return $this->db->get_where( 'pedidos', array( 'notificacion' => 1, 'status' => 1 ))->result_array();
+        return $this->db->get( 'pedidos', 10 )->result_array();
+    }
+
+    public function pedidos_noti_acep_num_rows()
+    {
+        return $this->db->get_where( 'pedidos', array( 'status' => 1 ), 10 )->num_rows();
+    }
+
+    public function get_pedidos_aceptados()
+    {
+        return $this->db->get_where( 'pedidos', array( 'status' => 1 ), 10 )->result_array();
     }
 
     public function remove_notification( $id )
@@ -772,5 +783,26 @@ class Admin_crud extends CI_Model
             'mensaje'      => $mensaje
         );
         return $this->db->where( 'id', $id )->update( 'pedidos', $data );
+    }
+
+    public function registrar_cuenta_otros( $alias, $cuenta, $titular, $tipo, $dni, $telefono, $email, $banco, $pais )
+    {
+        $data = array(
+            'alias'      => $alias,
+            'cuenta'     => $cuenta,
+            'titular'    => $titular,
+            'tipo'       => $tipo,
+            'documento'  => $dni,
+            'telefono'   => $telefono,
+            'email'      => $email,
+            'banco'      => $banco,
+            'pais'       => $pais,
+            'diminutivo' => 'N/A',
+            'monto'      => 0,
+            'status'     => 1
+        );
+
+        return $this->db->insert( 'admin_banco', $data );
+
     }
 }

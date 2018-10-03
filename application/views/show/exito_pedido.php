@@ -87,7 +87,15 @@
                                 <label>
                                     <small>Banco</small>
                                 </label>
-                                <span class="after-label"><?= $banco_receptor->banco; ?></span>
+                                <span class="after-label">
+                                    <?php if( $banco_receptor ): ?>
+                                        <?= $banco_receptor->banco; ?>
+                                    <?php elseif( $pedido->banco_receptor == "westernUnion"): ?>
+                                        Western Union
+                                    <?php elseif( $pedido->banco_receptor == "moneyGram" ): ?>
+                                        MoneyGram
+                                    <?php endif; ?>
+                                </span>
                             </div>
                             <div class="col-xs-6 my-1">
                                 <label>
@@ -101,7 +109,7 @@
                                 </label>
                                 <strong class="after-label">
                                     <?= number_format( $pedido->monto_pagado, 2 ); ?>
-                                    <?= $banco_receptor->diminutivo; ?>
+                                    <?= $pedido->diminutivo_pagado; ?>
                                 </strong>
                             </div>
                         </div>

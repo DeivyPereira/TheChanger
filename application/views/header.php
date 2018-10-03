@@ -165,9 +165,6 @@
                         <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                         <li class="dropdown" style="position: relative">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <?php if( $admin_noti > 0 || $usuarios_nuevo_rows > 0 ): ?>
-                                        <span class="notificacion animated rubberBand"><?= $admin_noti + $usuarios_nuevo_rows; ?></span>
-                                    <?php endif; ?>
                                     <i class="ti-bell"></i>
 									<b class="caret"></b>
                               </a>
@@ -220,14 +217,11 @@
                         <?php if( $_SESSION['role_cexpress'] == 3 ): ?>
                         <li class="dropdown" style="position: relative">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <?php if( $admin_noti > 0 ): ?>
-                                        <span class="notificacion animated rubberBand"><?= $admin_noti; ?></span>
-                                    <?php endif; ?>
                                     <i class="ti-bell"></i>
 									<b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
-                              <?php foreach( $pedidos_noti as $pedido ): ?>
+                              <?php foreach( $pedidos_noti_acep as $pedido ): ?>
                                 <?php if( $admin_noti > 0 ): ?>
                                     <li class="text-center">
                                         <a href="<?= base_url() . 'ver_pedido?i=' . $pedido['id'] . '&n=yes'; ?>">

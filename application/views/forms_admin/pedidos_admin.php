@@ -80,14 +80,15 @@
                                                     <?= $banco['banco']; ?>
                                                 <?php endif; ?>
                                                 <?php endforeach; ?>
+                                                <?php if( $pedido['banco_receptor'] == "westernUnion"): ?>
+                                                    <span class="after-label">Western Union</span>
+                                                <?php elseif( $pedido['banco_receptor'] == "moneyGram" ): ?>
+                                                    <span class="after-label">MoneyGram</span>
+                                                <?php endif; ?>
                                             </td>
                                             <td>
                                                 <?= number_format( $pedido['monto_pagado'], 2 ); ?>
-                                                <?php foreach( $bancos_admin as $banco ): ?>
-                                                <?php if( $pedido['banco_receptor'] == $banco['id'] ): ?>
-                                                    <?= $banco['diminutivo']; ?>
-                                                <?php endif; ?>
-                                                <?php endforeach; ?>
+                                                <?= $pedido['diminutivo_pagado']; ?>
                                             </td>
                                             <td>
                                                 <?= number_format( $pedido['monto_beneficiario'], 2 ); ?>

@@ -167,20 +167,52 @@ $(document).ready(function(){
                     $.each(result, function(id,banco){
                         if( result.error != "true"){
                             $("#CuentasAdmin").append('<option update="yes" value="'+banco.id+'">'+banco.banco+'</option>');
-                            $('#diminutivoReceptor').val(banco.diminutivo);
                         } else {
                             $("#CuentasAdmin").append('<option update="yes" value="false">No hay cuentas registradas</option>');
                         }
                         $('#loader').fadeOut('fast');
                     });
                 });
+            } else {
+                $('#loader').fadeOut('fast');
+            }
+        });
+
+        $('#laMoneda').on('change', function(){
+            $('#loader').fadeIn('fast');
+            var data = $('#laMoneda').val();
+            if( data != 'false' ){
+                
+                $.getJSON( base_url + 'buscar_banco_admin_pais?a='+data,function(result){
+                    $.each(result, function(id,banco){
+                        if( result.error != "true"){
+                            $('#diminutivoReceptor').val(banco.diminutivo);
+                            $('#diminutivo_receptor').val(banco.diminutivo);
+                        } else {
+                            $('#diminutivoReceptor').val('');
+                            $('#diminutivo_receptor').val('');
+                        }
+                        $('#loader').fadeOut('fast');
+                    });
+                });
+            } else {
+                $('#loader').fadeOut('fast');
+                $('#diminutivoReceptor').val('');
             }
         });
 
         $('#montoPagado').keyup(function(){
-            if( $('#paisBeneficiario').val() != "false" ){
+            if( $('#laMoneda').val() != "false" ){
+                var str = $('#montoPagado').val();
+                if( str.length == 0 ){
+                    $('#montoBeneficiario').css('background-color', '#EEE');
+                    $('#montoBeneficiario').css('color', '#444');
+                } else {
+                    $('#montoBeneficiario').css('background-color', '#7AC29A');
+                    $('#montoBeneficiario').css('color', '#FFF');
+                }
                 var data = $('#paisBeneficiario').val(),
-                    pais_pago = $('#paisCuentaReceptor').val();
+                    pais_pago = $('#laMoneda').val();
                 $.ajax({
                     url: base_url + 'calcula_monto_pedido',
                     data: {'pais': pais_pago},
@@ -366,31 +398,42 @@ $(document).ready(function(){
             form: '#agregarCuentaNueva',
             validateOnBlur: false,
             onValidate: function(){
-                var banco = $('#bancoSeleccion').val();
+                $('#loader').fadeIn('fast');
+                var banco = $('#bancoSeleccion').val(),
+                    tipoCi = $('#tipoCi').val();
 
                 if( banco == "false" ){
                     event.preventDefault();
                     $('#bancoErr').html('Campo requerido');
+                    $('#bancoSeleccion').addClass('border-is-danger');
+                    $('#loader').fadeOut('fast');
                 } else {
+                    $('#bancoSeleccion').removeClass('border-is-danger');
                     $('#bancoErr').html('');
+                }
+
+                if( tipoCi == "false" ){
+                    event.preventDefault()
+                    $('#tipoCi').addClass('border-is-danger');
+                    $('#loader').fadeOut('fast');
+                } else {
+                    $('#tipoCi').removeClass('border-is-danger');
                 }
                 
                 if( banco == "Otros" ){
                     var bancoAlt = $('#banco_alt').val();
                     if( bancoAlt.length == 0 ){
                         event.preventDefault();
-                        $('#banco_altErr').html('Campo requerido');
+                        $('#banco_altErr').html('<i class="ti-info-alt"></i>&nbsp;Campo requerido');
+                        $('#banco_alt').addClass('border-is-danger');
+                        $('#loader').fadeOut('fast');
                     } else {
+                        $('#banco_alt').removeClass('border-is-danger');
                         $('#banco_altErr').html('');
                     }
                 }
+                
             },
-            onError: function(){
-
-            },
-            onSuccess: function(){
-                $('#loader').fadeIn('fast');
-            }
         });
 
         $.validate({
@@ -434,8 +477,11 @@ $(document).ready(function(){
             $('#quintoMonto').val('');
         });
 
+        // Formulario de pedido
+
         $.validate({
             form: '#pedidoForm',
+            modules: 'file',
             validateOnBlur: false,
             onValidate: function(){
                 
@@ -443,6 +489,7 @@ $(document).ready(function(){
                     form2 = $('#CuentasAdmin').val(),
                     form3 = $('#paisBeneficiario').val(),
                     form4 = $('#cuentaBeneficiaria').val(),
+                    form5 = $('#laMoneda').val(),
                     monto1 = parseFloat($('#primerMonto').val()),
                     monto2 = parseFloat($('#segundoMonto').val()),
                     monto3 = parseFloat($('#tercerMonto').val()),
@@ -452,54 +499,95 @@ $(document).ready(function(){
                     totalFix = parseFloat(total),
                     montoBen = parseFloat($('#montoBeneficiarioHidden').val());
 
+                    var resp = false, resp2 = false, resp3 = false; resp4 = false, resp5 = false, resp6 = false, resp7 = false;
+
                     if( form1 == "false" ){
                         event.preventDefault();
-                        $('#paisCuentaReceptorErr').html('Campo requerido');
+                        $('#paisCuentaReceptor').addClass('border-is-danger');
+                        $('#paisCuentaReceptorErr').html('<i class="ti-info-alt"></i>&nbsp;Campo requerido');
+                        resp = false;
                     } else {
+                        $('#paisCuentaReceptor').removeClass('border-is-danger');
                         $('#paisCuentaReceptorErr').html('');
+                        resp = true;
                     }
 
                     if( form2 == "false" ){
                         event.preventDefault();
-                        $('#CuentasAdminErr').html('Campo requerido');
+                        $('#CuentasAdminErr').html('<i class="ti-info-alt"></i>&nbsp;Campo requerido');
+                        $('#CuentasAdmin').addClass('border-is-danger');
+                        resp2 = false;
                     } else {
+                        $('#CuentasAdmin').removeClass('border-is-danger');
                         $('#CuentasAdminErr').html('');
+                        resp2 = true;
                     }
 
                     if( form3 == "false" ){
                         event.preventDefault();
-                        $('#paisBeneficiarioErr').html('Campo requerido');
+                        $('#paisBeneficiarioErr').html('<i class="ti-info-alt"></i>&nbsp;Campo requerido');
+                        resp3 = false;
                     } else {
                         $('#paisBeneficiarioErr').html('');
+                        resp3 = true;
                     }
 
                     if( form4 == "false" ){
                         event.preventDefault();
-                        $('#cuentaBeneficiariaErr').html('Campo requerido');
+                        $('#cuentaBeneficiariaErr').html('<i class="ti-info-alt"></i>&nbsp;Se requiera al menos una cuenta');
+                        $('#cuentaBeneficiaria').addClass('border-is-danger');
+                        resp4 = false;
                     } else {
                         $('#cuentaBeneficiariaErr').html('');
+                        $('#cuentaBeneficiaria').removeClass('border-is-danger');
+                        resp4 = true;
                     }
 
-                    if( monto1.length == 0 ){
+                    if( form5 == "false" ){
                         event.preventDefault();
-                        $('#primerMontoErr').html('Campo requerido');
+                        $('#laMoneda').addClass('border-is-danger');
+                        $('#laMonedaErr').html('<i class="ti-info-alt"></i>&nbsp;Campo requerido');
+                        resp5 = false;
                     } else {
+                        $('#laMoneda').removeClass('border-is-danger');
+                        $('#laMonedaErr').html('');
+                        resp5 = true;
+                    }
+
+                    if( monto1 == 0 ){
+                        event.preventDefault();
+                        $('#primerMonto').addClass('border-is-danger');
+                        $('#primerMontoErr').html('<i class="ti-info-alt"></i>&nbsp;Obligatorio');
+                        resp6 = false;
+                    } else {
+                        $('#primerMonto').removeClass('border-is-danger');
                         $('#primerMontoErr').html('');
+                        resp6 = true;
                     }
                     
                     if( totalFix > montoBen ){
                         event.preventDefault();
                         var montoErr = totalFix - montoBen;
-                        $('#sumatoriaErr').html('El monto se excede por ' + accounting.formatMoney( montoErr, "" ) );   
+                        $('#sumatoriaErr').html('<div class="animated shake alert alert-danger"><i class="ti-info-alt"></i>&nbsp;El monto se excede por ' + accounting.formatMoney( montoErr, "" ) + '</div>' );
+                        resp7 = false;   
                     } else if( totalFix < montoBen ){
                         event.preventDefault();
                         var montoErr = montoBen - totalFix;
-                        $('#sumatoriaErr').html('El monto está por debajo por ' + accounting.formatMoney( montoErr, "" ) );
+                        $('#sumatoriaErr').html('<div class="animated shake alert alert-danger"><i class="ti-info-alt"></i>&nbsp;El monto está por debajo por ' + accounting.formatMoney( montoErr, "" ) + '</div>' );
+                        resp7 = false;
                     } else if( totalFix == montoBen ){
                         $('#sumatoriaErr').html('');
+                        resp7 = true;
+                    }
+
+                    if( resp == true && resp2 == true && resp3 == true && resp4 == true && resp5 == true && resp6 == true && resp7 == true ){
+                        var confirmation = confirm('Está por registrar un pedido ¿Los datos ingresados son correctos?');
+                        if( confirmation === false ){
+                            event.preventDefault();
+                        }
                     }
                     
-            },
+                },
         });
 
         $('#reportarPagoBtn').click(function(){
@@ -632,7 +720,7 @@ $(document).ready(function(){
                     });
                 });
             }
-            $(this).addClass('display-none');
+            $(this).addClass('display-none-imp');
         });
     });
 
@@ -688,23 +776,23 @@ $(document).ready(function(){
                                 if( thisCuenta == "cuenta1" ){
                                     $('#cuentaBeneficiaria').remove();
                                     $('#newElement').append('<input type="hidden" name="primera_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
-                                    $('#resetearCuenta').removeClass('display-none');
+                                    $('#resetearCuenta').removeClass('display-none-imp');
                                 } else if( thisCuenta == "cuenta2" ) {
                                     $('#segundaCuentaBen').remove();
                                     $('#newElement1').append('<input type="hidden" name="segunda_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
-                                    $('#resetearCuenta1').removeClass('display-none');
+                                    $('#resetearCuenta1').removeClass('display-none-imp');
                                 } else if( thisCuenta == "cuenta3" ){
                                     $('#terceraCuentaBen').remove();
                                     $('#newElement2').append('<input type="hidden" name="tercera_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
-                                    $('#resetearCuenta2').removeClass('display-none');
+                                    $('#resetearCuenta2').removeClass('display-none-imp');
                                 } else if( thisCuenta == "cuenta4" ){
                                     $('#cuartaCuentaBen').remove();
                                     $('#newElement3').append('<input type="hidden" name="cuarta_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
-                                    $('#resetearCuenta3').removeClass('display-none');
+                                    $('#resetearCuenta3').removeClass('display-none-imp');
                                 } else if( thisCuenta == "cuenta5" ){
                                     $('#quintaCuentaBen').remove();
                                     $('#newElement4').append('<input type="hidden" name="quinta_cuenta" value="' + str.id_cuenta + '"><input type="text" disabled class="custom-input" value="' + str.alias + '">');
-                                    $('#resetearCuenta4').removeClass('display-none');
+                                    $('#resetearCuenta4').removeClass('display-none-imp');
                                 }
                         }
                         $('#loader').fadeOut('fast');
@@ -722,7 +810,7 @@ $(document).ready(function(){
         if( $(this).val() == "Otros" ){
             $('#bancoAlt').removeClass('display-none');
         } else {
-            $('#bancoAlt').removeClass('display-none');
+            $('#bancoAlt').addClass('display-none');
         }
     });
 
@@ -737,4 +825,44 @@ $(document).ready(function(){
         }
     });
 
+
+    $.validate({
+        form: '#otrosForm',
+        validateOnBlur: false,
+        onSuccess: function(){
+            var data = $('#otrosForm').serialize();
+            $.ajax({
+                url: base_url + 'registrar_cuenta_otros',
+                data: data,
+                method: 'post',
+                beforeSend: function(){
+                    $('#loader').fadeIn('fast');
+                },
+                success: function(result){
+                    if( result == "true" ){
+                        location.href = base_url + "cuentas_bancarias_admin?msg=1";
+                    } else {
+                        location.href = base_url + "cuentas_bancarias_admin?msg=2";
+                    }
+                }
+            });
+        }
     });
+
+    $('#cuentaBancariaBtn').click(function(){
+        $( this ).addClass('active');
+        $('#cuentaBancariaContent').removeClass('display-none');
+        $('#otrosBtn').removeClass('active');
+        $('#otrosContent').addClass('display-none');
+    });
+
+    $('#otrosBtn').click(function(){
+        $( this ).addClass('active');
+        $('#otrosContent').removeClass('display-none');
+        $('#cuentaBancariaBtn').removeClass('active');
+        $('#cuentaBancariaContent').addClass('display-none');
+    });
+
+
+
+});

@@ -10,7 +10,6 @@
     <?= form_open_multipart('control_pedidos', array( 'id' => 'pedidoForm' ));?>
     <div class="row my-5" id="pagoBancos">
         <input type="hidden" name="id_cliente" value="<?= $_SESSION['id_cexpress']; ?>">
-        
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
@@ -24,7 +23,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="">
-                                        <small>¿De qué país es el Banco Receptor?</small>
+                                        <small>¿En qué país te encuentras?</small>
                                     </label>
                                     <div class="form-group">
                                         <select name="pais_receptor" class="custom-input" id="paisCuentaReceptor">
@@ -47,25 +46,55 @@
                                         </label>
                                         <select name="cuenta_receptor" class="custom-input" name="cuenta_receptor" id="CuentasAdmin">
                                             <option value="false"></option>
+                                            <option value="moneyGram">MoneyGram</option>
+                                            <option value="westernUnion">Western Union</option>
                                         </select>
                                         <small class="text-danger" id="CuentasAdminErr"></small>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-9 col-xs-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">
-                                            <small>¿Cuánto depositaste? <span class="text-danger">(usa "." para decimales)</span></small>
+                                            <small>Seleccione Moneda</small>
                                         </label>
-                                        <input name="monto_pagado" class="custom-input" id="montoPagado" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#montoPagadoErr">
+                                        <select name="" class="custom-input" id="laMoneda">
+                                            <option value="false"></option>
+                                            <?php foreach( $paises as $pais ): ?>
+                                                <?php if( $pais['pais'] != "Venezuela" ): ?>
+                                                    <option value="<?= $pais['pais']; ?>"><?= $pais['moneda'] . " - " .  $pais['diminutivo']; ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <small class="text-danger" id="laMonedaErr"></small>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-xs-4">
-                                    <label for="">
-                                        <small>&nbsp;</small>
-                                    </label>
-                                    <input type="text" class="custom-input" disabled id="diminutivoReceptor">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="">
+                                                    <small>¿Cuánto depositaste? <strong class="text-success">(usa "." para decimales)</strong></small>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-9 col-xs-8">
+                                                        <input name="monto_pagado" class="custom-input" id="montoPagado" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#montoPagadoErr">
+                                                    </div>
+                                                    <div class="col-md-3 col-xs-4">
+                                                        <input type="text" class="custom-input" disabled id="diminutivoReceptor">
+                                                        <input type="hidden" name="diminutivo_receptor" id="diminutivo_receptor">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <small class="text-danger" id="montoPagadoErr"></small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -86,9 +115,15 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>
-                                            <small>Número de Comprobante o Transacción</small>
+                                            <small>Número de Comprobante o Transacción</small><br>
+                                            <small>
+                                                <strong class="text-success">
+                                                    Para MoneyGram o Western Union colocar de la siguiente forma<br> 
+                                                    Tracking ID - Nombre y Apellido - País Destino
+                                                </strong>    
+                                            </small>
                                         </label>
-                                        <input type="text" class="custom-input" name="num_operacion" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#comprobante">
+                                        <input type="text" class="custom-input" name="num_operacion" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#comprobante">
                                         <small class="text-danger" id="comprobante"></small>
                                     </div>
                                 </div>
@@ -96,10 +131,20 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <small class="text-danger">*Obligatorio (Formatos permitidos, .JPG, .PNG, .GIF) Max. 500 Kb</small>
-                                        <input type="file" class="file-input" name="comprobante" id="inFile">
-                                        <div id="outFile" class="animated bounceIn pt-5"></div>                   
-                                        <small class="text-danger"><?= $img_err; ?></small>
+                                        <small>
+                                            <strong class="text-success">
+                                                *Obligatorio (Formatos permitidos, .JPG, .PNG, .GIF) Max. 500 Kb
+                                            </strong>
+                                        </small>
+                                        <input type="file" class="file-input my-3" name="comprobante" id="inFile" data-validation="mime size required" 
+                                        data-validation-allowing="jpg, png, gif" 
+                                        data-validation-max-size="500kb" 
+                                        data-validation-error-msg-container="#inFileErr"
+                                        data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Se requiere Comprobante de transacción"
+                                        data-validation-error-msg-size="<i class='ti-info-alt'></i>&nbsp;Las imágenes debe tener un tamaño máximo de 500kb"
+                                        data-validation-error-msg-mime="<i class='ti-info-alt'></i>&nbsp;Solo puedes subir imágenes jpg, png, gif"><br>
+                                        <small class="text-danger" id="inFileErr"><?= $img_err; ?></small>
+                                        <div id="outFile" class="mt-2"></div>                   
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +172,7 @@
                                     <label for="">
                                         <small>Recibirás</small>
                                     </label>
-                                    <input disabled class="custom-input" id="montoBeneficiario">
+                                    <input disabled class="custom-input" style="border-top: 0; border-left: 0; border-right: 0; border-radius: 0;" id="montoBeneficiario">
                                     <input type="hidden" name="monto_operacion" id="montoBeneficiarioHidden">
                                 </div>
                             </div>
@@ -137,7 +182,7 @@
                                 </label>
                                 <?php foreach( $paises as $pais ): ?>
                                     <?php if( $pais['pais'] == "Venezuela" ): ?>
-                                        <input type="text" class="custom-input" disabled value="<?= $pais['diminutivo']; ?>">
+                                        <input type="text" class="custom-input" style="border:0; background: transparent" disabled value="<?= $pais['diminutivo']; ?>">
                                     <?php endif;?>
                                 <?php endforeach; ?>
                             </div>
@@ -148,23 +193,23 @@
                                 <i class="ti-info-alt text-info" style="font-size: 25px;"></i><br>
                                 <strong>Puedes solicitar tu pago en una o varias cuentas</strong><br>
                                 Cexpress te permite seleccionar hasta cinco de tus cuentas donde podrás recibir el pago de manera fraccionada. <br>
-                                <span class="text-danger">(usa "." para decimales)</span>  
+                                <strong class="text-success">(usa "." para decimales)</strong>
                             </small>
                         </label>
                         <hr>
                         <small class="text-danger" id="sumatoriaErr"></small>
-                        <div class="row position-relative">
+                        <div class="row position-relative mt-2">
                             <span class="cuenta-num">1</span>
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="">
                                         <small>Selecciona una cuenta ó</small><br>
-                                        <button type="button" id="addNuevaCuentaBtn" data-open-new="true" value="cuenta1" class="btn-custom"><small>Registrar nueva cuenta</small></button>
+                                        <button type="button" id="addNuevaCuentaBtn" data-open-new="true" value="cuenta1" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
                                     </label>
                                     <select name="primera_cuenta" class="custom-input" id="cuentaBeneficiaria">
                                         <option value="false"></option>
                                         <?php foreach( $bancos_usuarios as $banco_usuario ): ?>
-                                            <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco']; ?></option>
+                                            <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco'] . " - " . $banco_usuario['alias']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="text-danger" id="cuentaBeneficiariaErr"></small>
@@ -182,11 +227,11 @@
                                 </div>
                             </div>
                             <div class="col-md-1 text-center">
-                                <label>
+                                <label class="hide-small">
                                     <br>
                                     &nbsp;
                                 </label>
-                                <button type="button" value="cuenta1" id="resetearCuenta" data-reset-cuenta="true" class="text-danger display-none" style="border: 0; background: #FFF; ">x</button>
+                                <button type="button" value="cuenta1" id="resetearCuenta" data-reset-cuenta="true" class="text-danger display-none-imp" style="border: 0; background: #FFF;">x</button>
                             </div>
                         </div>
                         <div class="text-right" id="primeraCuentaBtnDiv">
@@ -204,12 +249,12 @@
                                     <div class="form-group">
                                         <label for="">
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta2" class="btn-custom"><small>Registrar nueva cuenta</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta2" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
                                         </label>
                                         <select name="segunda_cuenta" class="custom-input" id="segundaCuentaBen">
                                             <option value="false"></option>
                                             <?php foreach( $bancos_usuarios as $banco_usuario ): ?>
-                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco']; ?></option>
+                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco'] . " - " . $banco_usuario['alias']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="newElement1"></div>
@@ -225,11 +270,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-1 text-center">
-                                    <label>
+                                    <label class="hide-small">
                                         <br>
                                         &nbsp;
                                     </label>
-                                    <button type="button" value="cuenta2" id="resetearCuenta1" data-reset-cuenta="true" class="text-danger display-none" style="border: 0; background: #FFF; ">x</button>
+                                    <button type="button" value="cuenta2" id="resetearCuenta1" data-reset-cuenta="true" class="text-danger display-none-imp" style="border: 0; background: #FFF; ">x</button>
                                 </div>
                             </div>
                             <div class="text-right" id="terceraCuentaBtnDiv">
@@ -247,12 +292,12 @@
                                     <div class="form-group">
                                         <label>
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta3" class="btn-custom"><small>Registrar nueva cuenta</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta3" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
                                         </label>
                                         <select name="tercera_cuenta" class="custom-input" id="terceraCuentaBen">
                                             <option value="false"></option>
                                             <?php foreach( $bancos_usuarios as $banco_usuario ): ?>
-                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco']; ?></option>
+                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco'] . " - " . $banco_usuario['alias']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="newElement2"></div>
@@ -268,11 +313,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-1 text-center">
-                                    <label>
+                                    <label class="hide-small">
                                         <br>
                                         &nbsp;
                                     </label>
-                                    <button type="button" value="cuenta3" id="resetearCuenta2" data-reset-cuenta="true" class="text-danger display-none" style="border: 0; background: #FFF; ">x</button>
+                                    <button type="button" value="cuenta3" id="resetearCuenta2" data-reset-cuenta="true" class="text-danger display-none-imp" style="border: 0; background: #FFF; ">x</button>
                                 </div>
                             </div>
                             <div class="text-right" id="cuartaCuentaDiv">
@@ -290,12 +335,12 @@
                                     <div class="form-group">
                                         <label>
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta4" class="btn-custom"><small>Registrar nueva cuenta</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta4" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
                                         </label>
                                         <select name="cuarta_cuenta" class="custom-input" id="cuartaCuentaBen">
                                             <option value="false"></option>
                                             <?php foreach( $bancos_usuarios as $banco_usuario ): ?>
-                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco']; ?></option>
+                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco'] . " - " . $banco_usuario['alias']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="newElement3"></div>
@@ -311,11 +356,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-1 text-center">
-                                    <label>
+                                    <label class="hide-small">
                                         <br>
                                         &nbsp;
                                     </label>
-                                    <button type="button" value="cuenta4" id="resetearCuenta3" data-reset-cuenta="true" class="text-danger display-none" style="border: 0; background: #FFF; ">x</button>
+                                    <button type="button" value="cuenta4" id="resetearCuenta3" data-reset-cuenta="true" class="text-danger display-none-imp" style="border: 0; background: #FFF; ">x</button>
                                 </div>
                             </div>
                             <div class="text-right" id="quintaCuentaBtnDiv">
@@ -333,12 +378,12 @@
                                     <div class="form-group">
                                         <label>
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta5" class="btn-custom"><small>Registrar nueva cuenta</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta5" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
                                         </label>
                                         <select name="quinta_cuenta" class="custom-input" id="quintaCuentaBen">
                                             <option value="false"></option>
                                             <?php foreach( $bancos_usuarios as $banco_usuario ): ?>
-                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco']; ?></option>
+                                                <option value="<?= $banco_usuario['id']; ?>"><?= $banco_usuario['banco'] . " - " . $banco_usuario['alias']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="newElement4"></div>
@@ -354,11 +399,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-1 text-center">
-                                    <label>
+                                    <label class="hide-small">
                                         <br>
                                         &nbsp;
                                     </label>
-                                    <button type="button" value="cuenta5" id="resetearCuenta4" data-reset-cuenta="true" class="text-danger display-none" style="border: 0; background: #FFF; ">x</button>
+                                    <button type="button" value="cuenta5" id="resetearCuenta4" data-reset-cuenta="true" class="text-danger display-none-imp" style="border: 0; background: #FFF; ">x</button>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +424,9 @@
                             <span data-notify="icon" class="ti-info-alt"></span>
                             <span data-notify="message">Verifica que la información suministrada sea correcta</span>
                         </div>
-                        <small class="text-danger">Debes esperar a que tu usuario sea verificado</small>
+                        <?php if( $usuario->verificado == 0 ): ?>
+                            <small class="text-danger">Debes esperar a que tu usuario sea verificado</small>
+                        <?php endif; ?>
                         <button type="submit" class="btn-block btn btn-primary" <?php if( $usuario->verificado == 0 ): echo "disabled"; endif; ?>>Registra tu pedido</button>             
                     </div>
                 </div>
@@ -414,21 +461,22 @@
                                     <td>
                                         <small><?= $pedido['id']; ?></small>
                                     </td>
-                                    <td>
+                                    <td>                    
                                         <?php foreach( $bancos_admin as $banco ): ?>
                                             <?php if( $pedido['banco_receptor'] == $banco['id'] ): ?>
                                                 <small><?= $banco['pais']; ?></small><br>
                                                 <?= $banco['banco']; ?>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
+                                        <?php if( $pedido['banco_receptor'] == "westernUnion"): ?>
+                                            <span class="after-label">Western Union</span>
+                                        <?php elseif( $pedido['banco_receptor'] == "moneyGram" ): ?>
+                                            <span class="after-label">MoneyGram</span>
+                                        <?php endif; ?>
                                     </td>
                                     <td>
                                         <?= number_format( $pedido['monto_pagado'], 2 ); ?>&nbsp;
-                                        <?php foreach( $bancos_admin as $diminutivo ): ?>
-                                            <?php if( $pedido['banco_receptor'] == $diminutivo['id'] ): ?>
-                                            <?= $diminutivo['diminutivo']; ?>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
+                                        <?= $pedido['diminutivo_pagado']; ?>
                                     </td>
                                     <td>
                                         <?= number_format( $pedido['monto_operacion'], 2 ); ?>&nbsp;
@@ -439,19 +487,24 @@
                                         <?php endforeach; ?>
                                     </td>
                                     <td>
-                                        <?php if( $pedido['status'] == 1 ): ?>
-                                            <span class="text-success">
-                                                <i class="ti-check"></i>
-                                                Aceptado
-                                            </span>
-                                        <?php elseif( $pedido['status'] == 0 ): ?>
+                                        <?php if( $pedido['status'] == 0 ): ?>
                                             <span class="text-warning">
                                                 <i class="ti-info-alt"></i>
                                                 Pendiente
                                             </span>
+                                        <?php elseif( $pedido['status'] == 1 ): ?>
+                                            <span class="text-sucess">
+                                                <i class="ti-check"></i>
+                                                Aceptado
+                                            </span>
+                                        <?php elseif( $pedido['status'] == 4 ): ?>
+                                            <span class="text-sucess">
+                                                <i class="ti-check"></i>
+                                                Terminado
+                                            </span>
                                         <?php elseif( $pedido['status'] == 2 ): ?>
                                             <span class="text-danger">
-                                                <i class="ti-info-alt"></i>
+                                                <i class="ti-info-check"></i>
                                                 Rechazado
                                             </span>
                                         <?php endif; ?>
@@ -524,10 +577,10 @@
     <div class="pedidos-cuenta-modal display-none" id="nuevaCuentaPedidos">
         <div class="card shadow-custom" style="background-image: url('<?= base_url() . 'assets/img/back.png'; ?>'); background-repeat: no-repeat; background-position: 0 200px;">
             <div class="row">
-                <div class="col-sm-9 px-4">
-                    <h3 class="text-purple">Agregar Cuenta Bancaria</h3>
+                <div class="col-xs-9 px-4">
+                    <h3 class="text-purple">Cuenta Bancaria</h3>
                 </div>
-                <div class="col-sm-3 text-right">
+                <div class="col-xs-3 text-right">
                     <button class="purple-cexpress button-close-modal" id="closeNuevaCuentaPedidos">
                         <i class="ti-close"></i>
                     </button>
@@ -543,7 +596,7 @@
                                 <label for="">
                                     <small>Alias</small>
                                 </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="alias" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#alias">
+                                <input type="text" data-cuenta-input="true" class="custom-input" name="alias" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#alias">
                                 <small class="text-danger" id="alias"></small>
                             </div>
                         </div>
@@ -554,7 +607,7 @@
                                 <label for="">
                                     <small>Cuenta</small>
                                 </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#cuenta">
+                                <input type="text" data-cuenta-input="true" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#cuenta">
                                 <small class="text-danger" id="cuenta"></small>
                             </div>
                         </div>
@@ -563,7 +616,7 @@
                                 <label for="">
                                     <small>Titular</small>
                                 </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#titular">
+                                <input type="text" data-cuenta-input="true" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#titular">
                                 <small class="text-danger" id="titular"></small>
                             </div>
                         </div>
@@ -574,7 +627,7 @@
                                 <label for="">
                                     <small>Tipo de cuenta</small>
                                 </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#tipo">
+                                <input type="text" data-cuenta-input="true" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#tipo">
                                 <small class="text-danger" id="tipo"></small>
                             </div>
                         </div>
@@ -590,7 +643,7 @@
                                     <option value="G-">G</option>
                                     <option value="J-">J</option>
                                 <select>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#dni" style="width: 70%; float: left">
+                                <input type="text" data-cuenta-input="true" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#dni" style="width: 70%; float: left">
                                 <small class="text-danger" id="dni"></small>
                             </div>
                         </div>
@@ -599,7 +652,7 @@
                                 <label for="">
                                     <small>Teléfono</small>
                                 </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#telefono">
+                                <input type="text" data-cuenta-input="true" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#telefono">
                                 <small class="text-danger" id="telefono"></small>
                             </div>
                         </div>
@@ -610,7 +663,7 @@
                                 <label for="">
                                     <small>Email</small>
                                 </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="email" data-validation="email" data-validation-error-msg="Formato de Correo Inválido" data-validation-error-msg-container="#email">
+                                <input type="text" data-cuenta-input="true" class="custom-input" name="email" data-validation="email" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Formato de Correo Inválido" data-validation-error-msg-container="#email">
                                 <small class="text-danger" id="email"></small>
                             </div>
                         </div>

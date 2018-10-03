@@ -150,6 +150,8 @@ $route['get_tax_pais'] = 'crud_controller/get_tax_pais'; // Recupera las tasas p
 
 $route['get_tax_dash'] = 'crud_controller/get_tax_dash';
 
+$route['registrar_cuenta_otros'] = 'crud_controller/registrar_cuenta_otros';
+
 $route['control_pedidos_op'] = 'admin/control_pedidos_operador';
 
 $route['informa_operador'] = 'crud_controller/informa_operador';

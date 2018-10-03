@@ -40,6 +40,7 @@
     <script src="<?= base_url() . 'assets/js/paper-dashboard.js'; ?>"></script>
 
     <script src="<?= base_url() . 'assets/js/jquery.form-validator.min.js'; ?>"></script>
+    <script src="<?= base_url() . 'assets/js/file.js'; ?>"></script>
 
     <!-- Main js -->
     <script src="<?= base_url() . 'assets/js/main.js'; ?>"></script>
@@ -88,4 +89,3 @@
 	</script>
 
 <?php endif; ?>
-

@@ -28,8 +28,8 @@
                                     <tr>
                                         <td><?= $pais['pais']; ?></td>
                                         <td>1 <?= $pais['diminutivo']; ?> = </td>
-                                        <form id="actualizarTasasForm">
                                         <td>
+                                            <form id="actualizarTasasForm">
                                             <input type="hidden" value="<?= $pais['pais']; ?>" name="pais">
                                             <div class="row">
                                                 <div class="col-sm-9">
@@ -47,8 +47,8 @@
                                                     <?php endforeach; ?>
                                                 </div>
                                             </div>
+                                            </form>
                                         </td>
-                                        </form>
                                     </tr>
                                 <?php endif; ?>
                             <?php endforeach; ?>

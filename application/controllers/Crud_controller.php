@@ -1998,4 +1998,25 @@ class Crud_controller extends CI_Controller
         endif;
     }
 
+    public function registrar_cuenta_otros()
+    {
+        $alias    = $this->input->post('alias');
+        $cuenta   = 'N/A';
+        $banco    = $this->input->post('banco');
+        $titular  = $this->input->post('titular');
+        $dni      = $this->input->post('dni');
+        $pais     = $this->input->post('pais');
+        $tipo     = $this->input->post('tipo');
+        $email    = $this->input->post('email');
+        $telefono = 'N/A';
+
+        $consulta = $this->admin_crud->registrar_cuenta_otros( $alias, $cuenta, $titular, $tipo, $dni, $telefono, $email, $banco, $pais );
+
+        if( $consulta ):
+            echo "true";
+        else:
+            echo "false";
+        endif;  
+    }
+
 }

@@ -113,7 +113,7 @@
                                     <label for="">
                                         <small>Alias</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="alias" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#alias">
+                                    <input type="text" class="custom-input" name="alias" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#alias">
                                     <small class="text-danger" id="alias"></small>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                     <label for="">
                                         <small>Cuenta</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#cuenta">
+                                    <input type="text" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#cuenta">
                                     <small class="text-danger" id="cuenta"></small>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                                     <label for="">
                                         <small>Titular</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#titular">
+                                    <input type="text" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#titular">
                                     <small class="text-danger" id="titular"></small>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                     <label for="">
                                         <small>Tipo de cuenta</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#tipo">
+                                    <input type="text" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#tipo">
                                     <small class="text-danger" id="tipo"></small>
                                 </div>
                             </div>
@@ -153,14 +153,15 @@
                                     <label for="">
                                         <small>C.I.</small>
                                     </label><br>
-                                    <select name="tipo_documento" class="custom-input" style="width:30%; float:left">
+                                    <select name="tipo_documento" class="custom-input" id="tipoCi" style="width:30%; float:left">
+                                        <option value="false"></option>
                                         <option value="E-">E</option>
                                         <option value="V-">V</option>
                                         <option value="P-">P</option>
                                         <option value="G-">G</option>
                                         <option value="J-">J</option>
                                     <select>
-                                    <input type="text" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#dni" style="width: 70%; float: left">
+                                    <input type="text" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#dni" style="width: 70%; float: left">
                                     <small class="text-danger" id="dni"></small>
                                 </div>
                             </div>
@@ -169,7 +170,7 @@
                                     <label for="">
                                         <small>Teléfono</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#telefono">
+                                    <input type="text" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#telefono">
                                     <small class="text-danger" id="telefono"></small>
                                 </div>
                             </div>
@@ -180,7 +181,7 @@
                                     <label for="">
                                         <small>Email</small>
                                     </label>
-                                    <input type="text" class="custom-input" name="email" data-validation="email" data-validation-error-msg="Formato de Correo Inválido" data-validation-error-msg-container="#email">
+                                    <input type="text" class="custom-input" name="email" data-validation="email" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Formato de Correo Inválido" data-validation-error-msg-container="#email">
                                     <small class="text-danger" id="email"></small>
                                 </div>
                             </div>

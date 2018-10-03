@@ -279,6 +279,68 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow-custom">
+                            <div class="rounded-top">
+                                <div class="header">
+                                    <h4 class="title">Otros procesadores de pagos</h4>
+                                </div>
+                                <hr class="my-2">
+                                <div class="header">
+                                    <?php foreach( $bancos_admin as $banco ): ?>
+                                        <?php if( $banco['tipo'] == "remesas" ): ?>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row position-relative">
+                                                    <div class="col-xs-6">
+                                                        <label>
+                                                            <small>País Destino</small>
+                                                        </label>
+                                                        <span class="after-label">
+                                                            <?php foreach( $paises as $pais ): ?>
+                                                                <?php if( $pais['id'] == $banco['pais'] ): ?>
+                                                                    <?= $pais['pais']; ?>
+                                                                <?php endif; ?>
+                                                            <?php endforeach; ?>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-xs-6 my-1">
+                                                        <label>
+                                                            <small>Empresa</small>
+                                                        </label>
+                                                        <span class="after-label"><?= $banco['banco']; ?></span>
+                                                    </div>
+                                                    <div class="col-xs-6 my-1">
+                                                        <label>
+                                                            <small>Identificación</small>
+                                                        </label>
+                                                        <span class="after-label"><?= $banco['documento']; ?></span>
+                                                    </div>
+                                                    <div class="col-xs-6 my-1">
+                                                        <label>
+                                                            <small>Titular</small>
+                                                        </label>
+                                                        <span class="after-label"><?= $banco['titular']; ?></span>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 my-1">
+                                                        <label>
+                                                            <small>Email</small>
+                                                        </label>
+                                                        <span class="after-label"><?= $banco['email']; ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <hr>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

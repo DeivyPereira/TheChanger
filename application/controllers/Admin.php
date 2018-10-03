@@ -23,6 +23,8 @@ class Admin extends CI_Controller
             // Notificaciones Admin
             $data['admin_noti'] = $this->admin_crud->get_noti_num_rows();
             $data['pedidos_noti'] = $this->admin_crud->get_pedidos_nuevos();
+            $data['pedidos_noti_acep'] = $this->admin_crud->get_pedidos_aceptados();
+            $data['pedidos_noti_acep_num_rows'] = $this->admin_crud->pedidos_noti_acep_num_rows();
             $data['usuario_noti'] = $this->admin_crud->get_usuarios();
 
             $data['usuarios_nuevo_rows'] = $this->admin_crud->get_usuarios_nuevos_rows();
@@ -262,6 +264,9 @@ class Admin extends CI_Controller
                     $data['paises'] = $this->admin_crud->get_paises();
                     $data['pais_cliente'] = $this->admin_crud->get_paises_clientes();
                     $data['img_err'] = $this->upload->display_errors();    
+                    $data['bancos_admin'] = $this->admin_crud->get_banco_receptor();
+                    $data['bancos_usuarios'] = $this->admin_crud->get_banco_beneficiario( FALSE, $_SESSION['id_cexpress'] );
+                    $data['pedidos'] = $this->admin_crud->get_pedido_cliente( $_SESSION['id_cexpress'] );
                     $this->load->view('header', $data);
                     $this->load->view('forms_admin/pedidos', $data);
                     $this->load->view('footer');
@@ -274,6 +279,7 @@ class Admin extends CI_Controller
                     $pais_receptor = $this->input->post('pais_receptor');
                     $banco_receptor = $this->input->post('cuenta_receptor');
                     $monto_pagado = $this->input->post('monto_pagado');
+                    $diminutivo_receptor = $this->input->post('diminutivo_receptor');
 
                     $pais_beneficiario = $this->input->post('pais_beneficiario');
 
@@ -283,7 +289,7 @@ class Admin extends CI_Controller
                     $banco_1 = $this->input->post('primera_cuenta');
                     $monto_1 = $this->input->post('primer_monto');
 
-                    $consulta = $this->admin_crud->montar_pedido( $id_cliente, $comprobante, $pais_receptor, $banco_receptor, $monto_pagado, $pais_beneficiario, $banco_1, $monto_1, $num_operacion, $monto_operacion );
+                    $consulta = $this->admin_crud->montar_pedido( $id_cliente, $comprobante, $pais_receptor, $banco_receptor, $monto_pagado, $pais_beneficiario, $banco_1, $monto_1, $num_operacion, $monto_operacion, $diminutivo_receptor );
                     
                     $id_pedido = $this->admin_crud->pedido_last_id( $id_cliente );
 
@@ -325,8 +331,14 @@ class Admin extends CI_Controller
 
                             
                         $pais_receptor_mail = $data['banco_receptor']->pais;
-                        $banco_receptor_mail = $data['banco_receptor']->banco;
-                        $diminutivo_receptor_mail = $data['banco_receptor']->diminutivo;
+
+                        if( $banco_receptor == "moneyGram" ):
+                            $banco_receptor_mail = "MoneyGram";
+                        elseif( $banco_receptor == "westernUnion" ):
+                            $banco_receptor_mail = "Western Union";
+                        else:
+                            $banco_receptor_mail = $data['banco_receptor']->banco;
+                        endif;
 
                         $pais_beneficiario_mail = $data['banco_beneficiario']->pais;
                         $banco_beneficiario_mail = $data['banco_beneficiario']->banco;
@@ -465,7 +477,7 @@ class Admin extends CI_Controller
                                         <strong>Fecha: </strong>' . date('d/m/Y') . '<br>
                                         <strong>Nombre del solicitante: </strong>' . $data['cliente']->nombre . ' ' . $data['cliente']->apellido . '<br>
                                         <hr>
-                                        <strong>Su pago fue de: </strong>' . number_format( $monto_pagado, 2 ) . ' ' . $diminutivo_receptor_mail . '<br>
+                                        <strong>Su pago fue de: </strong>' . number_format( $monto_pagado, 2 ) . ' ' . $diminutivo_receptor . '<br>
                                         <strong>Realizado en el banco: </strong>' . $banco_receptor_mail . ' - ' . $pais_receptor_mail . '<br>
                                         <strong>Operación Número: </strong>' . $num_operacion . '<br>
                                         <hr>

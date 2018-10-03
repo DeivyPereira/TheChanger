@@ -55,7 +55,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">
-                                        <small>DNI</small>
+                                        <small>Identificación</small>
                                     </label>
                                     <input type="text" class="custom-input" value="<?= $cuenta['documento']; ?>" name="dni">
                                 </div>
@@ -116,122 +116,230 @@
                             <img src="<?= base_url() . 'assets/img/loader.gif'; ?>" alt="Procesando, por favor espere...">
                         </div>
                     </div>
-                    <form action="<?= base_url() . 'registrar_cuenta_admin'; ?>" id="agregarCuentaNueva" method="post">
-                        <input type="hidden" name="id" value="<?= $_SESSION['id_cexpress']; ?>">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>Alias</small>
-                                    </label>
-                                    <input type="text" class="custom-input" name="alias" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#alias">
-                                    <small class="text-danger" id="alias"></small>
-                                </div>
+                                <h5 class="font-weight-light mb-0">¿Que va a registrar?</h5>
+                            </div>
+                            <div class="col-md-6 text-center mt-2">
+                                <small>Bancos Registrados</small>
+                                <button type="button" class="btn btn-block btn-primary btn-sm active" id="cuentaBancariaBtn">
+                                    Cuenta Bancaria
+                                </button>
+                            </div>
+                            <div class="col-md-6 text-center mt-2">
+                                <small>Envíos de remesas</small>
+                                <button type="button" class="btn btn-block btn-primary btn-sm" id="otrosBtn">
+                                    Otros
+                                </button>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>Cuenta</small>
+                        <div id="cuentaBancariaContent">
+                        <form action="<?= base_url() . 'registrar_cuenta_admin'; ?>" id="agregarCuentaNueva" method="post">
+                            <input type="hidden" name="id" value="<?= $_SESSION['id_cexpress']; ?>">
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>Alias</small>
+                                        </label>
+                                        <input type="text" class="custom-input" name="alias" data-validation="required" data-validation-error-msg="Campo Requerido" data-validation-error-msg-container="#alias">
+                                        <small class="text-danger" id="alias"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>Cuenta</small>
+                                        </label>
+                                        <input type="text" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#cuenta">
+                                        <small class="text-danger" id="cuenta"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>Titular</small>
+                                        </label>
+                                        <input type="text" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#titular">
+                                        <small class="text-danger" id="titular"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>Tipo de cuenta</small>
+                                        </label>
+                                        <input type="text" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#tipo">
+                                        <small class="text-danger" id="tipo"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>Identificación</small>
+                                        </label>
+                                        <input type="text" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#dni">
+                                        <small class="text-danger" id="dni"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>Teléfono</small>
+                                        </label>
+                                        <input type="text" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#telefono">
+                                        <small class="text-danger" id="telefono"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>Email</small>
+                                        </label>
+                                        <input type="text" class="custom-input" name="email" data-validation="required" data-validation-error-msg="Formato de Correo Inválido" data-validation-error-msg-container="#email">
+                                        <small class="text-danger" id="email"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">
+                                            <small>País</small>
+                                        </label>
+                                        <select class="custom-input" id="paisBancoSeleccion" name="pais">
+                                            <option value="false">Selecciona un país</option>
+                                            <?php foreach( $paises as $pais ): ?>
+                                                <option value="<?= $pais['pais']; ?>"><?= $pais['pais']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                    <label>
+                                        <small>Monto Actual <span class="text-danger">Decimales por "."</span></small>
                                     </label>
-                                    <input type="text" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#cuenta">
-                                    <small class="text-danger" id="cuenta"></small>
+                                    <input type="text" class="custom-input" name="monto">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>Banco</small>
+                                        </label>
+                                        <select name="banco" id="bancoSeleccionCrear" class="custom-input">
+                                            <option value="false">Selecciona un banco</option>
+                                        </select>
+                                        <small class="text-danger" id="bancoErr"></small>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>Titular</small>
-                                    </label>
-                                    <input type="text" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#titular">
-                                    <small class="text-danger" id="titular"></small>
+                            <div class="row">
+                                <div class="col-md-12"> 
+                                    <div class="form-group text-right">
+                                        <br>
+                                        <button type="submit" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>Tipo de cuenta</small>
-                                    </label>
-                                    <input type="text" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#tipo">
-                                    <small class="text-danger" id="tipo"></small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>DNI</small>
-                                    </label>
-                                    <input type="text" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#dni">
-                                    <small class="text-danger" id="dni"></small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>Teléfono</small>
-                                    </label>
-                                    <input type="text" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="Solo números" data-validation-error-msg-container="#telefono">
-                                    <small class="text-danger" id="telefono"></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>Email</small>
-                                    </label>
-                                    <input type="text" class="custom-input" name="email" data-validation="required" data-validation-error-msg="Formato de Correo Inválido" data-validation-error-msg-container="#email">
-                                    <small class="text-danger" id="email"></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>País</small>
-                                    </label>
-                                    <select class="custom-input" id="paisBancoSeleccion" name="pais">
-                                        <option value="false">Selecciona un país</option>
-                                        <?php foreach( $paises as $pais ): ?>
-                                            <option value="<?= $pais['pais']; ?>"><?= $pais['pais']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                <label>
-                                    <small>Monto Actual <span class="text-danger">Decimales por "."</span></small>
-                                </label>
-                                <input type="text" class="custom-input" name="monto">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">
-                                        <small>Banco</small>
-                                    </label>
-                                    <select name="banco" id="bancoSeleccionCrear" class="custom-input">
-                                        <option value="false">Selecciona un banco</option>
-                                    </select>
-                                    <small class="text-danger" id="bancoErr"></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12"> 
-                                <div class="form-group text-right">
-                                    <br>
-                                    <button type="submit" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
-                                </div>
-                            </div>
-                        </div>
                         </form>
+                        </div>
+                        <div class="display-none" id="otrosContent">
+                        <form id="otrosForm">
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>Alias</small>
+                                        </label>
+                                        <input type="text" name="alias" class="custom-input"
+                                        data-validation="required"
+                                        data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido"
+                                        data-validation-error-msg-container="#alias2Err">
+                                        <small class="text-danger" id="alias2Err"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>Empresa o Banco</small>
+                                        </label>
+                                        <input type="text" name="banco" class="custom-input">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>Titular</small>
+                                        </label>
+                                        <input type="text" name="titular" class="custom-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>Identificación o Pasaporte</small>
+                                        </label>
+                                        <input type="text" name="dni" class="custom-input">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>País</small>
+                                        </label>
+                                        <select name="pais" class="custom-input" id="">
+                                            <option value="false"></option>
+                                            <?php foreach( $paises as $pais ): ?>
+                                                <option value="<?= $pais['id']; ?>"><?= $pais['pais']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>Tipo</small>
+                                        </label>
+                                        <select name="tipo" class="custom-input">
+                                            <option value="false"></option>
+                                            <option value="remesas">Envíos de Remesas</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>
+                                            <small>Email</small>
+                                        </label>
+                                        <input type="text" name="email" class="custom-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-right">
+                                        <button type="submit" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

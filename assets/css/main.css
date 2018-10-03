@@ -2,6 +2,14 @@
     display: none;
 }
 
+.display-none-imp{
+    display: none!important;
+}
+
+.border-is-danger{
+    border-color: #B33C12!important;
+}
+
 .custom-input{
     display: block; 
     width: 100%; 
@@ -419,4 +427,14 @@
       .hide-small{
           display: none!important;
       }
+
+      .pedidos-cuenta-modal{
+          top: 0;
+          left: 0;
+          width: 100%;
+          transform: none;
+          height: 100vh;
+          overflow: scroll!important;
+      }
+
   }
