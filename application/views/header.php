@@ -42,7 +42,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="<?= base_url(); ?>" class="simple-text">
-                    <img src="assets/img/Logo_dark_2.png" width="65" alt="">
+                    <img src="assets/img/Logotipo.png" width="80" alt="">
                 </a>
             </div>
 

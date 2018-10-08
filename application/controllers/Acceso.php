@@ -296,7 +296,7 @@ class Acceso extends CI_Controller
                     <p>Hola, ' . $nombre_cliente . '</p>
                     <p>
                         <strong>Bienvenido a Cexpress,</strong><br>
-                        Tu usuario actualmente se encuentra inactivo, por lo tanto deberás esperar a la aprobación de un administrador, mientras tanto, te invitamos a usar nuestra calculadora para que planifiques tus cambios con nosotros.<br>
+                        Tu registro en el sistema se ha realizado <strong>exitosamente</strong>, te invitamos a completar el <strong>proceso de verificación de usuario</strong> para que puedas disfrutar de nuestros servicios, además, desde este momento ya puedes comenzar a planificar tus cambios usando nuestra calculadora interna.<br>
                         
                         Aprovechamos para notificarte sobre nuestras reglas:
 

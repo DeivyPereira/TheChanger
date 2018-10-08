@@ -24,7 +24,7 @@
                                 <th class="text-center"><small>Identificación</small></th>
                                 <th class="text-center"><small>Verificación</small></th>
                                 <th class="text-center"><small>Status</small></th>
-                                <th class="text-center"><small>Cambiar Status</small></th>
+                                <th class="text-center"></th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -83,13 +83,6 @@
                                         <?php endif; ?>
                                     </td>
 
-                                    <td class="text-center">
-                                        <?php if( $usuario['status'] == 0 ): ?>
-                                            <a href="<?= base_url() . 'update_user_status?id=' . $usuario['id'] . '&p=' . $this->uri->segment(2); ?>" class="btn btn-sm btn-danger btn-icon btn-fill" style="padding: 5px;">Inactivo</a><br>
-                                        <?php elseif( $usuario['status'] == 1 ): ?>
-                                            <a href="<?= base_url() . 'update_user_status?id=' . $usuario['id'] . '&p=' . $this->uri->segment(2); ?>" class="btn btn-sm btn-success btn-icon btn-fill" style="padding: 5px;">Activo</a><br>
-                                        <?php endif; ?>
-                                    </td>
                                     </form>
 
                                     <td>

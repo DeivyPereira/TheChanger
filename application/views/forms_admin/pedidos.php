@@ -424,10 +424,10 @@
                             <span data-notify="icon" class="ti-info-alt"></span>
                             <span data-notify="message">Verifica que la información suministrada sea correcta</span>
                         </div>
-                        <?php if( $usuario->verificado == 0 ): ?>
+                        <?php if( $usuario->verificado == 0 || $usuario->verificado == 1 ): ?>
                             <small class="text-danger">Debes esperar a que tu usuario sea verificado</small>
                         <?php endif; ?>
-                        <button type="submit" class="btn-block btn btn-primary" <?php if( $usuario->verificado == 0 ): echo "disabled"; endif; ?>>Registra tu pedido</button>             
+                        <button type="submit" class="btn-block btn btn-primary" <?php if( $usuario->verificado == 0 || $usuario->verificado == 1 ): echo "disabled"; endif; ?>>Registra tu pedido</button>             
                     </div>
                 </div>
             </div>

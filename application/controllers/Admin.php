@@ -467,7 +467,9 @@ class Admin extends CI_Controller
                                 <p>Hola, ' . $data['cliente']->nombre . ' ' . $data['cliente']->apellido . '</p>
                                 <p>
                                     <strong>Tu pedido ha sido recibido exitosamente,</strong><br>
-                                    Ya recibimos tu pedido de cambio, en estos momentos nuestros encargados se encuentran verificando tu pago en nuestra cuenta para luego proceder a pagar en tu(s) cuenta(s) registradas lo indicado.<br>
+                                    Ya hemos recibimos tu pedido y en estos momentos nuestros encargados se encuentran verificandolo.<br>
+
+                                    <h3>Resumen</h3>
                                     
                                     <div style="max-width: 300px; border: solid 1px black; border-radius: 5px; padding: 10px; margin: 15px auto; box-shadow: 2px 5px 5px lightgrey;">
                                         <small><small>

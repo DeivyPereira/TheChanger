@@ -1,6 +1,6 @@
 $(document).ready(function(){
             
-    var base_url = 'http://localhost/cexpress/';
+    var base_url = 'http://www.disenoydesarrollo.web.ve/cexpress/';
 
     $('#selectPaisTax').on('change', function(){
         var pais = $('#selectPaisTax').val();

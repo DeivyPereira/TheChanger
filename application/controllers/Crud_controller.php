@@ -243,8 +243,8 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <p>Hola, ' . $data['usuario']->nombre . ' ' . $data['usuario']->apellido . '</p>
                         <p>
-                            <strong>Felicidades! Tu usuario ha sido activado,</strong><br><br>
-                            Tu suscripción ha sido aprobada, ahora puedes comenzar a registrar tus cuentas y a montar tus pedidos.
+                            <strong>Tu usuario ha sido activado,</strong><br><br>
+                            Ahora puedes seguir disfrutando de nuestros servicios.
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
@@ -1327,7 +1327,7 @@ class Crud_controller extends CI_Controller
                         <p>Hola, ' . $data['usuario']->nombre . ' ' . $data['usuario']->apellido . '</p>
                         <p>
                             <strong>Tienes una notificación sobre tu pedido número ' . $id . ',</strong><br>
-                            El status de tu pedido a sido cambiado a <strong>' . $sta . '</strong><br><br>
+                            El status de tu pedido ha sido cambiado a <strong>' . $sta . '</strong><br><br>
                             
                             Se detalla lo siguiente:<br>' . $mensaje . '
 
@@ -1714,8 +1714,8 @@ class Crud_controller extends CI_Controller
                          <hr>
                          <p>Hola, ' . $usuario->nombre . ' ' . $usuario->apellido . '</p>
                          <p>
-                             <strong>Tu usuario ha verificado exitosamente,</strong><br><br>
-                             <p>Ahora podrás realizar tus pedidos en nuestro sistema</p>
+                             <strong>Tu usuario ha sido verificado exitosamente,</strong><br><br>
+                             <p>Ahora podrás realizar tus pedidos en nuestro sistema, bienvenido a Cexpress!</p>
  
                              <div class="text-right">
                                  <strong>Gracias por confiar en nuestros servicios.</strong><br>

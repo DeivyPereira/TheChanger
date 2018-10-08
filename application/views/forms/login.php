@@ -41,7 +41,7 @@
     <div class="form">
         <div class="medio">
             <div class="header-login">
-                <img src="assets/img/Logo_dark_2.png" alt="">
+                <img src="assets/img/Logo_dark_2.png" width="40%" alt="">
             </div>
             <div id="login" class="animated fadeIn">
                 <form action="<?= base_url() . 'login'; ?>" method="post">
