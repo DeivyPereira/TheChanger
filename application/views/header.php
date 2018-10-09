@@ -39,25 +39,25 @@
 <body>
 
     <div class="wrapper">
-    <div class="sidebar off-canvas-sidebar" data-background-color="white" data-active-color="primary">
+    <div class="sidebar off-canvas-sidebar clear-bussiness" style="overflow: hidden" data-background-color="white" data-active-color="primary">
 
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="<?= base_url(); ?>" class="simple-text">
-                    <img src="assets/img/Logotipo.png" width="80" alt="">
+    	<div class="sidebar-wrapper clear-bussiness my-scroll" data-color-choice="principal">
+            <div class="text-center" style="padding: 9px 10px;">
+                <a href="<?= base_url(); ?>">
+                    <img src="assets/img/Logotipo.png" width="140" data-logo-change="principal">
                 </a>
             </div>
 
             <ul class="nav">
-                <li class="<?php if( $titulo == "Tablero"): echo "active"; endif;?>">
-                    <a href="<?= base_url('dashboard'); ?>">
+                <li class="<?php if( $titulo == "Tablero"): echo "active"; endif;?>" style="color: red;">
+                    <a href="<?= base_url('dashboard'); ?>" set-color-text="principal">
                         <i class="ti-dashboard"></i>
                         <p>Tablero</p>
                     </a>
                 </li>
                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == 'Registrar País'): echo 'active'; endif;?>">
-                    <a href="<?= base_url() . 'registrar_pais'; ?>">
+                    <a href="<?= base_url() . 'registrar_pais'; ?>" set-color-text="principal">
                         <i class="ti-map-alt"></i>
                         <p>Paises - Bancos</p>
                     </a>
@@ -65,7 +65,7 @@
                 <?php endif; ?>
                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == "Control de Tasas"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'control_tasas'; ?>">
+                    <a href="<?= base_url() . 'control_tasas'; ?>" set-color-text="principal">
                         <i class="ti-stats-up"></i>
                         <p>Tasas</p>
                     </a>
@@ -73,7 +73,7 @@
                 <?php endif; ?>
                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == "Control de Usuarios"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'control_usuarios'; ?>">
+                    <a href="<?= base_url() . 'control_usuarios'; ?>" set-color-text="principal">
                         <i class="ti-pencil-alt2"></i>
                         <p>Usuarios</p>
                     </a>
@@ -83,7 +83,7 @@
                 <!-- Solo para clientes -->
                 <?php if( $_SESSION['role_cexpress'] == 4 ): ?>
                 <li class="<?php if( $titulo == "Cuentas Bancarias"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'cuentas_bancarias'; ?>">
+                    <a href="<?= base_url() . 'cuentas_bancarias'; ?>" set-color-text="principal">
                         <i class="ti-marker-alt"></i>
                         <p>Cuentas Bancarias</p>
                     </a>
@@ -93,7 +93,7 @@
                 <!-- Solo para Administradores o Managers-->
                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == "Cuentas Bancarias"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'cuentas_bancarias_admin'; ?>">
+                    <a href="<?= base_url() . 'cuentas_bancarias_admin'; ?>" set-color-text="principal">
                         <i class="ti-marker-alt"></i>
                         <p>Cuentas Bancarias</p>
                     </a>
@@ -102,7 +102,7 @@
 
                 <?php if( $_SESSION['role_cexpress'] == 4 ): ?>
                 <li class="<?php if( $titulo == "Control de Pedidos"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'control_pedidos'; ?>">
+                    <a href="<?= base_url() . 'control_pedidos'; ?>" set-color-text="principal">
                         <i class="ti-check-box"></i>
                         <p>Tus pedidos</p>
                     </a>
@@ -110,7 +110,7 @@
                 <?php endif; ?>
                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == "Control de Pedidos"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'control_pedidos_admin'; ?>">
+                    <a href="<?= base_url() . 'control_pedidos_admin'; ?>" set-color-text="principal">
                         <i class="ti-check-box"></i>
                         <p>Gestionar Pedidos</p>
                     </a>
@@ -119,7 +119,7 @@
 
                 <?php if( $_SESSION['role_cexpress'] == 3 ): ?>
                 <li class="<?php if( $titulo == "Control de Pedidos"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'control_pedidos_op'; ?>">
+                    <a href="<?= base_url() . 'control_pedidos_op'; ?>" set-color-text="principal">
                         <i class="ti-check-box"></i>
                         <p>Gestionar Pedidos</p>
                     </a>
@@ -128,20 +128,20 @@
 
                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == "Estados de Cuentas"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'estados_cuentas'; ?>">
+                    <a href="<?= base_url() . 'estados_cuentas'; ?>" set-color-text="principal">
                         <i class="ti-wallet"></i>
                         <p>estados de cuenta</p>
                     </a>
                 </li>
                 <?php endif; ?>
                 <li class="<?php if( $titulo == "Perfil del Usuario"): echo "active"; endif;?>">
-                    <a href="<?= base_url() . 'perfil'; ?>">
+                    <a href="<?= base_url() . 'perfil'; ?>" set-color-text="principal">
                         <i class="ti-user"></i>
                         <p>Perfil</p>
                     </a>
                 </li>
 				<li >
-                    <a href="<?= base_url() . 'logout'; ?>">
+                    <a href="<?= base_url() . 'logout'; ?>" set-color-text="principal">
                         <i class="ti-close"></i>
                         <p>Cerrar Sesión</p>
                     </a>
@@ -288,6 +288,13 @@
             </div>
         </nav>
 
+        <!-- PLantilla para Configuración de colores demo -->
+        <?= $this->load->view('templates/demo_settings'); ?>
+        <!-- Termina plantilla para configuración de colores demo -->
+
+
         <div class="display-none" style="position: fixed; top: 70%; right: 0; background-color: rgba(255,255,255,0.8); padding:15px 20px; z-index:1; border-top-left-radius: 50px; border-bottom-left-radius: 50px;" id="loader">
             <img src="<?= base_url() . 'assets/img/loader.gif'?>" width="80" alt="Cargando Por favor espere...">
         </div>
+
+        <div class="mt-2" data-color-choice="fondo">

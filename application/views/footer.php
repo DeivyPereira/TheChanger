@@ -1,4 +1,5 @@
-<footer class="footer">
+</div>
+<footer class="footer" style="border-top: none">
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
@@ -33,6 +34,9 @@
 
     <!--  Notifications Plugin    -->
     <script src="<?= base_url() . 'assets/js/bootstrap-notify.js'; ?>"></script>
+
+    <!-- Solo para propósito de demostración -->
+    <script src="<?= base_url() . 'assets/js/demo.js'; ?>"></script>
 
     <script src="<?= base_url() . 'assets/js/accounting.js'; ?>"></script>
 

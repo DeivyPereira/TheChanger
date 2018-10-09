@@ -6,8 +6,8 @@
                 <div class="col-md-4">
                     <div class="card-custom">
                         <div class="row shadow-custom" style="border-radius: 25px 5px 25px 5px">
-                            <div class="col-xs-4 text-center purple-cexpress" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
-                                <p class="text-clear">
+                            <div class="col-xs-4 text-center clear-bussiness" data-color-choice="principal" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
+                                <p class="texto-oscuro" set-color-text="principal">
                                     <i class="ti-money"></i>
                                 </p>
                             </div>
@@ -27,8 +27,8 @@
             <a href="<?= base_url() . 'cuentas_bancarias'; ?>"><div class="col-md-4 hoverable">
                 <div class="card-custom">
                     <div class="row shadow-custom" style="border-radius: 25px 5px 25px 5px">
-                        <div class="col-xs-4 text-center purple-cexpress" style="position: relative; border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
-                            <p class="text-clear">
+                        <div class="col-xs-4 text-center clear-bussiness" data-color-choice="principal" style="position: relative; border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
+                            <p class="texto-oscuro" set-color-text="principal">
                                 <i class="ti-marker-alt"></i>
                             </p>
                         </div>
@@ -43,8 +43,8 @@
             <a href="<?= base_url() . 'control_pedidos'; ?>"><div class="col-md-4 hoverable">
                 <div class="card-custom">
                     <div class="row shadow-custom" style="border-radius: 25px 5px 25px 5px">
-                        <div class="col-xs-4 text-center purple-cexpress" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
-                            <p class="text-clear">
+                        <div class="col-xs-4 text-center clear-bussiness" data-color-choice="principal" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
+                            <p class="texto-oscuro" set-color-text="principal">
                                 <i class="ti-check-box"></i>
                             </p>
                         </div>
@@ -62,8 +62,8 @@
             <div class="col-md-3">
                 <div class="card-custom">
                     <div class="row shadow-custom" style="border-radius: 25px 5px 25px 5px">
-                        <div class="col-xs-4 text-center purple-cexpress" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
-                            <p class="text-clear">
+                        <div class="col-xs-4 text-center clear-bussiness" data-color-choice="principal" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
+                            <p class="texto-oscuro" set-color-text="principal">
                                 <i class="ti-money"></i>
                             </p>
                         </div>
@@ -83,8 +83,8 @@
             <a href="<?= base_url() . 'cuentas_bancarias_admin'; ?>"><div class="col-md-3 hoverable">
                 <div class="card-custom">
                     <div class="row shadow-custom" style="border-radius: 25px 5px 25px 5px">
-                        <div class="col-xs-4 text-center purple-cexpress" style="position: relative; border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
-                            <p class="text-clear">
+                        <div class="col-xs-4 text-center clear-bussiness" data-color-choice="principal" style="position: relative; border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
+                            <p class="texto-oscuro" set-color-text="principal">
                                 <i class="ti-marker-alt"></i>
                             </p>
                         </div>
@@ -99,8 +99,8 @@
             <a href="<?= base_url() . 'control_pedidos_admin'; ?>"><div class="col-md-3 hoverable">
                 <div class="card-custom">
                     <div class="row shadow-custom" style="border-radius: 25px 5px 25px 5px">
-                        <div class="col-xs-4 text-center purple-cexpress" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
-                            <p class="text-clear">
+                        <div class="col-xs-4 text-center clear-bussiness" data-color-choice="principal" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
+                            <p class="texto-oscuro" set-color-text="principal">
                                 <i class="ti-check-box"></i>
                             </p>
                         </div>
@@ -115,13 +115,13 @@
             <a href="<?= base_url() . 'estados_cuentas'; ?>"><div class="col-md-3 hoverable">
                 <div class="card-custom">
                     <div class="row shadow-custom" style="border-radius: 25px 5px 25px 5px">
-                        <div class="col-xs-4 text-center purple-cexpress" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
-                            <p class="text-clear">
+                        <div class="col-xs-4 text-center clear-bussiness" data-color-choice="principal" style="border-top-left-radius: 25px; border-bottom-left-radius: 5px;">
+                            <p class="texto-oscuro" set-color-text="principal">
                                 <i class="ti-wallet"></i>
                             </p>
                         </div>
                         <div class="col-xs-8 bg-lighter text-center text-dark" style="border-top-right-radius: 5px; border-bottom-right-radius: 25px;">
-                            <p class="text-dark">
+                            <p class="texto-oscuro">
                                 Verifica tus cuentas
                             </p>
                         </div>
@@ -162,27 +162,27 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            Las transferencias serán procesadas de acuerdo al volumen de solicitudes, el cual no será mayor a 2 horas si todo lo que nos suministro esta correcto.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nam inventore perferendis nesciunt voluptate dolore.
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Las transferencias enviadas a Banesco serán acreditadas el mismo día dependiendo siempre de la operatividad del Banco.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nam inventore perferendis nesciunt voluptate dolore.
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Las transferencias enviadas a otros Bancos diferentes a Banesco, serán acreditadas al siguiente día hábil, después de las 2 pm o incluso en muchos casos a las 6 pm. Sea paciente.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nam inventore perferendis nesciunt voluptate dolore.
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Le recordamos que este es un servicio privado y confidencial si usted disfruta del mismo es porque ha sido un cliente confiable, sigamos así.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nam inventore perferendis nesciunt voluptate dolore.
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nam inventore perferendis nesciunt voluptate dolore.
                                         </td>
                                     </tr>
                                     <tr>
@@ -235,8 +235,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="my-2">
-                            <div class="content">
+                            <div class="content bg-success">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">

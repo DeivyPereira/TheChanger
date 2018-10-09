@@ -1,70 +1,127 @@
-@media (min-width: 992px){
-    .typo-line{
-        padding-left: 140px;
-        margin-bottom: 40px;
-        position: relative;
-    }
-
-    .typo-line .category{
-        transform: translateY(-50%);
-        top: 50%;
-        left: 0px;
-        position: absolute;
-    }
+.settings-box{
+    position: fixed; 
+    top: 25%; 
+    right: -20.5%; 
+    z-index: 100000; 
+    width: 20%;
+    transition: ease 0.5s;
 }
 
-.icon-section {
-	margin: 0 0 3em;
-	clear: both;
-	overflow: hidden;
-}
-.icon-container {
-	width: 240px;
-	padding: .7em 0;
-	float: left;
-	position: relative;
-	text-align: left;
-}
-.icon-container [class^="ti-"],
-.icon-container [class*=" ti-"] {
-	color: #000;
-	position: absolute;
-	margin-top: 3px;
-	transition: .3s;
-}
-.icon-container:hover [class^="ti-"],
-.icon-container:hover [class*=" ti-"] {
-	font-size: 2.2em;
-	margin-top: -5px;
-}
-.icon-container:hover .icon-name {
-	color: #000;
-}
-.icon-name {
-	color: #aaa;
-	margin-left: 35px;
-	font-size: .8em;
-	transition: .3s;
-}
-.icon-container:hover .icon-name {
-	margin-left: 45px;
+.texto-oscuro{
+    color: #666;
 }
 
-.places-buttons .btn{
-    margin-bottom: 30px
-}
-.sidebar .nav > li.active-pro{
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-}
-.sidebar .nav > li.active-pro a{
-    background: rgba(255, 255, 255, 0.14);
-    opacity: 1;
-    color: #FFFFFF;
+.show-settings-box{
+    right: 0!important;
 }
 
-.table-upgrade td:nth-child(2),
-.table-upgrade td:nth-child(3){
-    text-align: center;
+.open-settings-btn{
+    position: absolute; 
+    left: -30%; 
+    width: 30%; 
+    z-index: 1000;
+    padding: 10px 0; 
+    border: 0; 
+    color: #FFF;
+    background-color: rgba(40,40,40,0.7); 
+    border-top-left-radius: 50px; 
+    border-bottom-left-radius: 50px;
+}
+
+.settings-content-div{
+    position: absolute; 
+    width: 100%; 
+    background-color: #FFF; 
+    padding: 30px 0; 
+    box-shadow: 0 0 5px lightgrey;
+    border-bottom-left-radius: 50px;
+}
+
+.open-settings-icon{
+    font-size: 40px;
+}
+
+.settings-content{
+    padding: 0 20px;
+}
+
+.settings-separator{
+    margin: 5px 0;
+}
+
+.color-button{
+    border-radius: 50px;
+    width: 30px; 
+    height: 30px; 
+    border: solid 3px #FFF;
+    transition: ease 0.3s;
+
+}
+
+.color-button:hover{
+    border: solid 3px #76dbd1;
+}
+
+.activo{
+    border: solid 3px #76dbd1;
+}
+
+.blue-bussiness{
+    background: #06beb6;
+    background: linear-gradient( to right, #06beb6, #48b1bf );
+    background: -webkit-linear-gradient( to right, #06beb6, #48b1bf );
+}
+
+.purple-bussiness{
+    background: #2F0743;
+    background: -webkit-linear-gradient(to right, #2F0743, #41295a);
+    background: linear-gradient(to right, #2F0743, #41295a);
+}
+
+.yellow-bussiness{
+    background: #F2C94C;
+    background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);
+    background: linear-gradient(to right, #F2C94C, #F2994A);
+}
+
+.clear-bussiness{
+    background: #FFF;
+    background: -webkit-linear-gradient(to right, #FFF, #EEE);
+    background: linear-gradient(to right, #FFF, #EEE);
+}
+
+.grey-bussiness{
+    background: #232526;
+    background: -webkit-linear-gradient(to right, #232526, #414345);
+    background: linear-gradient(to right, #232526, #414345);
+}
+
+.red-bussiness{
+    background: #e43a15;
+    background: -webkit-linear-gradient(to right, #e43a15, #e65245);
+    background: linear-gradient(to right, #e43a15, #e65245);
+}
+
+.dark-background{
+    background-color: #343434;
+}
+
+.clear-background{
+    background-color: #EEE;
+}
+
+.bone-background{
+    background-color: #efedbb;
+}
+
+.animado{
+    animation: 2s rotate360 infinite linear;
+}
+
+@keyframes rotate360{
+   to{ transform: rotate(180deg); }
+}
+
+.to-upper{
+    text-transform: uppercase;
 }
