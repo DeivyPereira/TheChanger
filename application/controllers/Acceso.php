@@ -242,7 +242,7 @@ class Acceso extends CI_Controller
             $nombre_cliente = $nombre . " " . $apellido;
             // Enviar Correo de Bienvenida
             $to = $email;
-            $subject = 'Cexpress - Bienvenido a Cexpress';
+            $subject = nombredeweb. ' - Bienvenido a '. nombredeweb;
             $message = '
             <!doctype html>
             <html lang="en">
@@ -295,7 +295,7 @@ class Acceso extends CI_Controller
                     <hr>
                     <p>Hola, ' . $nombre_cliente . '</p>
                     <p>
-                        <strong>Bienvenido a Cexpress,</strong><br>
+                        <strong>Bienvenido a '. nombredeweb .',</strong><br>
                         Tu registro en el sistema se ha realizado <strong>exitosamente</strong>, te invitamos a completar el <strong>proceso de verificación de usuario</strong> para que puedas disfrutar de nuestros servicios, además, desde este momento ya puedes comenzar a planificar tus cambios usando nuestra calculadora interna.<br>
                         
                         Aprovechamos para notificarte sobre nuestras reglas:
@@ -325,7 +325,7 @@ class Acceso extends CI_Controller
                     <hr>
                     <div class="text-center">
                         <small>
-                            <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                            <small class="text-muted d-block">2018&copy; '. nombredeweb .'</small>
                             <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                             <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                         </small>
@@ -335,7 +335,7 @@ class Acceso extends CI_Controller
               </body>
             </html>
             ';
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb  . "\r\n" .
 			            'MIME-Version: 1.0' . "\r\n" .
 			            'Content-type: text/html; charset=UTF-8' . "\r\n" .
 			            'Reply-To: notReply' . "\r\n" .
@@ -414,7 +414,7 @@ class Acceso extends CI_Controller
             $email = $this->input->post('email');
 
             $to = $email;
-            $subject = 'Cexpress - Has solicitado un cambio de clave';
+            $subject =  nombredeweb .' - Has solicitado un cambio de clave';
             $message = '
             <!doctype html>
             <html lang="en">
@@ -480,7 +480,7 @@ class Acceso extends CI_Controller
                     <hr>
                     <div class="text-center">
                         <small>
-                            <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                            <small class="text-muted d-block">2018&copy; '. nombredeweb .'</small>
                             <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                             <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                         </small>
@@ -490,7 +490,7 @@ class Acceso extends CI_Controller
               </body>
             </html>
             ';
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb  . "\r\n" .
 			            'MIME-Version: 1.0' . "\r\n" .
 			            'Content-type: text/html; charset=UTF-8' . "\r\n" .
 			            'Reply-To: notReply' . "\r\n" .

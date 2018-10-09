@@ -139,7 +139,7 @@
                         <div class="card shadow-custom">
                             <div class="rounded-top">
                                 <div class="header">
-                                    <h4 class="title">Bienvenido a Cexpress</h4>
+                                    <h4 class="title">Bienvenido a <?php echo nombreweb;  ?></h4>
                                 </div>
                                 <hr class="my-2">
                                 <div class="content">

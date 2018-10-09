@@ -64,7 +64,7 @@
                 </form>   
                 <div class="footer-login">
                     <small><a href="<?= base_url('login'); ?>">¿Ya tienes cuenta?</a></small>&nbsp;|&nbsp;
-                    <small><a href="<?= base_url('suscripcion'); ?>">¿Eres nuevo en Cexpress?</a></small>
+                    <small><a href="<?= base_url('suscripcion'); ?>">¿Eres nuevo en <?php echo nombreweb;  ?>?</a></small>
                 </div>
             </div>
         </div>

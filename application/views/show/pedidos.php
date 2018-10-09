@@ -126,7 +126,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>
-                                        <small>¿Désde qué Cuenta de Cexpress en Venezuela realizaste los pagos?</small>
+                                        <small>¿Désde qué Cuenta de <?php echo nombreweb;  ?> en Venezuela realizaste los pagos?</small>
                                     </label>
                                     <select name="banco_venezuela" class="custom-input">
                                         <option value="false"></option>

@@ -79,7 +79,7 @@
                 <?= form_close(); ?>
                 <div class="footer-login">
                     <small><a href="<?= base_url('asistente_password'); ?>">¿Olvidaste tu contraseña?</a></small>&nbsp;|&nbsp;
-                    <small><a href="<?= base_url('suscripcion'); ?>">¿Eres nuevo en Cexpress?</a></small>
+                    <small><a href="<?= base_url('suscripcion'); ?>">¿Eres nuevo en <?php echo nombreweb;  ?>?</a></small>
                 </div>
             </div>
         </div>

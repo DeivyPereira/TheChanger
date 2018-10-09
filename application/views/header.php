@@ -32,7 +32,9 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="<?= base_url() . 'assets/css/themify-icons.css'; ?>" rel="stylesheet">
-
+<script>
+    var baseurl = '<?= base_url(); ?>';
+</script>
 </head>
 <body>
 
@@ -138,7 +140,7 @@
                         <p>Perfil</p>
                     </a>
                 </li>
-				<li class="active-pro">
+				<li >
                     <a href="<?= base_url() . 'logout'; ?>">
                         <i class="ti-close"></i>
                         <p>Cerrar Sesión</p>

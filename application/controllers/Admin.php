@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
 
-    const base_url = 'http://localhost/cexpress';
+    //const base_url = 'http://localhost/thechanger';
 
     public function __construct()
     {
@@ -413,7 +413,7 @@ class Admin extends CI_Controller
 
                         // Enviar Correo Informativo
                         $to = $data['cliente']->email;
-                        $subject = 'Cexpress - Tu pedido ha sido recibido exitosamente';
+                        $subject =  nombredeweb .' - Tu pedido ha sido recibido exitosamente';
                         $message = '
                         <!doctype html>
                         <html lang="en">
@@ -521,7 +521,7 @@ class Admin extends CI_Controller
                                 <hr>
                                 <div class="text-center">
                                     <small>
-                                        <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                        <small class="text-muted d-block">2018&copy; '. nombredeweb .'</small>
                                         <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                         <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                                     </small>
@@ -531,7 +531,7 @@ class Admin extends CI_Controller
                         </body>
                         </html>
                         ';
-                        $headers =  'From: Cexpress' . "\r\n" .
+                        $headers =  'From: '. nombredeweb .'' . "\r\n" .
                                     'MIME-Version: 1.0' . "\r\n" .
                                     'Content-type: text/html; charset=UTF-8' . "\r\n" .
                                     'Reply-To: notReply' . "\r\n" .

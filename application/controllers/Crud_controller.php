@@ -190,7 +190,7 @@ class Crud_controller extends CI_Controller
             $to = $data['usuario']->email;
 
             if( $data['usuario']->status == 1 ):
-                $subject = 'Cexpress - Su cuenta ha sido activada';
+                $subject = nombredeweb .' - Su cuenta ha sido activada';
                 $message = '
                 <!doctype html>
                 <html lang="en">
@@ -254,7 +254,7 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <div class="text-center">
                             <small>
-                                <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                <small class="text-muted d-block">2018&copy; '. nombredeweb .' </small>
                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
@@ -266,7 +266,7 @@ class Crud_controller extends CI_Controller
                 ';
 
             elseif( $data['usuario']->status == 0 ):
-                $subject = 'Cexpress - Su cuenta ha sido bloqueada';
+                $subject =  nombredeweb .' - Su cuenta ha sido bloqueada';
                 $message = '
                 <!doctype html>
                 <html lang="en">
@@ -330,7 +330,7 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <div class="text-center">
                             <small>
-                                <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                <small class="text-muted d-block">2018&copy; '. nombredeweb .'</small>
                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
@@ -344,7 +344,7 @@ class Crud_controller extends CI_Controller
             endif;
 
 
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb  . "\r\n" .
 			            'MIME-Version: 1.0' . "\r\n" .
 			            'Content-type: text/html; charset=UTF-8' . "\r\n" .
 			            'Reply-To: notReply' . "\r\n" .
@@ -377,7 +377,7 @@ class Crud_controller extends CI_Controller
             $to = $data['usuario']->email;
 
             if( $data['usuario']->status == 1 ):
-                $subject = 'Cexpress - Su cuenta ha sido activada';
+                $subject = ''. nombredeweb .' - Su cuenta ha sido activada';
                 $message = '
                 <!doctype html>
                 <html lang="en">
@@ -441,7 +441,7 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <div class="text-center">
                             <small>
-                                <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
@@ -453,7 +453,7 @@ class Crud_controller extends CI_Controller
                 ';
 
             elseif( $data['usuario']->status == 0 ):
-                $subject = 'Cexpress - Su cuenta ha sido bloqueada';
+                $subject = nombredeweb .' - Su cuenta ha sido bloqueada';
                 $message = '
                 <!doctype html>
                 <html lang="en">
@@ -517,7 +517,7 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <div class="text-center">
                             <small>
-                                <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
@@ -531,7 +531,7 @@ class Crud_controller extends CI_Controller
             endif;
 
 
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb .'' . "\r\n" .
 			            'MIME-Version: 1.0' . "\r\n" .
 			            'Content-type: text/html; charset=UTF-8' . "\r\n" .
 			            'Reply-To: notReply' . "\r\n" .
@@ -562,7 +562,7 @@ class Crud_controller extends CI_Controller
             $to = $data['usuario']->email;
 
             if( $data['usuario']->status == 1 ):
-                $subject = 'Cexpress - Su cuenta ha sido activada';
+                $subject = ''. nombredeweb .' - Su cuenta ha sido activada';
                 $message = '
                 <!doctype html>
                 <html lang="en">
@@ -626,7 +626,7 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <div class="text-center">
                             <small>
-                                <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
@@ -638,7 +638,7 @@ class Crud_controller extends CI_Controller
                 ';
 
             elseif( $data['usuario']->status == 0 ):
-                $subject = 'Cexpress - Su cuenta ha sido bloqueada';
+                $subject = ''. nombredeweb .' - Su cuenta ha sido bloqueada';
                 $message = '
                 <!doctype html>
                 <html lang="en">
@@ -702,7 +702,7 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <div class="text-center">
                             <small>
-                                <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
@@ -716,7 +716,7 @@ class Crud_controller extends CI_Controller
             endif;
 
 
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb .'' . "\r\n" .
 			            'MIME-Version: 1.0' . "\r\n" .
 			            'Content-type: text/html; charset=UTF-8' . "\r\n" .
 			            'Reply-To: notReply' . "\r\n" .
@@ -747,7 +747,7 @@ class Crud_controller extends CI_Controller
              $to = $data['usuario']->email;
  
              if( $data['usuario']->status == 1 ):
-                 $subject = 'Cexpress - Su cuenta ha sido activada';
+                 $subject = nombredeweb .' - Su cuenta ha sido activada';
                  $message = '
                  <!doctype html>
                  <html lang="en">
@@ -811,7 +811,7 @@ class Crud_controller extends CI_Controller
                          <hr>
                          <div class="text-center">
                              <small>
-                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                  <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
@@ -823,7 +823,7 @@ class Crud_controller extends CI_Controller
                  ';
  
              elseif( $data['usuario']->status == 0 ):
-                 $subject = 'Cexpress - Su cuenta ha sido bloqueada';
+                 $subject = ''. nombredeweb .' - Su cuenta ha sido bloqueada';
                  $message = '
                  <!doctype html>
                  <html lang="en">
@@ -887,7 +887,7 @@ class Crud_controller extends CI_Controller
                          <hr>
                          <div class="text-center">
                              <small>
-                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                  <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
@@ -901,7 +901,7 @@ class Crud_controller extends CI_Controller
              endif;
  
  
-             $headers =  'From: Cexpress' . "\r\n" .
+             $headers =  'From: '. nombredeweb .'' . "\r\n" .
                          'MIME-Version: 1.0' . "\r\n" .
                          'Content-type: text/html; charset=UTF-8' . "\r\n" .
                          'Reply-To: notReply' . "\r\n" .
@@ -1203,7 +1203,7 @@ class Crud_controller extends CI_Controller
     {
         $pais = $this->input->get('a');
 
-        $consulta = $this->admin_crud->buscar_banco_cliente( $_SESSION['id_cexpress'], $pais );
+        $consulta = $this->admin_crud->buscar_banco_cliente( $_SESSION['id_'. nombredeweb .''], $pais );
 
         if( $consulta ):
             print_r(json_encode($consulta));
@@ -1266,14 +1266,14 @@ class Crud_controller extends CI_Controller
             endif;
 
                 // Notificamos al usuario
-                $headers =  'From: Cexpress' . "\r\n" .
+                $headers =  'From: '. nombredeweb .'' . "\r\n" .
                             'MIME-Version: 1.0' . "\r\n" .
                             'Content-type: text/html; charset=UTF-8' . "\r\n" .
                             'Reply-To: notReply' . "\r\n" .
                             'X-Mailer: PHP/'. "\r\n";
 
                 $to = $data['usuario']->email;
-                $subject = 'Cexpress - Actualización sobre tu pedido ' . $id;
+                $subject =  nombredeweb .' - Actualización sobre tu pedido ' . $id;
                 $message = '
                 <!doctype html>
                 <html lang="en">
@@ -1339,7 +1339,7 @@ class Crud_controller extends CI_Controller
                         <hr>
                         <div class="text-center">
                             <small>
-                                <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
@@ -1367,7 +1367,7 @@ class Crud_controller extends CI_Controller
                 endforeach;
                 
                 $to = $cuenta_princ_email;
-                    $subject = 'Cexpress - Se ha enviado un pago a tu cuenta';
+                    $subject = ''. nombredeweb .' - Se ha enviado un pago a tu cuenta';
                     $message = '
                     <!doctype html>
                     <html lang="en">
@@ -1430,7 +1430,7 @@ class Crud_controller extends CI_Controller
                             <hr>
                             <div class="text-center">
                                 <small>
-                                    <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                    <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                     <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                     <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                                 </small>
@@ -1458,7 +1458,7 @@ class Crud_controller extends CI_Controller
                     endforeach;
 
                     $to = $cuenta_email;
-                    $subject = 'Cexpress - Se ha enviado un pago a tu cuenta';
+                    $subject = ''. nombredeweb .' - Se ha enviado un pago a tu cuenta';
                     $message = '
                     <!doctype html>
                     <html lang="en">
@@ -1521,7 +1521,7 @@ class Crud_controller extends CI_Controller
                             <hr>
                             <div class="text-center">
                                 <small>
-                                    <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                    <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                     <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                     <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                                 </small>
@@ -1629,11 +1629,11 @@ class Crud_controller extends CI_Controller
                 $data['usuarios_nuevos'] = $this->admin_crud->get_usuarios_nuevos();
 
                 // Notificaciones Usuario
-                $data['usuario_noti_usuario'] = $this->admin_crud->get_noti_num_rows_usuario( $_SESSION['id_cexpress'] );
-                $data['pedidos_noti_usuario'] = $this->admin_crud->get_pedidos_noti_usuario( $_SESSION['id_cexpress'] );
+                $data['usuario_noti_usuario'] = $this->admin_crud->get_noti_num_rows_usuario( $_SESSION['id_'. nombredeweb .''] );
+                $data['pedidos_noti_usuario'] = $this->admin_crud->get_pedidos_noti_usuario( $_SESSION['id_'. nombredeweb .''] );
 
                 $data['error'] = $this->upload->display_errors('<small class="text-danger">', '</small>');
-                $id = $_SESSION['id_cexpress'];
+                $id = $_SESSION['id_'. nombredeweb .''];
                 $data['msg'] = '';
                 $data['usuarios'] = $this->admin_crud->get_usuario($id, FALSE);
                 $data['titulo'] = "Perfil del Usuario";
@@ -1645,7 +1645,7 @@ class Crud_controller extends CI_Controller
         else
         {
             $documento = $this->upload->data('file_name');
-            $this->admin_crud->verificar( $_SESSION['id_cexpress'], $documento );
+            $this->admin_crud->verificar( $_SESSION['id_'. nombredeweb .''], $documento );
             redirect('perfil?msg=1');
         }
     }
@@ -1658,10 +1658,10 @@ class Crud_controller extends CI_Controller
         $consulta = $this->admin_crud->verificacion( $id, $verificacion );
         
         if( $consulta ):
-            $this->session->set_userdata( array( 'verificacion_cexpress' => 2 ) );
+            $this->session->set_userdata( array( 'verificacion_'. nombredeweb .'' => 2 ) );
             $usuario = $this->admin_crud->get_usuario( $id, FALSE );
             $to = $usuario->email;
-            $subject = 'Cexpress - Tu usuario ha sido verificado';
+            $subject = nombredeweb .' - Tu usuario ha sido verificado';
             $message = '
                  <!doctype html>
                  <html lang="en">
@@ -1715,7 +1715,7 @@ class Crud_controller extends CI_Controller
                          <p>Hola, ' . $usuario->nombre . ' ' . $usuario->apellido . '</p>
                          <p>
                              <strong>Tu usuario ha sido verificado exitosamente,</strong><br><br>
-                             <p>Ahora podrás realizar tus pedidos en nuestro sistema, bienvenido a Cexpress!</p>
+                             <p>Ahora podrás realizar tus pedidos en nuestro sistema, bienvenido a '. nombredeweb .'!</p>
  
                              <div class="text-right">
                                  <strong>Gracias por confiar en nuestros servicios.</strong><br>
@@ -1725,7 +1725,7 @@ class Crud_controller extends CI_Controller
                          <hr>
                          <div class="text-center">
                              <small>
-                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                  <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
@@ -1736,7 +1736,7 @@ class Crud_controller extends CI_Controller
                  </html>
                  '; 
  
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb .'' . "\r\n" .
                          'MIME-Version: 1.0' . "\r\n" .
                          'Content-type: text/html; charset=UTF-8' . "\r\n" .
                          'Reply-To: notReply' . "\r\n" .
@@ -1757,10 +1757,10 @@ class Crud_controller extends CI_Controller
         $consulta = $this->admin_crud->verificacion( $id, 0 );
         
         if( $consulta ):
-            $this->session->set_userdata( array( 'verificacion_cexpress' => 0 ) );
+            $this->session->set_userdata( array( 'verificacion_'. nombredeweb .'' => 0 ) );
             $usuario = $this->admin_crud->get_usuario( $id, FALSE );
             $to = $usuario->email;
-            $subject = 'Cexpress - Verificación rechazada';
+            $subject = ''. nombredeweb .' - Verificación rechazada';
             $message = '
                  <!doctype html>
                  <html lang="en">
@@ -1824,7 +1824,7 @@ class Crud_controller extends CI_Controller
                          <hr>
                          <div class="text-center">
                              <small>
-                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                  <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
@@ -1835,7 +1835,7 @@ class Crud_controller extends CI_Controller
                  </html>
                  '; 
  
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb. "\r\n" .
                          'MIME-Version: 1.0' . "\r\n" .
                          'Content-type: text/html; charset=UTF-8' . "\r\n" .
                          'Reply-To: notReply' . "\r\n" .
@@ -1870,7 +1870,7 @@ class Crud_controller extends CI_Controller
         $consulta = $this->admin_crud->registrar_cuenta( $id, $alias, $cuenta, $titular, $tipo, $dni, $telefono, $email, $banco, $pais );
 
         if( $consulta ):
-            $recupera = $this->admin_crud->ultima_cuenta_usuario( $_SESSION['id_cexpress']);
+            $recupera = $this->admin_crud->ultima_cuenta_usuario( $_SESSION['id_'. nombredeweb .'']);
             $result = array( 
                         'status'    => "OK", 
                         'id_cuenta' => $recupera->id,
@@ -1886,7 +1886,7 @@ class Crud_controller extends CI_Controller
 
     public function get_usuarios_cuenta()
     {
-        $consulta = $this->admin_crud->get_cuentas( $_SESSION['id_cexpress'] );
+        $consulta = $this->admin_crud->get_cuentas( $_SESSION['id_'. nombredeweb .''] );
 
         if( $consulta ):
             print_r(json_encode($consulta));
@@ -1904,7 +1904,7 @@ class Crud_controller extends CI_Controller
             // Informa al Cliente sobre el rechazo
             $mensaje = $this->input->post('mensaje');
             $to = $data['usuario']->email;
-            $subject = 'Cexpress - Su pedido ha sido rechazado';
+            $subject = ''. nombredeweb .' - Su pedido ha sido rechazado';
             $message = '
                  <!doctype html>
                  <html lang="en">
@@ -1968,7 +1968,7 @@ class Crud_controller extends CI_Controller
                          <hr>
                          <div class="text-center">
                              <small>
-                                 <small class="text-muted d-block">2018&copy; Cexpress Venezuela</small>
+                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
                                  <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
@@ -1978,7 +1978,7 @@ class Crud_controller extends CI_Controller
                  </body>
                  </html>
                  '; 
-            $headers =  'From: Cexpress' . "\r\n" .
+            $headers =  'From: '. nombredeweb .'' . "\r\n" .
             'MIME-Version: 1.0' . "\r\n" .
             'Content-type: text/html; charset=UTF-8' . "\r\n" .
             'Reply-To: notReply' . "\r\n" .

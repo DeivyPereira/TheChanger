@@ -192,7 +192,7 @@
                             <small>
                                 <i class="ti-info-alt text-info" style="font-size: 25px;"></i><br>
                                 <strong>Puedes solicitar tu pago en una o varias cuentas</strong><br>
-                                Cexpress te permite seleccionar hasta cinco de tus cuentas donde podrás recibir el pago de manera fraccionada. <br>
+                                <?php echo nombreweb;  ?> te permite seleccionar hasta cinco de tus cuentas donde podrás recibir el pago de manera fraccionada. <br>
                                 <strong class="text-success">(usa "." para decimales)</strong>
                             </small>
                         </label>
@@ -559,7 +559,7 @@
                     <div class="col-md-3 text-center">
                         <i class="ti-clipboard text-purple" style="font-size: 50px;"></i>
                         <h5>Completa el formulario</h5>
-                        <small><strong>Una vez realizado el pago</strong> procede a completar el formulario de pedido en su totalidad.<br><br> <strong>Cexpress te permite fraccionar tu pago entre 5 cuentas distintas.</strong></small>
+                        <small><strong>Una vez realizado el pago</strong> procede a completar el formulario de pedido en su totalidad.<br><br> <strong><?php echo nombreweb;  ?> te permite fraccionar tu pago entre 5 cuentas distintas.</strong></small>
                     </div>
                     <div class="col-md-3 text-center">
                         <i class="ti-rocket text-purple" style="font-size: 50px;"></i>
