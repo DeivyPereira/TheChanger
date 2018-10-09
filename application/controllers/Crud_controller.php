@@ -248,14 +248,14 @@ class Crud_controller extends CI_Controller
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                <strong>CEO Maybet Ordonez</strong>
+                                <strong>CEO Sistema Remesas</strong>
                             </div>
                         </p>
                         <hr>
                         <div class="text-center">
                             <small>
                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' </small>
-                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
                         </div>
@@ -324,14 +324,14 @@ class Crud_controller extends CI_Controller
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                <strong>CEO Maybet Ordonez</strong>
+                                <strong>CEO Sistema Remesas</strong>
                             </div>
                         </p>
                         <hr>
                         <div class="text-center">
                             <small>
                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .'</small>
-                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
                         </div>
@@ -435,14 +435,14 @@ class Crud_controller extends CI_Controller
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                <strong>CEO Maybet Ordonez</strong>
+                                <strong>CEO Sistema Remesas</strong>
                             </div>
                         </p>
                         <hr>
                         <div class="text-center">
                             <small>
                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
                         </div>
@@ -511,14 +511,14 @@ class Crud_controller extends CI_Controller
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                <strong>CEO Maybet Ordonez</strong>
+                                <strong>CEO Sistema Remesas</strong>
                             </div>
                         </p>
                         <hr>
                         <div class="text-center">
                             <small>
                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
                         </div>
@@ -620,14 +620,14 @@ class Crud_controller extends CI_Controller
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                <strong>CEO Maybet Ordonez</strong>
+                                <strong>CEO Sistema Remesas</strong>
                             </div>
                         </p>
                         <hr>
                         <div class="text-center">
                             <small>
                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
                         </div>
@@ -696,14 +696,14 @@ class Crud_controller extends CI_Controller
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                <strong>CEO Maybet Ordonez</strong>
+                                <strong>CEO Sistema Remesas</strong>
                             </div>
                         </p>
                         <hr>
                         <div class="text-center">
                             <small>
                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
                         </div>
@@ -805,14 +805,14 @@ class Crud_controller extends CI_Controller
  
                              <div class="text-right">
                                  <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                 <strong>CEO Maybet Ordonez</strong>
+                                 <strong>CEO Sistema Remesas</strong>
                              </div>
                          </p>
                          <hr>
                          <div class="text-center">
                              <small>
                                  <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
                          </div>
@@ -881,14 +881,14 @@ class Crud_controller extends CI_Controller
  
                              <div class="text-right">
                                  <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                 <strong>CEO Maybet Ordonez</strong>
+                                 <strong>CEO Sistema Remesas</strong>
                              </div>
                          </p>
                          <hr>
                          <div class="text-center">
                              <small>
                                  <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
                          </div>
@@ -1333,14 +1333,14 @@ class Crud_controller extends CI_Controller
 
                             <div class="text-right">
                                 <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                <strong>CEO Maybet Ordonez</strong>
+                                <strong>CEO Sistema Remesas</strong>
                             </div>
                         </p>
                         <hr>
                         <div class="text-center">
                             <small>
                                 <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                 <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                             </small>
                         </div>
@@ -1424,14 +1424,14 @@ class Crud_controller extends CI_Controller
 
                                 <div class="text-right">
                                     <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                    <strong>CEO Maybet Ordonez</strong>
+                                    <strong>CEO Sistema Remesas</strong>
                                 </div>
                             </p>
                             <hr>
                             <div class="text-center">
                                 <small>
                                     <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                    <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                    <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                     <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                                 </small>
                             </div>
@@ -1515,14 +1515,14 @@ class Crud_controller extends CI_Controller
 
                                 <div class="text-right">
                                     <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                    <strong>CEO Maybet Ordonez</strong>
+                                    <strong>CEO Sistema Remesas</strong>
                                 </div>
                             </p>
                             <hr>
                             <div class="text-center">
                                 <small>
                                     <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                    <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                    <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                     <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                                 </small>
                             </div>
@@ -1719,14 +1719,14 @@ class Crud_controller extends CI_Controller
  
                              <div class="text-right">
                                  <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                 <strong>CEO Maybet Ordonez</strong>
+                                 <strong>CEO Sistema Remesas</strong>
                              </div>
                          </p>
                          <hr>
                          <div class="text-center">
                              <small>
                                  <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
                          </div>
@@ -1818,14 +1818,14 @@ class Crud_controller extends CI_Controller
  
                              <div class="text-right">
                                  <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                 <strong>CEO Maybet Ordonez</strong>
+                                 <strong>CEO Sistema Remesas</strong>
                              </div>
                          </p>
                          <hr>
                          <div class="text-center">
                              <small>
                                  <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
                          </div>
@@ -1962,14 +1962,14 @@ class Crud_controller extends CI_Controller
  
                              <div class="text-right">
                                  <strong>Gracias por confiar en nuestros servicios.</strong><br>
-                                 <strong>CEO Maybet Ordonez</strong>
+                                 <strong>CEO Sistema Remesas</strong>
                              </div>
                          </p>
                          <hr>
                          <div class="text-center">
                              <small>
                                  <small class="text-muted d-block">2018&copy; '. nombredeweb .' Venezuela</small>
-                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +1 317 5720559</small>
+                                 <small class="text-muted d-block">Para cualquier duda siempre cuenta con nuestro WhatsApp de atención al cliente +51 917 835 815</small>
                                  <small class="text-muted d-block">Por favor, NO responda a este mensaje, es un envío automático.</small>
                              </small>
                          </div>

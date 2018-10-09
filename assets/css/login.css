@@ -8,7 +8,7 @@
 
 .intro{
     grid-area: intro;
-    background-image: url('../img/back-login.jpg');
+   /* background-image: url('../img/back-login.jpg');*/
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;

@@ -37,7 +37,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Para <strong>cualquier duda</strong> siempre cuenta con nuestro WhatsApp de atención al cliente <strong>+1 317 5720559</strong>
+                                        Para <strong>cualquier duda</strong> siempre cuenta con nuestro WhatsApp de atención al cliente <strong>+51 917 835 815</strong>
                                     </td>
                                 </tr>
                             </tbody>
@@ -45,7 +45,7 @@
                         <div class="text-right">
                             <p>Gracias por confiar en nuestros servicios.</p>
                             <hr>
-                            <p>CEO Maybet Ordonez</p>
+                            <p>CEO Remesas</p>
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" xmlns="http://www.w3.org/1999/html">
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/fav.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/fav.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title><?= $titulo; ?></title>
+	<title>Iniciar sesión - <?= $titulo; ?></title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -26,6 +26,8 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
 
+    <link href="assets/css/loginparallax.css" rel="stylesheet" />
+
 
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -36,12 +38,22 @@
 <body>
     
 <div class="main-login">
-    <div class="intro hide-small"></div>
+    <div class="intro hide-small">
+        <ul class="cb-slideshow">
+            <li><span>Image 01</span><div><h3>Bogota</h3></div></li>
+            <li><span>Image 02</span><div><h3>Buenos Aires</h3></div></li>
+            <li><span>Image 03</span><div><h3>Caracas</h3></div></li>
+            <li><span>Image 04</span><div><h3>Estados Unidos</h3></div></li>
+            <li><span>Image 05</span><div><h3>Santiago de Chile</h3></div></li>
+            <li><span>Image 06</span><div><h3>Panama</h3></div></li>
+        </ul>
+    </div>
 
     <div class="form">
         <div class="medio">
             <div class="header-login">
-                <img src="assets/img/Logo_dark_2.png" width="40%" alt="">
+
+                 <img src="assets/img/Logo_dark_2.png" width="40%" alt="">
             </div>
             <div id="login" class="animated fadeIn">
                 <form action="<?= base_url() . 'login'; ?>" method="post">
@@ -75,6 +87,9 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-info btn-fill btn-wd">Login</button>
                     </div>
+                    <small>Email: admin@mail.com - Password: admin@mail.com</small><br/>
+                    <small>Email: operador@mail.com - Password: operador@mail.com</small><br/>
+                    <small>Email: cliente@mail.com - Password: cliente@mail.com</small>
                     <div class="clearfix"></div>
                 <?= form_close(); ?>
                 <div class="footer-login">

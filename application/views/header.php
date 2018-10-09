@@ -39,7 +39,7 @@
 <body>
 
     <div class="wrapper">
-    <div class="sidebar" data-background-color="white" data-active-color="primary">
+    <div class="sidebar off-canvas-sidebar" data-background-color="white" data-active-color="primary">
 
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <?php endif; ?>
-                
+
                 <!-- Solo para Administradores o Managers-->
                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                 <li class="<?php if( $titulo == "Cuentas Bancarias"): echo "active"; endif;?>">
