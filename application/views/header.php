@@ -35,13 +35,14 @@
 <script>
     var baseurl = '<?= base_url(); ?>';
 </script>
+    <style id="extraStyle"></style>
 </head>
 <body>
 
     <div class="wrapper">
-    <div class="sidebar off-canvas-sidebar clear-bussiness" style="overflow: hidden" data-background-color="white" data-active-color="primary">
+    <div class="sidebar off-canvas-sidebar clear-bussiness" style="overflow: hidden">
 
-    	<div class="sidebar-wrapper clear-bussiness my-scroll" data-color-choice="principal">
+    	<div class="sidebar-wrapper" data-color-choice="principal">
             <div class="text-center" style="padding: 9px 10px;">
                 <a href="<?= base_url(); ?>">
                     <img src="assets/img/Logotipo.png" width="140" data-logo-change="principal">
@@ -288,10 +289,7 @@
             </div>
         </nav>
 
-        <!-- PLantilla para Configuración de colores demo -->
-        <?= $this->load->view('templates/demo_settings'); ?>
-        <!-- Termina plantilla para configuración de colores demo -->
-
+        
 
         <div class="display-none" style="position: fixed; top: 70%; right: 0; background-color: rgba(255,255,255,0.8); padding:15px 20px; z-index:1; border-top-left-radius: 50px; border-bottom-left-radius: 50px;" id="loader">
             <img src="<?= base_url() . 'assets/img/loader.gif'?>" width="80" alt="Cargando Por favor espere...">

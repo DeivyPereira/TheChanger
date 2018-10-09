@@ -19,6 +19,14 @@
     </div>
 </div>
 
+    <!-- PLantilla para Configuración de colores demo -->
+    <?= $this->load->view('templates/demo_settings'); ?>
+    <!-- Termina plantilla para configuración de colores demo -->
+
+
+    <!-- Modal Templates -->
+    <?= $this->load->view('templates/modals_templates'); ?>
+    <!-- Modal Templates Termina -->
 
 </body>
 
@@ -34,6 +42,9 @@
 
     <!--  Notifications Plugin    -->
     <script src="<?= base_url() . 'assets/js/bootstrap-notify.js'; ?>"></script>
+
+    <!-- Cookie libreria -->
+    <script src="<?= base_url() . 'assets/js/js.cookie.js'; ?>"></script>
 
     <!-- Solo para propósito de demostración -->
     <script src="<?= base_url() . 'assets/js/demo.js'; ?>"></script>

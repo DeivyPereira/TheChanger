@@ -192,17 +192,16 @@
     margin:0; 
     padding: 20px 25px; 
     border: 0; 
-    color: #EEE; 
     border-bottom-left-radius: 50px; 
     border-top-right-radius: 5px;
 }
 
 .button-close-modal:hover{
-    background: #564c8c!important
+    opacity: 0.9;
 }
 
 .purple-cexpress{
-    background: #39306b!important;
+    background: #39306b;
 }
 
 .px-4{
@@ -248,17 +247,37 @@
     margin: 10px;
 }
 
-.shadow-custom{
+.shadow-customs{
     box-shadow: 2px 5px 5px lightgrey;
 }
 
-.modal-custom{
-    width:70%; 
-    z-index: 10000000; 
-    position: fixed; 
-    top: 50%; 
-    left: 80%; 
-    transform: translate(-80%,-50%);
+.showMe{
+    animation-name: showMe;
+}
+
+@keyframes showMe{
+    0% { top: -100%; opacity: 0; }
+    50% { top: 20%; opacity: 0.9 }
+    100% { top: 15%; opacity: 1; }
+}
+
+.hideMe{
+    animation-name: hideMe;
+}
+
+@keyframes hideMe{
+    0% { top: 15%; /*opacity: 1*/ }
+    50% { top: 20%; /*opacity: 0.9*/ }
+    100% { top: -100%; /*opacity: 0;*/ }
+}
+
+.modal-position{
+    position: fixed;
+    top: -10%;
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: inline;
 }
 
 .rounded-top{
@@ -372,11 +391,11 @@
   .file-input::before {
     content: 'Adjuntar Comprobante de Pago';
     display: inline-block;
-    background: #427C89;
-    color: #EEE;
+    background: transparent;
+    border: solid 1px #666;
+    color: #666;
     width: 100%;
     text-align: center;
-    border: 0;
     border-radius: 50px;
     padding: 5px 8px;
     outline: none;
@@ -385,11 +404,57 @@
     font-size: 14px;
     visibility: visible;
     position: absolute;
+    transition: ease 0.4s;
+    margin: 10px auto;
   }
   .file-input:hover::before {
-    border-color: red;
+    box-shadow: 3px 3px 5px lightgrey;
   }
   .file-input:active::before {
+    background: #7A9E9F;
+  }
+
+  .btn{
+      border:0;
+  }
+  
+  .btn:hover{
+      opacity: 0.9!important;
+      background: transparent;
+      color: #444;
+  }
+
+  .comprobacion-input {
+    visibility: hidden;
+    width: 0;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+
+  .comprobacion-input::before {
+    content: 'Adjuntar Identificación';
+    display: inline-block;
+    background: transparent;
+    border: solid 1px #666;
+    color: #666;
+    width: 100%;
+    text-align: center;
+    border-radius: 50px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 14px;
+    visibility: visible;
+    position: absolute;
+    transition: ease 0.4s;
+    margin: 10px auto;
+  }
+  .comprobacion-input:hover::before {
+    box-shadow: 3px 3px 5px lightgrey;
+  }
+  .comprobacion-input:active::before {
     background: #7A9E9F;
   }
 

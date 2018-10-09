@@ -151,7 +151,7 @@
                         <div class="row">
                             <div class="col-md-12 text-right">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-sm btn-info">Informar al cliente</button>
+                                    <button type="submit" data-color-choice="principal" set-color-text="principal" class="btn btn-sm btn-info">Informar al cliente</button>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                         <div class="row">
                             <div class="col-md-12 text-right">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-sm btn-info">Informar</button>
+                                    <button type="submit" class="btn btn-sm btn-info" data-color-choice="principal" set-color-text="principal">Informar</button>
                                 </div>
                             </div>
                         </div>
@@ -269,7 +269,7 @@
                                 </strong>
                             </div>
                             <div class="col-xs-12 my-2 text-center">
-                                <a href="<?= base_url() . 'uploads/comprobantes/' . $pedido->comprobante; ?>" target="_blank">Ver Comprobante anexado por el cliente</a>
+                                <a href="<?= base_url() . 'uploads/comprobantes/' . $pedido->comprobante; ?>" target="_blank" class="btn clear-bussiness" data-color-choice="principal" set-color-text="principal">Ver Comprobante anexado por el cliente</a>
                             </div>
                         </div>
                     </div>

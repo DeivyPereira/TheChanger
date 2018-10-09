@@ -41,30 +41,55 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-xs-3">
-                                                   <strong>Status</strong>
+                                                <div style="padding: 5px 0;">
+                                                   <strong>Estatus</strong>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-5 text-center">
-                                                <?php if( $usuarios->status == 1 ): echo "<i class='ti-check text-success'></i>"; elseif( $usuarios->status == 0 ):  echo "<i class='ti-close text-danger'></i>"; endif; ?>
-                                            </div>
-                                            <div class="col-xs-4">
+                                            <div class="col-xs-7">
                                                 <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                                                     <?php if( $_SESSION['id_cexpress'] == $usuarios->id ): ?>
-                                                        <a href="<?= base_url() . 'update_user_status_show?id=' . $usuarios->id . '&status=' . $usuarios->status; ?>" class="btn btn-sm btn-success btn-icon">Cambiar</a><br>
+                                                        <a href="<?= base_url() . 'update_user_status_show?id=' . $usuarios->id . '&status=' . $usuarios->status; ?>" class="btn btn-success btn-icon btn-block" data-color-choice="principal" set-color-text="principal">Cambiar</a><br>
                                                     <?php else: ?>
-                                                        <a href="<?= base_url() . 'update_user_status_show?id=' . $usuarios->id . '&status=' . $usuarios->status; ?>" class="btn btn-sm btn-success btn-icon">Cambiar</a><br>
+                                                        <a href="<?= base_url() . 'update_user_status_show?id=' . $usuarios->id . '&status=' . $usuarios->status; ?>" class="btn btn-sm btn-success btn-icon btn-block" data-color-choice="principal" set-color-text="principal">Cambiar</a><br>
                                                     <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="col-xs-2 text-center">
+                                                <div style="padding: 5px 0;">
+                                                    <?php if( $usuarios->status == 1 ): echo "<i class='ti-check text-success'></i>"; elseif( $usuarios->status == 0 ):  echo "<i class='ti-close text-danger'></i>"; endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <?php if( $_SESSION['role_cexpress'] == 4 ): ?>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <strong>Verificación</strong>
+                                            </div>
+                                            <div class="col-sx-2 text-center">
+                                                <?php if( $usuario->verificacion == 0 ): ?>
+                                                    <i class="ti-close text-danger"></i>
+                                                <?php elseif( $usuario->verificacion == 1 ): ?>
+                                                    <i class="ti-export text-warning"></i>
+                                                <?php elseif( $usuario->verificacion == 2 ): ?>
+                                                    <i class="ti-check text-success"></i>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
                                     </li>
+                                    <?php endif; ?>
                                     <?php if( $_SESSION['role_cexpress'] == 1 || $_SESSION['role_cexpress'] == 2 ): ?>
                                     <li>
                                         <div class="row">
                                             <div class="col-xs-3">
-                                                <strong>Rol</strong>
+                                                <div style="padding: 10px 0">
+                                                    <strong>Rol</strong>
+                                                </div>
                                             </div>
                                             <form action="<?php if( $_SESSION['id_cexpress'] == $usuarios->id ): echo base_url() . 'update_role_perfil'; else: echo base_url() . 'update_role_show'; endif; ?>" method="post">
                                             <div class="col-xs-5">
+                                                <div style="padding: 5px 0;">
                                                 <input type="hidden" name="id" value="<?= $usuarios->id; ?>">
                                                 <select name="role" id="roleChange" style="border:0; padding:0; margin:0">
                                                     <option value="false">
@@ -86,8 +111,9 @@
                                                     <?php endif; ?>
                                                 </select>
                                             </div>
+                                            </div>
                                             <div class="col-xs-4 text-center">
-                                                <button type="submit" class="btn btn-sm btn-success btn-icon">Cambiar</button>
+                                                <button type="submit" data-color-choice="principal" set-color-text="principal" class="btn btn-sm btn-success btn-icon btn-block">Cambiar</button>
                                             </div>
                                             </form>
                                         </div>
@@ -130,24 +156,53 @@
                         <div class="card">
                             <?php if( $_SESSION['id_cexpress'] == $usuarios->id ): ?>
                             <div class="header text-center">
-                                <button class="btn btn-primary active" id="perfilBtn">Editar Perfil</button>
-                                <button class="btn btn-primary" id="passwordBtn">Cambiar Contraseña</button>
+                                <button class="btn btn-primary active" style="border:0" id="perfilBtn">Editar Perfil</button>
+                                <button class="btn btn-primary" style="border:0" id="passwordBtn">Cambiar Contraseña</button>
                             <hr>
                             </div>
                             <?php endif; ?>
                         </div>
                         <?php if( $usuarios->verificado == 0 && $_SESSION['role_cexpress'] == 4 ): ?>
-                        <?= form_open_multipart( 'verificar' ); ?>
+                        <?= form_open_multipart( 'verificar', array( 'id' => 'comprobanteVerificacion') ); ?>
                         <div class="card">
                             <div class="header">
                                 <h4 class="title"><i class="ti-info-alt text-warning"></i> Verifica tu usuario</h4>
                                 <small>Para poder realizar operaciones con nosotros deberás verificar tu usuario, solo debes enviarnos una muestra digital de tu cédula de identidad o pasaporte.</small>
-                                <input type="file" name="verificar" style="margin-top: 10px; display: block"><br>
+                                <input type="file" id="inFile" name="verificar" class="comprobacion-input" style="margin-top: 10px; display: block"
+                                data-validation="mime size required" 
+                                        data-validation-allowing="jpg, png, gif" 
+                                        data-validation-max-size="500kb" 
+                                        data-validation-error-msg-container="#inFileErr"
+                                        data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Se requiere Comprobante de transacción"
+                                        data-validation-error-msg-size="<i class='ti-info-alt'></i>&nbsp;Las imágenes debe tener un tamaño máximo de 500kb"
+                                        data-validation-error-msg-mime="<i class='ti-info-alt'></i>&nbsp;Solo puedes subir imágenes jpg, png, gif"><br>
+                                        <small id="inFileErr"></small>
+                                <small id="outFile" class="text-success" style="font-weight: bolder"></small>
                                 <?= $error; ?>
-                                <div class="text-right" style="padding: 0 0 15px 0">
-                                    <button class="btn btn-primary">Verificar</button>
+                                <div class="text-right mt-2" style="padding: 0 0 15px 0">
+                                    <button class="btn btn-primary" style="border: 0" data-color-choice="principal" set-color-text="principal">Verificar</button>
                                 </div>
                             </div>
+                <script>
+                    // Función para mostrar la imagen del comprobante de pago en pedidos
+
+                        function thumb_1(evt) {
+                        var files = evt.target.files;
+                        for (var i = 0, f; f = files[i]; i++) {		
+                            if (!f.type.match('image.*')) {
+                                continue;
+                            }
+                            var reader = new FileReader();
+                            reader.onload = (function(theFile) {
+                            return function(e) {
+                                    document.getElementById("outFile").innerHTML = ['Imagen Cargada'].join('');
+                            };
+                            })(f);
+                            reader.readAsDataURL(f);
+                        }
+                        }
+                        document.getElementById('inFile').addEventListener('change', thumb_1, false);
+                </script>
                         </div>
                         <?= form_close(); ?>
                         <?php endif; ?>
@@ -250,7 +305,7 @@
 
                                         <div class="col-md-6">
                                             <div class="text-center">
-                                                <button type="submit" class="btn btn-primary btn-wd" style="margin: 25px 0" name="perfil" value="perfil">Actualizar Perfil</button>    
+                                                <button type="submit" class="btn btn-primary btn-wd" style="margin: 25px 0; border: 0" set-color-text="principal" data-color-choice="principal" name="perfil" value="perfil">Actualizar Perfil</button>    
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +333,7 @@
                                                 <?= form_error('password_conf'); ?>
                                             </div>
                                             <div class="col-md-12 text-center" style="margin: 10px 0;">
-                                                <button type="submit" class="btn btn-primary btn-wd">Actualizar Contraseña</button>
+                                                <button type="submit" set-color-text="principal" data-color-choice="principal" style="border:0" class="btn btn-primary btn-wd">Actualizar Contraseña</button>
                                             </div>
                                         </div>
                                         </form>

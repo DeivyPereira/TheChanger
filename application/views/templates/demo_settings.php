@@ -12,6 +12,7 @@
                         data-color-pick-1="#06beb6" 
                         data-color-pick-2="#48b1bf" 
                         data-color-text="#EEE"
+                        data-title-color="#06beb6"
                         data-sidebar-logo="<?= base_url() . 'assets/img/Logotipo-Blanco.png'; ?>" 
                         data-color-position="principal"></button>
                         <button 
@@ -19,6 +20,7 @@
                         data-color-pick-1="#41295a" 
                         data-color-pick-2="#2F0743" 
                         data-color-text="#EEE"
+                        data-title-color="#41295a"
                         data-sidebar-logo="<?= base_url() . 'assets/img/Logotipo-Blanco.png'; ?>" 
                         data-color-position="principal"></button>
                         <button 
@@ -26,6 +28,7 @@
                         data-color-pick-1="#F2994A" 
                         data-color-pick-2="#F2C94C" 
                         data-color-text="#222"
+                        data-title-color="#F2994A"
                         data-sidebar-logo="<?= base_url() . 'assets/img/Logotipo.png'; ?>" 
                         data-color-position="principal"></button>
                         <button 
@@ -33,6 +36,7 @@
                         data-color-pick-1="#FFF" 
                         data-color-pick-2="#EEE" 
                         data-color-text="#666"
+                        data-title-color="#666"
                         data-sidebar-logo="<?= base_url() . 'assets/img/Logotipo.png'; ?>" 
                         data-color-position="principal"></button>
                         <button 
@@ -40,6 +44,7 @@
                         data-color-pick-1="#232526" 
                         data-color-pick-2="#414345" 
                         data-color-text="#EEE"
+                        data-title-color="#232526"
                         data-sidebar-logo="<?= base_url() . 'assets/img/Logotipo-Blanco.png'; ?>" 
                         data-color-position="principal"></button>
                         <button 
@@ -47,25 +52,11 @@
                         data-color-pick-1="#e43a15" 
                         data-color-pick-2="#e65245" 
                         data-color-text="#EEE"
+                        data-title-color="#e43a15"
                         data-sidebar-logo="<?= base_url() . 'assets/img/Logotipo-Blanco.png'; ?>" 
                         data-color-position="principal"></button>
                     </div>
                 </div>
-                <hr class="settings-separator">
-                <div class="settings-content text-center">
-                    <small class="to-upper">Color de link activo</small>
-                    <div style="text-align: center">
-                        <button class="color-button dark-background" 
-                        data-color-pick="#343434" 
-                        data-color-position="fondo"></button>
-                        <button class="color-button clear-background" 
-                        data-color-pick="#EEE" 
-                        data-color-position="fondo"></button>
-                        <button class="color-button bone-background" 
-                        data-color-pick="#efedbb" 
-                        data-color-position="fondo"></button>
-                    </div>
-                </div>
-                <hr class="settings-separator">
+                <!-- <hr class="settings-separator"> -->
             </div>
         </div>

@@ -477,6 +477,13 @@ $(document).ready(function(){
             $('#quintoMonto').val('');
         });
 
+        // Formulario de verifiación de ususario
+
+        $.validate({
+            form: '#comprobanteVerificacion',
+            modules: 'file'
+        });
+
         // Formulario de pedido
 
         $.validate({
@@ -607,7 +614,9 @@ $(document).ready(function(){
         });
 
         $('#closeModalBtn').click(function(){
-            $('#modalWindow').fadeOut('fast');
+            $('[id="modalWindow"]').fadeOut('slow');
+            $('[id="modalWindowContent"]').removeClass('showMe');
+            $('[id="modalWindowContent"]').addClass('hideMe');
         });
 
     $('#actualizarTasas').on('click', function(){

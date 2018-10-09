@@ -91,9 +91,9 @@
                             <div class="col-md-12"> 
                                 <div class="form-group text-right">
                                     <br>
-                                    <button type="submit" class="btn btn-primary btn-icon-circle" id="ActLoader"><small>Actualizar</small></button>
-                                    <a href="<?= base_url() . 'status_cuenta_admin?i=' . $cuenta['id'] . '&a=' . $cuenta['status']; ?>" class="btn btn-primary btn-icon-circle" id="borraLoad"><i class="ti-light-bulb"></i></a>
-                                    <a href="<?= base_url() . 'eliminar_cuenta_admin?i=' . $cuenta['id']; ?>"class="btn btn-primary btn-icon-circle" id="borraLoad"><i class="ti-close"></i></a>
+                                    <button type="submit" data-color-choice="principal" set-color-text="principal" class="btn btn-primary btn-icon-circle" id="ActLoader"><small>Actualizar</small></button>
+                                    <a href="<?= base_url() . 'status_cuenta_admin?i=' . $cuenta['id'] . '&a=' . $cuenta['status']; ?>" data-color-choice="principal" set-color-text="principal" class="btn btn-primary btn-icon-circle" id="borraLoad"><i class="ti-light-bulb"></i></a>
+                                    <a href="<?= base_url() . 'eliminar_cuenta_admin?i=' . $cuenta['id']; ?>"class="btn btn-primary btn-icon-circle" data-color-choice="principal" set-color-text="principal" id="borraLoad"><i class="ti-close"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="content text-center" id="agregarCuenta">
-                        <button class="btn btn-primary plus" id="agregarCuentaBtn"><i class="ti-plus" style="font-size: 45px"></i></button>
+                        <button class="btn btn-primary plus" data-color-choice="principal" set-color-text="principal" id="agregarCuentaBtn"><i class="ti-plus" style="font-size: 45px"></i></button>
                         <p style="margin: 10px 0;">Agregar Cuenta</p>
                     </div>
                     <div class="content display-none" id="agregarCuentaForm">
@@ -121,13 +121,11 @@
                                 <h5 class="font-weight-light mb-0">¿Que va a registrar?</h5>
                             </div>
                             <div class="col-md-6 text-center mt-2">
-                                <small>Bancos Registrados</small>
                                 <button type="button" class="btn btn-block btn-primary btn-sm active" id="cuentaBancariaBtn">
                                     Cuenta Bancaria
                                 </button>
                             </div>
                             <div class="col-md-6 text-center mt-2">
-                                <small>Envíos de remesas</small>
                                 <button type="button" class="btn btn-block btn-primary btn-sm" id="otrosBtn">
                                     Otros
                                 </button>
@@ -246,7 +244,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group text-right">
                                         <br>
-                                        <button type="submit" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
+                                        <button type="submit" data-color-choice="principal" set-color-text="principal" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
                                     </div>
                                 </div>
                             </div>
@@ -334,7 +332,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group text-right">
-                                        <button type="submit" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
+                                        <button type="submit" class="btn btn-primary btn-icon-circle" data-color-choice="principal" set-color-text="principal"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
                                     </div>
                                 </div>
                             </div>

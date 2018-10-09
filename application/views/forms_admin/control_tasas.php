@@ -55,7 +55,7 @@
                         </tbody>
                     </table>
                     <div class="content text-right">
-                        <button type="button" class="btn btn-primary btn-icon" id="actualizarTasas">Actualizar Tasas</button>
+                        <button type="button" class="btn btn-primary btn-icon" data-color-choice="principal" set-color-text="principal" id="actualizarTasas">Actualizar Tasas</button>
                     </div>
                     </div>
                 </div>

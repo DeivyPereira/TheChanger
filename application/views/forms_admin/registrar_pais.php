@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="text-right">
-                                        <button type="submit" class="btn btn-primary btn-wd" id="ActLoader">Generar Nuevo País</button>
+                                        <button type="submit" class="btn btn-primary btn-wd" data-color-choice="principal" set-color-text="principal" id="ActLoader">Generar Nuevo País</button>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="row text-right">
                                 <div class="col-md-12 mt-2">
-                                    <button type="submit" class="btn btn-primary btn-wd">Registrar Bancos</button>
+                                    <button type="submit" data-color-choice="principal" set-color-text="principal" class="btn btn-primary btn-wd">Registrar Bancos</button>
                                 </div>
                             </div>
                         </form>

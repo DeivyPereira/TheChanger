@@ -80,8 +80,8 @@
                             <div class="col-md-12"> 
                                 <div class="form-group text-right">
                                     <br>
-                                    <button type="submit" class="btn btn-primary btn-icon-circle"><small>Actualizar</small></button>
-                                    <a href="<?= base_url() . 'status_cuenta?i=' . $cuenta['id'] . '&a=' . $cuenta['status']; ?>" class="btn btn-primary btn-icon-circle"><i class="ti-close"></i></a>
+                                    <button type="submit" class="btn btn-primary btn-icon-circle" style="border:0;" data-color-choice="principal" set-color-text="principal"><small>Actualizar</small></button>
+                                    <a href="<?= base_url() . 'status_cuenta?i=' . $cuenta['id'] . '&a=' . $cuenta['status']; ?>" class="btn btn-primary btn-icon-circle" data-color-choice="principal" set-color-text="principal" style="border: 0;"><i class="ti-close"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="content text-center" id="agregarCuenta">
-                        <button class="btn btn-primary" style="border-radius: 50px;" id="agregarCuentaBtn"><i class="ti-plus" style="font-size: 45px"></i></button>
+                        <button class="btn btn-primary" set-color-text="principal" data-color-choice="principal" style="border: 0; border-radius: 50px" id="agregarCuentaBtn"><i class="ti-plus" style="font-size: 45px"></i></button>
                         <p style="margin: 10px 0;">Agregar Cuenta</p>
                     </div>
                     <div class="content display-none" id="agregarCuentaForm">
@@ -216,7 +216,7 @@
                             <div class="col-md-12"> 
                                 <div class="form-group text-right">
                                     <br>
-                                    <button type="submit" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
+                                    <button type="submit" data-color-choice="principal" set-color-text="principal" class="btn btn-primary btn-icon-circle" style="border: 0;"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
                                 </div>
                             </div>
                         </div>
@@ -228,26 +228,3 @@
     </div>
 </div>
 
-<div class="modal-custom" id="modalWindow" style="width: 30%; left: 60%; top: 50%; transform: translate(-60%,-50%);">
-        <div class="card shadow-custom" style="background-image: url('<?= base_url() . 'assets/img/back.png'; ?>'); background-repeat: no-repeat; background-position: 0px 70px;">
-            <div class="row">
-                <div class="col-sm-6 px-4">
-                    <h3 class="text-purple">Atención</h3>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <button class="purple-cexpress button-close-modal" id="closeModalBtn">
-                        <i class="ti-close"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <i class="ti-info-alt text-purple" style="font-size: 50px;"></i>
-                        <h4 class="title">Importante</h4>
-                        <small>Luego de haber ingresado los datos de la cuenta bancaria, verifica que los mismos sean correctos.</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>

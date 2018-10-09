@@ -2,9 +2,9 @@
     position: fixed; 
     top: 25%; 
     right: -20.5%; 
-    z-index: 100000; 
     width: 20%;
     transition: ease 0.5s;
+    z-index: 10000;
 }
 
 .texto-oscuro{

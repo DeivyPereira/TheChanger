@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <button class="btn btn-block btn-primary"><i class="ti-search"></i></button>
+                                    <button class="btn btn-block btn-primary" data-color-choice="principal" set-color-text="principal"><i class="ti-search"></i></button>
                                 </div>
                             </div>
                         </div>

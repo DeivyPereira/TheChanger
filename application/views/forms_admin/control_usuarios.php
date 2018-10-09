@@ -10,12 +10,13 @@
                                 <input type="text" name="buscar" class="form-control border-input" placeholder="¿Qué estas buscando?">
                             </div>
                             <div class="col-sm-2">
-                                <button class="btn btn-primary btn-block"><i class="ti-search"></i></button>
+                                <button class="btn btn-primary btn-block" data-color-choice="principal" set-color-text="principal"><i class="ti-search"></i></button>
                             </div>
                             </form>
                         </div>
                     </div>
                     <div class="content table-responsive table-full-width">
+                        <?php if( $usuarios == TRUE ): ?>
                         <table class="table table-striped">
                             <thead>
                                 <th class="text-center"><small>Nombre</small></th>
@@ -34,14 +35,7 @@
                                         <?php if( $usuario['id'] == $_SESSION['id_cexpress']): ?>
                                             <a href="<?= base_url() . 'perfil'; ?>"><?= $usuario['nombre'] . " " . $usuario['apellido']; ?></a>
                                         <?php else: ?>
-                                            <a href="<?= base_url() . 'usuario?id=' . $usuario['id']; ?>"><?= $usuario['nombre'] . " " . $usuario['apellido']; ?></a><br>
-                                            <?php if( $usuario['role'] == 4 ): ?>
-                                                <small>Cliente</small>
-                                            <?php elseif( $usuario['role'] == 3 ): ?>
-                                                <small>Operador</small>
-                                            <?php elseif( $usuario['role'] == 2 ): ?>
-                                                <small>Manager</small>
-                                            <?php endif; ?>
+                                            <a href="<?= base_url() . 'usuario?id=' . $usuario['id']; ?>"><?= $usuario['nombre'] . " " . $usuario['apellido']; ?></a>
                                         <?php endif; ?>
                                     </td>
                                     <td>
@@ -92,6 +86,12 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?php else: ?>
+                            <div class="text-center py-1">
+                                <h2 class="my-0" data-title-choice="principal"><i class="ti-info-alt"></i></h2>
+                                <h3>No se encontraron Registros</h3>
+                            </div>
+                        <?php endif; ?>
                         <div class="text-right" style="padding: 0 25px;">
                             <?= $this->pagination->create_links(); ?>
                         </div>

@@ -35,7 +35,7 @@
  * @since	Version 1.0.0
  * @filesource
  */
-define("nombreweb", "DEMO Remesas", true);
+define("nombreweb", "DEMORemesas", true);
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

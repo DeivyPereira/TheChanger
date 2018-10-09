@@ -3,8 +3,8 @@
     
     <div class="text-center my-2">
         <h4 class="font-lighter">¿Qué deseas hacer?</h4>
-        <button class="btn btn-primary active" id="reportarPagoBtn">Reportar un pago</button>
-        <button class="btn btn-primary" id="pedidosBtn">Ver tu historial de pedidos</button>
+        <button class="btn btn-primary active" style="border:0" id="reportarPagoBtn">Reportar un pago</button>
+        <button class="btn btn-primary" style="border:0" id="pedidosBtn">Ver tu historial de pedidos</button>
     </div>
     
     <?= form_open_multipart('control_pedidos', array( 'id' => 'pedidoForm' ));?>
@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="header text-center">
                             <div class="big-circle">
-                                <span class="jumbo text-primary"><i class="ti-reload"></i></span>
+                                <span class="jumbo text-primary"><i data-title-choice="principal" class="ti-reload"></i></span>
                             </div>
                         </div>
                         <div class="content">
@@ -107,7 +107,7 @@
                     <div class="card">
                         <div class="header text-center">
                             <div class="big-circle">
-                                <span class="jumbo text-primary"><i class="ti-upload"></i></span>
+                                <span class="jumbo text-primary"><i data-title-choice="principal" class="ti-upload"></i></span>
                             </div>
                         </div>
                         <div class="content">
@@ -162,7 +162,7 @@
             <div class="card">
                 <div class="header text-center">
                     <div class="big-circle">
-                        <span class="jumbo text-primary"><i class="ti-hand-point-up"></i></span>
+                        <span class="jumbo text-primary"><i data-title-choice="principal" class="ti-hand-point-up"></i></span>
                     </div>
                     <div class="content">
                         <input type="hidden" id="paisBeneficiario" value="Venezuela" name="pais_beneficiario">
@@ -190,7 +190,7 @@
                         <hr>
                         <label>
                             <small>
-                                <i class="ti-info-alt text-info" style="font-size: 25px;"></i><br>
+                                <i class="ti-info-alt text-info" data-title-choice="principal" style="font-size: 25px;"></i><br>
                                 <strong>Puedes solicitar tu pago en una o varias cuentas</strong><br>
                                 <?php echo nombreweb;  ?> te permite seleccionar hasta cinco de tus cuentas donde podrás recibir el pago de manera fraccionada. <br>
                                 <strong class="text-success">(usa "." para decimales)</strong>
@@ -238,7 +238,7 @@
                             <label>
                                 <small>Agrega otra cuenta</small>
                             </label>
-                            <button class="btn btn-primary plus-small" id="primeraCuentaBtn"><i class="ti-plus"></i></button>
+                            <button class="btn btn-primary plus-small" style="border: 0;" data-color-choice="principal" set-color-text="principal" id="primeraCuentaBtn"><i class="ti-plus"></i></button>
                         </div>
 
                         
@@ -281,7 +281,7 @@
                                 <label>
                                     <small>Agrega otra cuenta</small>
                                 </label>
-                                <button class="btn btn-primary plus-small" id="terceraCuentaBtn"><i class="ti-plus"></i></button>
+                                <button class="btn btn-primary plus-small" style="border: 0;" data-color-choice="principal" set-color-text="principal" id="terceraCuentaBtn"><i class="ti-plus"></i></button>
                             </div>
                         </div>
 
@@ -324,7 +324,7 @@
                                 <label>
                                     <small>Agrega otra cuenta</small>
                                 </label>
-                                <button class="btn btn-primary plus-small" id="cuartaCuentaBtn"><i class="ti-plus"></i></button>
+                                <button class="btn btn-primary plus-small" style="border: 0;" data-color-choice="principal" set-color-text="principal" id="cuartaCuentaBtn"><i class="ti-plus"></i></button>
                             </div>
                         </div>
 
@@ -367,7 +367,7 @@
                                 <label>
                                     <small>Agrega otra cuenta</small>
                                 </label>
-                                <button class="btn btn-primary plus-small" id="quintaCuentaBtn"><i class="ti-plus"></i></button>
+                                <button class="btn btn-primary plus-small" style="border: 0;" data-color-choice="principal" set-color-text="principal" id="quintaCuentaBtn"><i class="ti-plus"></i></button>
                             </div>
                         </div>
 
@@ -416,7 +416,7 @@
                 <div class="card">
                     <div class="header text-center">
                         <div class="big-circle">
-                            <span class="jumbo text-primary"><i class="ti-bell"></i></span>
+                            <span class="jumbo text-primary"><i data-title-choice="principal" class="ti-bell"></i></span>
                         </div>
                     </div>
                     <div class="content">
@@ -427,7 +427,7 @@
                         <?php if( $usuario->verificado == 0 || $usuario->verificado == 1 ): ?>
                             <small class="text-danger">Debes esperar a que tu usuario sea verificado</small>
                         <?php endif; ?>
-                        <button type="submit" class="btn-block btn btn-primary" <?php if( $usuario->verificado == 0 || $usuario->verificado == 1 ): echo "disabled"; endif; ?>>Registra tu pedido</button>             
+                        <button type="submit" class="btn-block btn btn-primary" data-color-choice="principal"] set-color-text="principal" style="border: 0" <?php if( $usuario->verificado == 0 || $usuario->verificado == 1 ): echo "disabled"; endif; ?>>Registra tu pedido</button>             
                     </div>
                 </div>
             </div>
@@ -525,47 +525,6 @@
                             </h4>
                         </div>
                     <?php endif;?>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-custom" id="modalWindow">
-        <div class="card shadow-custom" style="background-image: url('<?= base_url() . 'assets/img/back.png'; ?>'); background-repeat: no-repeat; background-position: 0px 100px;">
-            <div class="row">
-                <div class="col-sm-6 px-4">
-                    <h3 class="text-purple">Instrucciones</h3>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <button class="purple-cexpress button-close-modal" id="closeModalBtn">
-                        <i class="ti-close"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="content py-5">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <i class="ti-search text-purple" style="font-size: 50px;"></i>
-                        <h5>Consulta nuestras cuentas</h5>
-                        <small>Desde el <strong><i class="ti-dashboard"></i> tablero principal</strong> consulta <strong>cuales son nuestras cuentas disponibles</strong>, de esta forma podrás realizar el pago del monto deseado a través de transferencia o depósito en efectivo.</small>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <i class="ti-clipboard text-purple" style="font-size: 50px;"></i>
-                        <h5>Registra tu(s) cuenta(s)</h5>
-                        <small>Debes tener al menos <strong>una <i class="ti-marker-alt"></i> cuenta registrada en nuestro sistema</strong>, de esta forma nos llegará la información de la misma y así podremos realizar el pago.<br>
-                            <a href="<?= base_url() . 'cuentas_bancarias'; ?>" class="text-dark"><strong><i class="ti-link"></i>¿No tienes cuenta registradas?</strong></a>
-                        </small>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <i class="ti-clipboard text-purple" style="font-size: 50px;"></i>
-                        <h5>Completa el formulario</h5>
-                        <small><strong>Una vez realizado el pago</strong> procede a completar el formulario de pedido en su totalidad.<br><br> <strong><?php echo nombreweb;  ?> te permite fraccionar tu pago entre 5 cuentas distintas.</strong></small>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <i class="ti-rocket text-purple" style="font-size: 50px;"></i>
-                        <h5>¡Es el momento! Procesa tu pedido</h5>
-                        <small>Una vez completado el formulario, procesa tu pedido y espera a que el dinero sea abonado a tu(s) cuenta(s) solicitadas.</small>
-                    </div>
                 </div>
             </div>
         </div>

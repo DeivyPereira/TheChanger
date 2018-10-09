@@ -1,7 +1,7 @@
 <div class="content animated fadeIn">
     <div class="container-fluid">
         <div class="text-right my-2">
-            <a href="<?= base_url() . 'archivo_pedidos'; ?>" class="btn btn-sm btn-primary">Ir al archivo</a>
+            <a href="<?= base_url() . 'archivo_pedidos'; ?>" data-color-choice="principal" set-color-text="principal" class="btn btn-sm btn-primary">Ir al archivo</a>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block"><i class="ti-search"></i></button>
+                                    <button type="submit" data-color-choice="principal" set-color-text="principal" class="btn btn-primary btn-block"><i class="ti-search"></i></button>
                                 </div>
                             </div>
                         </div>
