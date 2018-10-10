@@ -30,11 +30,11 @@ $('[data-color-position="principal"]').on('click', function(){
   $('[data-title-choice="principal"]').css( 'color', titleColor );
   $('#extraStyle').html('.btn.active{background: linear-gradient( to right, ' + newColor1 + ', ' + newColor2 + ' ); color: ' + newText + '}');
 
-  Cookies.set('newColor1',newColor1);
-  Cookies.set('newColor2',newColor2);
-  Cookies.set('newText',newText);
-  Cookies.set('logoChange',logoChange);
-  Cookies.set('titleColor',titleColor);
+  Cookies.set('newColor1',newColor1, { expires: 1 });
+  Cookies.set('newColor2',newColor2, { expires: 1 });
+  Cookies.set('newText',newText, { expires: 1 });
+  Cookies.set('logoChange',logoChange, { expires: 1 });
+  Cookies.set('titleColor',titleColor, { expires: 1 });
 
 });
 

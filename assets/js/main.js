@@ -872,6 +872,22 @@ $(document).ready(function(){
         $('#cuentaBancariaContent').addClass('display-none');
     });
 
+    $('#noMostrarModalPedidos').click(function(){
+        if( $('#noMostrarModalPedidos').prop('checked') ){
+            Cookies.set('modalPedidos', 'activo', { expires: 1 });
+        } else {
+            Cookies.remove('modalPedidos');
+        }
+    });
+
+    $('#noMostrarModalCuentas').click(function(){
+        if( $('#noMostrarModalCuentas').prop('checked') ){
+            Cookies.set('modalCuentas', 'activo', { expires: 1 });
+        } else {
+            Cookies.remove('modalCuentas');
+        }
+    });
+
 
 
 });

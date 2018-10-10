@@ -1,5 +1,5 @@
 <?php if( $usuario->verificado == 0 && $_SESSION['role_cexpress'] == 4 && $titulo == "Tablero" ): ?>
-    <div style="background: rgb(40,40,40,0.3); width: 100%; height: 100vh; position: fixed; top:0; left:0; z-index: 100" id="modalWindow"></div>
+    <div class="modal-bg" id="modalWindow"></div>
     <div class="modal-custom animated showMe modal-position" id="modalWindowContent" style="width: 30%">
         <div class="card shadow-custom">
             <div class="row">
@@ -26,8 +26,8 @@
     </div>
 <?php endif; ?>
 
-<?php if( $titulo == "Cuentas Bancarias" && $_SESSION['role_cexpress'] == 4 ): ?>
-    <div style="background: rgb(40,40,40,0.3); width: 100%; height: 100vh; position: fixed; top:0; left:0; z-index: 100" id="modalWindow"></div>
+<?php if( $titulo == "Cuentas Bancarias" && $_SESSION['role_cexpress'] == 4 && !isset( $_COOKIE['modalCuentas'] ) ): ?>
+    <div class="modal-bg" id="modalWindow"></div>
     <div class="modal-custom animated showMe modal-position" id="modalWindowContent" style="width: 30%;">
         <div class="card shadow-custom">
             <div class="row">
@@ -48,13 +48,19 @@
                         <p>Luego de haber ingresado los datos de la cuenta bancaria, verifica que los mismos sean correctos.</p>
                     </div>
                 </div>
+                <div class="form-group text-right" style="padding: 10px 10px 0 10px;">
+                    <input type="checkbox" id="noMostrarModalCuentas" name="noMostrar">&nbsp;
+                    <label for="noMostrarModalCuentas">
+                        <small>No mostrar mas</small>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
 <?php endif; ?>
 
-<?php if( $_SESSION['role_cexpress'] == 4 && $titulo == "Control de Pedidos" ): ?>
-<div style="background: rgb(40,40,40,0.3); width: 100%; height: 100vh; position: fixed; top:0; left:0; z-index: 100" id="modalWindow"></div>
+<?php if( $_SESSION['role_cexpress'] == 4 && $titulo == "Control de Pedidos" && !isset( $_COOKIE['modalPedidos'] ) ): ?>
+<div class="modal-bg" id="modalWindow"></div>
     <div class="modal-custom animated showMe modal-position" id="modalWindowContent" style="width: 60%">
         <div class="card shadow-custom">
             <div class="row">
@@ -67,7 +73,7 @@
                     </button>
                 </div>
             </div>
-            <div class="content py-5">
+            <div class="content py-2">
                 <div class="row">
                     <div class="col-md-3 text-center">
                         <i class="ti-search" data-title-choice="principal" style="font-size: 50px;"></i>
@@ -92,6 +98,12 @@
                     </div>
                 </div>
             </div>
+                    <div class="form-group text-right" style="padding: 10px 25px 20px 25px;">
+                        <input type="checkbox" id="noMostrarModalPedidos" name="noMostrar">&nbsp;
+                        <label for="noMostrarModalPedidos">
+                            <small>No mostrar mas</small>
+                        </label>
+                    </div>
         </div>
     </div>
 <?php endif; ?>

@@ -34,9 +34,6 @@
     <script src="<?= base_url() . 'assets/js/jquery-3.2.1.min.js'; ?>" type="text/javascript"></script>
 	<script src="<?= base_url() . 'assets/js/bootstrap.min.js'; ?>" type="text/javascript"></script>
 
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="<?= base_url() . 'assets/js/bootstrap-checkbox-radio.js'; ?>"></script>
-
 	<!--  Charts Plugin -->
 	<script src="<?= base_url() . 'assets/js/chartist.min.js'; ?>"></script>
 

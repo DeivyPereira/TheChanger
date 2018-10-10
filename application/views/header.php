@@ -26,6 +26,9 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="<?= base_url() . 'assets/css/demo.css'; ?>" rel="stylesheet" />
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <link rel="stylesheet" href="<?= base_url() . 'assets/css/main.css'; ?>">
 
     <!--  Fonts and icons     -->
@@ -43,7 +46,7 @@
     <div class="sidebar off-canvas-sidebar clear-bussiness" style="overflow: hidden">
 
     	<div class="sidebar-wrapper" data-color-choice="principal">
-            <div class="text-center" style="padding: 9px 10px;">
+            <div class="logo text-center" style="padding: 9px 10px; border-bottom: 0;">
                 <a href="<?= base_url(); ?>">
                     <img src="assets/img/Logotipo.png" width="140" data-logo-change="principal">
                 </a>

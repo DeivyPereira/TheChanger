@@ -41,7 +41,7 @@
     <div class="form">
         <div class="medio">
             <div class="header-login">
-                <img src="assets/img/Logo_dark_2.png" width="40%" alt="">
+                <img src="assets/img/Logotipo.png" width="30%" alt="">
             </div>
             <div class="olvido-pass animated fadeIn" id="forgot">
                 <form action="<?= base_url('asistente_password'); ?>" method="post">

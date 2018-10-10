@@ -165,7 +165,7 @@
                         <?php if( $usuarios->verificado == 0 && $_SESSION['role_cexpress'] == 4 ): ?>
                         <?= form_open_multipart( 'verificar', array( 'id' => 'comprobanteVerificacion') ); ?>
                         <div class="card">
-                            <div class="header">
+                            <div class="header bg-warning">
                                 <h4 class="title"><i class="ti-info-alt text-warning"></i> Verifica tu usuario</h4>
                                 <small>Para poder realizar operaciones con nosotros deberás verificar tu usuario, solo debes enviarnos una muestra digital de tu cédula de identidad o pasaporte.</small>
                                 <input type="file" id="inFile" name="verificar" class="comprobacion-input" style="margin-top: 10px; display: block"

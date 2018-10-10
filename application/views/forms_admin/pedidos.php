@@ -425,7 +425,11 @@
                             <span data-notify="message">Verifica que la información suministrada sea correcta</span>
                         </div>
                         <?php if( $usuario->verificado == 0 || $usuario->verificado == 1 ): ?>
-                            <small class="text-danger">Debes esperar a que tu usuario sea verificado</small>
+                            <p class="text-danger">
+                                Debes completar tu proceso de verificación primero<br>
+                                Puedes realizarlo en la sección de <a href="<?= base_url() . 'perfil'; ?>">Perfil&nbsp;<i class="fa fa-link"></i></a>
+                            </p>
+
                         <?php endif; ?>
                         <button type="submit" class="btn-block btn btn-primary" data-color-choice="principal"] set-color-text="principal" style="border: 0" <?php if( $usuario->verificado == 0 || $usuario->verificado == 1 ): echo "disabled"; endif; ?>>Registra tu pedido</button>             
                     </div>

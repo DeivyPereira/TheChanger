@@ -17,34 +17,34 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        Las transferencias <strong>serán procesadas de acuerdo al volumen de solicitudes</strong>, el cual <strong>no será mayor a 2 horas</strong> siempre y cuando la información que nos suministró sea correcto.
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam facilis nisi omnis, ut officiis nobis? Amet nostrum, voluptatibus recusandae.
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Las transferencias enviadas a <strong>Banesco serán acreditadas el mismo día dependiendo siempre de la operatividad del Banco</strong>.
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam facilis nisi omnis, ut officiis nobis? Amet nostrum, voluptatibus recusandae.
                                     </td>     
                                 </tr>
                                 <tr>
                                     <td>
-                                        Las transferencias enviadas a <strong>otros Bancos diferentes a Banesco, serán acreditadas al siguiente día hábil</strong>, después de las 2 pm o incluso en muchos casos a las 6 pm. <strong>Sea paciente</strong>.
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam facilis nisi omnis, ut officiis nobis? Amet nostrum, voluptatibus recusandae.
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Le recordamos que este es un <strong>servicio privado y confidencial</strong> si usted disfruta del mismo es porque ha sido un cliente confiable, sigamos así.
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam facilis nisi omnis, ut officiis nobis? Amet nostrum, voluptatibus recusandae.
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Para <strong>cualquier duda</strong> siempre cuenta con nuestro WhatsApp de atención al cliente <strong>+51 917 835 815</strong>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam facilis nisi omnis, ut officiis nobis? Amet nostrum, voluptatibus recusandae.
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="text-right">
                             <p>Gracias por confiar en nuestros servicios.</p>
-                            <hr>
+                            <hr class="my-0">
                             <p>CEO Remesas</p>
                         </div>
                     </div>

@@ -41,7 +41,7 @@
             <div class="form">
                 <div class="medio">
                     <div class="header-login">
-                        <img src="assets/img/Logo_dark_2.png" width="40%" alt="">
+                        <img src="assets/img/Logotipo.png" width="30%" alt=""><br>
                     </div>
                     <form action="<?= base_url() . 'suscripcion'; ?>" class="animated fadeIn" method="POST">
                         <div class="text-center">

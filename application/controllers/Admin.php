@@ -239,6 +239,13 @@ class Admin extends CI_Controller
 
             else:
 
+                // Verifica si el usuario ya ha sido verificado por la empresa, método de seguridad
+                $data['user'] = $this->admin_crud->get_usuario( $_SESSION['id_cexpress'], FALSE );
+
+                if( $data['user']->verificado == 0 || $data['user']->verificado == 1 ):
+                    show_404();
+                endif;
+
                 $config['upload_path']          = './uploads/comprobantes/';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['max_size']             = 500;
@@ -541,7 +548,7 @@ class Admin extends CI_Controller
 
                         redirect( 'exito_pedido?i=' . $data['id_pedido']->id );
                     else:
-                        redirect( 'exito_pedido' );
+                        show_404();
                     endif;
                 endif;
 
@@ -788,7 +795,7 @@ class Admin extends CI_Controller
             $data['pedidos_noti_usuario'] = $this->admin_crud->get_pedidos_noti_usuario( $_SESSION['id_cexpress'] );
 
             $id_pedido = $this->input->get('i');
-            $data['titulo'] = "Control de Pedidos";
+            $data['titulo'] = "Pedido registrado con éxito";
             $data['msg'] = '';
             $data['pedido'] = $this->admin_crud->get_pedidos( $id_pedido );
             $data['usuario'] = $this->admin_crud->get_usuario( $data['pedido']->id_cliente, FALSE );

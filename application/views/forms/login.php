@@ -40,12 +40,12 @@
 <div class="main-login">
     <div class="intro hide-small">
         <ul class="cb-slideshow">
-            <li><span>Image 01</span><div><h3>Bogota</h3></div></li>
-            <li><span>Image 02</span><div><h3>Buenos Aires</h3></div></li>
-            <li><span>Image 03</span><div><h3>Caracas</h3></div></li>
-            <li><span>Image 04</span><div><h3>Estados Unidos</h3></div></li>
-            <li><span>Image 05</span><div><h3>Santiago de Chile</h3></div></li>
-            <li><span>Image 06</span><div><h3>Panama</h3></div></li>
+            <li><span>Image 01</span><div><h3 class="my-0">Bogota</h3></div></li>
+            <li><span>Image 02</span><div><h3 class="my-0">Buenos Aires</h3></div></li>
+            <li><span>Image 03</span><div><h3 class="my-0">Caracas</h3></div></li>
+            <li><span>Image 04</span><div><h3 class="my-0">Estados Unidos</h3></div></li>
+            <li><span>Image 05</span><div><h3 class="my-0">Santiago de Chile</h3></div></li>
+            <li><span>Image 06</span><div><h3 class="my-0">Panama</h3></div></li>
         </ul>
     </div>
 
@@ -53,7 +53,7 @@
         <div class="medio">
             <div class="header-login">
 
-                 <img src="assets/img/Logo_dark_2.png" width="40%" alt="">
+                 <img src="assets/img/Logotipo.png" width="40%" alt="">
             </div>
             <div id="login" class="animated fadeIn">
                 <form action="<?= base_url() . 'login'; ?>" method="post">
@@ -87,9 +87,36 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-info btn-fill btn-wd">Login</button>
                     </div>
-                    <small>Email: admin@mail.com - Password: admin@mail.com</small><br/>
-                    <small>Email: operador@mail.com - Password: operador@mail.com</small><br/>
-                    <small>Email: cliente@mail.com - Password: cliente@mail.com</small>
+                    <div class="alert alert-info" style="margin: 10px 0">
+                            <div class="row">
+                                <div class="col-md-12 text-center" style="margin: 0 0 10px 0;">
+                                    <p style="margin: 0;"><i class="ti-arrow-right"></i>&nbsp;Usa los siguientes datos para iniciar sesión&nbsp;<i class="ti-arrow-left"></i></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <small>Vista Administrador:</small><br>
+                                    <small class="text-dark">
+                                        <i class="ti-email"></i>&nbsp;admin@mail.com<br>
+                                        <i class="ti-lock"></i>&nbsp;admin@mail.com
+                                    </small>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>Vista Operador:</small><br>
+                                    <small class="text-dark">
+                                        <i class="ti-email"></i>&nbsp;operador@mail.com<br>
+                                        <i class="ti-lock"></i>&nbsp;operador@mail.com
+                                    </small>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>Vista Cliente:</small><br>
+                                    <small class="text-dark">
+                                        <i class="ti-email"></i>&nbsp;cliente@mail.com<br>
+                                        <i class="ti-lock"></i>&nbsp;cliente@mail.com
+                                    </small>
+                                </div>
+                            </div>
+                    </div>
                     <div class="clearfix"></div>
                 <?= form_close(); ?>
                 <div class="footer-login">
