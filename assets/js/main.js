@@ -649,11 +649,16 @@ $(document).ready(function(){
             var data = $(this).val();
             $('#whichCuenta').val(data);
             $('#nuevaCuentaPedidos').removeClass('display-none');
+            $('#nuevaCuentaPedidos').addClass('showMeLeft');
+            $('#nuevaCuentaPedidos').removeClass('hideMeLeft');
+            $('#modalWindow').fadeIn('slow');
         });
     });
 
     $('#closeNuevaCuentaPedidos').click(function(){
-        $('#nuevaCuentaPedidos').addClass('display-none');
+        $('#nuevaCuentaPedidos').removeClass('showMeLeft');
+        $('#nuevaCuentaPedidos').addClass('hideMeLeft');   
+        $('#modalWindow').fadeOut('slow');
     });
 
     $('#bancoSeleccionCrear').on('change', function(){
@@ -779,7 +784,9 @@ $(document).ready(function(){
                     success: function(result){
                         var str = JSON.parse(result);
                         if( str.status == "OK" ){
-                            $('#nuevaCuentaPedidos').addClass('display-none');
+                            $('#nuevaCuentaPedidos').removeClass('showMeLeft');
+                            $('#nuevaCuentaPedidos').addClass('hideMeLeft');
+                            $('#modalWindow').fadeOut('slow');
                             $('[data-cuenta-input="true"]').val('');
                             var thisCuenta = $('#whichCuenta').val();
                                 if( thisCuenta == "cuenta1" ){

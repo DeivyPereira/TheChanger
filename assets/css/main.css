@@ -75,8 +75,12 @@
 .btn-custom{
     background: transparent;
     border: 0;
-    padding: 0;
-    margin: 0;
+    padding: 0 10px;
+    transition: ease 0.3s;
+}
+
+.btn-custom:hover{
+    color: #222!important;
 }
 
 .cuenta-num{
@@ -298,7 +302,27 @@
 @keyframes hideMe{
     0% { top: 15%; /*opacity: 1*/ }
     50% { top: 20%; /*opacity: 0.9*/ }
-    100% { top: -100%; /*opacity: 0;*/ }
+    100% { top: -100%; /*opacity: 0*/; }
+}
+
+.showMeLeft {
+    animation-name: showMeLeft;
+}
+
+@keyframes showMeLeft {
+    0% { left: -500px; }
+    50% { left: 550px; }
+    100% { left: 500px; }
+}
+
+.hideMeLeft{
+    animation-name: hideMeLeft;
+}
+
+@keyframes hideMeLeft{
+    0% { left: 500px;}
+    50% { left: 550px;}
+    100% { left: -500px;}
 }
 
 .modal-position{
@@ -515,16 +539,49 @@
     width:500px;
     transform: translate(-35%, -50%);
     z-index: 1000000;
-}
+  }
+
+  .hide-large{
+      display: none;
+  }
 
   @media (max-width: 600px)
   {
-      button{
-          display: inline!important;
+
+    .hide-large{
+        display: initial;
+    }
+
+    .responsive-h5{
+        font-size: 15px;
+    }
+
+      @keyframes showMe{
+        0% { top: -300%; /*opacity: 0;*/ }
+        50% { top: 15%; /*opacity: 0.9*/ }
+        100% { top: 0; /*opacity: 1*/ }
       }
 
-      .modal-bg{
-          display: none;
+      @keyframes hideMe{
+        0% { top: 0; /*opacity: 1;*/ }
+        50% { top: 15%; /*opacity: 0.9;*/ }
+        100% { top: -300%; /*opacity: 0;*/ }
+      }
+
+      @keyframes showMeLeft{
+          0% { left: -100% }
+          50% { left: 10% }
+          100% { left: 0 }
+      }
+
+      @keyframes hideMeLeft{
+        0% { left: 0% }
+        50% { left: 10% }
+        100% { left: -100% }
+      }
+
+      button{
+          display: inline!important;
       }
 
       .verificacion-modal{
@@ -532,7 +589,7 @@
       }
 
       .modal-custom{
-          display: none;
+          width: 100%!important;
       }
 
       .hide-small{

@@ -204,7 +204,7 @@
                                 <div class="form-group">
                                     <label for="">
                                         <small>Selecciona una cuenta ó</small><br>
-                                        <button type="button" id="addNuevaCuentaBtn" data-open-new="true" value="cuenta1" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
+                                        <button type="button" id="addNuevaCuentaBtn" data-open-new="true" value="cuenta1" class="btn-custom"><small>Registrar nueva cuenta&nbsp;<i class="fa fa-plus"></i></small></button>
                                     </label>
                                     <select name="primera_cuenta" class="custom-input" id="cuentaBeneficiaria">
                                         <option value="false"></option>
@@ -231,7 +231,7 @@
                                     <br>
                                     &nbsp;
                                 </label>
-                                <button type="button" value="cuenta1" id="resetearCuenta" data-reset-cuenta="true" class="text-danger display-none-imp" style="border: 0; background: #FFF;">x</button>
+                                <button type="button" value="cuenta1" id="resetearCuenta" data-reset-cuenta="true" class="text-danger display-none-imp" style="border: solid 1px red; border-radius: 50px; background: #FFF;">x</button>
                             </div>
                         </div>
                         <div class="text-right" id="primeraCuentaBtnDiv">
@@ -249,7 +249,8 @@
                                     <div class="form-group">
                                         <label for="">
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta2" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta2" class="btn-custom"><small>
+                                            Registrar nueva cuenta&nbsp;<i class="fa fa-plus"></i></small></button>
                                         </label>
                                         <select name="segunda_cuenta" class="custom-input" id="segundaCuentaBen">
                                             <option value="false"></option>
@@ -292,7 +293,7 @@
                                     <div class="form-group">
                                         <label>
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta3" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta3" class="btn-custom"><small>Registrar nueva cuenta&nbsp;<i class="fa fa-plus"></i></small></button>
                                         </label>
                                         <select name="tercera_cuenta" class="custom-input" id="terceraCuentaBen">
                                             <option value="false"></option>
@@ -335,7 +336,7 @@
                                     <div class="form-group">
                                         <label>
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta4" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta4" class="btn-custom"><small>Registrar nueva cuenta&nbsp;<i class="fa fa-plus"></i></small></button>
                                         </label>
                                         <select name="cuarta_cuenta" class="custom-input" id="cuartaCuentaBen">
                                             <option value="false"></option>
@@ -378,7 +379,7 @@
                                     <div class="form-group">
                                         <label>
                                             <small>Selecciona una cuenta ó</small><br>
-                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta5" class="btn-custom"><small>Registrar nueva cuenta&nbsp;+</small></button>
+                                            <button type="button" id="addNuevaCuentaBtn1" data-open-new="true" value="cuenta5" class="btn-custom"><small>Registrar nueva cuenta&nbsp;<i class="fa fa-plus"></i></small></button>
                                         </label>
                                         <select name="quinta_cuenta" class="custom-input" id="quintaCuentaBen">
                                             <option value="false"></option>
@@ -536,145 +537,9 @@
 
     </div><!-- Container-fluid -->
 </div> <!-- Content -->
-
-    <div class="pedidos-cuenta-modal display-none" id="nuevaCuentaPedidos">
-        <div class="card shadow-custom" style="background-image: url('<?= base_url() . 'assets/img/back.png'; ?>'); background-repeat: no-repeat; background-position: 0 200px;">
-            <div class="row">
-                <div class="col-xs-9 px-4">
-                    <h3 class="text-purple">Cuenta Bancaria</h3>
-                </div>
-                <div class="col-xs-3 text-right">
-                    <button class="purple-cexpress button-close-modal" id="closeNuevaCuentaPedidos">
-                        <i class="ti-close"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="content">
-            <form id="addCuentaSeccionPedidos">
-                <input type="hidden" id="whichCuenta">
-                <input type="hidden" name="id" value="<?= $_SESSION['id_cexpress']; ?>">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>Alias</small>
-                                </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="alias" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#alias">
-                                <small class="text-danger" id="alias"></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>Cuenta</small>
-                                </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="cuenta" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#cuenta">
-                                <small class="text-danger" id="cuenta"></small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>Titular</small>
-                                </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="titular" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#titular">
-                                <small class="text-danger" id="titular"></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>Tipo de cuenta</small>
-                                </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="tipo" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#tipo">
-                                <small class="text-danger" id="tipo"></small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>C.I.</small>
-                                </label><br>
-                                <select name="tipo_documento" class="custom-input" style="width:30%; float:left">
-                                    <option value="E-">E</option>
-                                    <option value="V-">V</option>
-                                    <option value="P-">P</option>
-                                    <option value="G-">G</option>
-                                    <option value="J-">J</option>
-                                <select>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="dni" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#dni" style="width: 70%; float: left">
-                                <small class="text-danger" id="dni"></small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>Teléfono</small>
-                                </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="telefono" data-validation="required" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Campo Requerido" data-validation-error-msg-container="#telefono">
-                                <small class="text-danger" id="telefono"></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>Email</small>
-                                </label>
-                                <input type="text" data-cuenta-input="true" class="custom-input" name="email" data-validation="email" data-validation-error-msg="<i class='ti-info-alt'></i>&nbsp;Formato de Correo Inválido" data-validation-error-msg-container="#email">
-                                <small class="text-danger" id="email"></small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">
-                                    <small>País</small>
-                                </label>
-                                <select class="custom-input" id="paisBancoSeleccion" name="pais">
-                                    <option value="false">Selecciona un país</option>
-                                    <option value="Venezuela">Venezuela</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group my-0">
-                                <label for="">
-                                    <small>Banco</small>
-                                </label>
-                                <select name="banco" id="bancoSeleccionCrear" class="custom-input">
-                                    <option value="false">Selecciona un banco</option>
-                                    <option value="Otros">Otro</option>
-                                </select>
-                                <small class="text-danger" id="bancoErr"></small>
-                            </div>
-                        </div>
-                        <div class="col-md-6" id="bancoAlt" style="display: none">
-                            <label for="">
-                                <small>Nombre del Banco</small>
-                            </label>
-                            <input type="text" class="custom-input" name="banco_alt" id="banco_alt" data-cuenta-input="true">
-                            <small class="text-danger" id="bancoalt"></small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12"> 
-                            <div class="form-group text-right">
-                                <br>
-                                <button type="submit" class="btn btn-primary btn-icon-circle"><small><i class="ti-plus"></i>&nbsp;Agregar</small></button>
-                            </div>
-                        </div>
-                    </div>
-                </form>            
-            </div>
-        </div>
-    </div> 
+    
+    <!-- Modal para agregar cuenta nueva -->
+   
 
 <script>
         // Función para mostrar la imagen del comprobante de pago en pedidos

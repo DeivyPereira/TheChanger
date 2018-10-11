@@ -12,12 +12,16 @@
                                 </p>
                             </div>
                             <div class="col-xs-8 text-center bg-lighter" style="position: relative; border-top-right-radius: 5px; border-bottom-right-radius: 25px;">
-                                <small class="text-dark" style="position:absolute; top: 10%; left: 5%;">1 USD $ equivale a</small>
+                                <small class="text-dark" style="position:absolute; top: 10%; left: 5%;">
+                                1 <?php foreach( $tax as $tasa ): if( $tasa['pais'] == "Estados Unidos" ): echo $tasa['moneda']; endif; endforeach; ?> equivale a</small>
                                 <p class="text-dark">
                                     <?php foreach( $tax as $tasa ): ?>
-                                        <?php if( $tasa['pais'] == "Estados Unidos" ): ?>
-                                            <?= number_format( $tasa['tasa'], 2 ) . " " . $tasa['moneda']; ?>
-                                        <?php endif; ?>
+                                    <?php if( $tasa['pais'] == "Estados Unidos" ): ?>
+                                        <?= number_format( $tasa['tasa'], 2 ) . " "; ?>
+                                    <?php endif; ?>
+                                    <?php if( $tasa['pais'] == "Venezuela" ): ?>
+                                        <?= $tasa['moneda']; ?>
+                                    <?php endif; ?>
                                     <?php endforeach; ?>
                                 </p>
                             </div>
@@ -139,11 +143,18 @@
                         <div class="card shadow-custom">
                             <div class="rounded-top">
                                 <div class="header">
-                                    <h4 class="title">Bienvenido a <?php echo nombreweb;  ?></h4>
+                                    <div class="row">
+                                        <div class="col-sm-2 col-xs-3 text-center">
+                                            <img src="<?= base_url() . 'assets/img/welcome.svg';?>" width="50%" alt="">
+                                        </div>
+                                        <div class="col-sm-10 col-xs-9">
+                                            <h5 class="title">Bienvenido</h5>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr class="my-2">
                                 <div class="content">
-                                    <p>Somos agente cambiario seguro.</p>
+                                    <p><strong>Somos tu agente cambiario seguro.</strong></p>
                                     <p>Le recordamos que para transferir dinero debe suministrarnos toda la información correcta, a fin de facilitar el procedimiento de verificación y ejecución de pagos</p>
                                     <p>Toda su información está protegida y es de carácter confidencial</p>
                                 </div>
@@ -158,7 +169,9 @@
                             <div class="content">
                                 <table class="table table-striped">
                                     <tr>
-                                        <th class="text-center bg-info"><i class="ti-info-alt"></i>&nbsp;Atención</th>
+                                        <th class="text-center clear-bussiness" data-color-choice="principal">
+                                            <h4 class="my-0" set-color-text="principal"><i class="ti-info-alt"></i><br>Atención</h4>
+                                        </th>
                                     </tr>
                                     <tr>
                                         <td>
@@ -203,7 +216,14 @@
                     <div class="col-md-12">
                         <div class="card shadow-custom" >
                             <div class="header">
-                                <h4 class="title">Calculadora rápida</h4>
+                                <div class="row">
+                                    <div class="col-sm-2 col-xs-3 text-center">
+                                        <img src="<?= base_url() . 'assets/img/calculadora.svg'; ?>" width="50%" alt="">
+                                    </div>
+                                    <div class="col-sm-10 col-xs-9">
+                                        <h5 class="title">Calculadora</h5>
+                                    </div>
+                                </div>
                             </div>
                             <hr class="my-2">
                             <div class="content">
@@ -258,7 +278,14 @@
                         <div class="card shadow-custom">
                             <div class="rounded-top">
                                 <div class="header">
-                                    <h4 class="title">Consulte nuestras cuentas bancarias</h4>
+                                    <div class="row">
+                                        <div class="col-sm-2 col-xs-3 text-center">
+                                            <img src="<?= base_url() . 'assets/img/banco.svg'; ?>" width="50%" alt="">
+                                        </div>
+                                        <div class="col-sm-10 col-xs-9">
+                                            <h5 class="title">Nuestras Cuentas</h5>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr class="my-2">
                                 <div class="header">
@@ -284,7 +311,14 @@
                         <div class="card shadow-custom">
                             <div class="rounded-top">
                                 <div class="header">
-                                    <h4 class="title">Otros procesadores de pagos</h4>
+                                    <div class="row">
+                                        <div class="col-sm-2 col-xs-3 text-center">
+                                            <img src="<?= base_url() . 'assets/img/procesadores.svg'; ?>" width="50%" alt="">
+                                        </div>
+                                        <div class="col-sm-10 col-xs-9">
+                                            <h5 class="title">Otras formas de pago</h5>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr class="my-2">
                                 <div class="header">

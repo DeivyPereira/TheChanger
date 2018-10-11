@@ -165,9 +165,9 @@
                         <?php if( $usuarios->verificado == 0 && $_SESSION['role_cexpress'] == 4 ): ?>
                         <?= form_open_multipart( 'verificar', array( 'id' => 'comprobanteVerificacion') ); ?>
                         <div class="card">
-                            <div class="header bg-warning">
-                                <h4 class="title"><i class="ti-info-alt text-warning"></i> Verifica tu usuario</h4>
-                                <small>Para poder realizar operaciones con nosotros deberás verificar tu usuario, solo debes enviarnos una muestra digital de tu cédula de identidad o pasaporte.</small>
+                            <div class="header bg-warning text-center">
+                                <h4 class="title" data-title-choice="principal"><i class="ti-info-alt"></i><br>Proceso de Verificación</h4>
+                                <p>Para poder realizar operaciones con nosotros <strong>deberás verificar tu usuario</strong><br>Solo debes enviarnos una <strong>muestra digital</strong> de tu <strong>Cédula, DNI o Pasaporte</strong>.</p>
                                 <input type="file" id="inFile" name="verificar" class="comprobacion-input" style="margin-top: 10px; display: block"
                                 data-validation="mime size required" 
                                         data-validation-allowing="jpg, png, gif" 
@@ -180,7 +180,7 @@
                                 <small id="outFile" class="text-success" style="font-weight: bolder"></small>
                                 <?= $error; ?>
                                 <div class="text-right mt-2" style="padding: 0 0 15px 0">
-                                    <button class="btn btn-primary" style="border: 0" data-color-choice="principal" set-color-text="principal">Verificar</button>
+                                    <button class="btn btn-primary" style="border: 0; padding-left: 10px;" data-color-choice="principal" set-color-text="principal"><i class="fa fa-paper-plane-o"></i>&nbsp;Verificar</button>
                                 </div>
                             </div>
                 <script>
